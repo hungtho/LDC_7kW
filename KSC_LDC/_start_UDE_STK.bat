@@ -1,1 +1,0 @@
-start "UDE STK" "C:\Program Files (x86)\pls\UDE Starterkit 4.10\UDEVisualPlatform.exe"

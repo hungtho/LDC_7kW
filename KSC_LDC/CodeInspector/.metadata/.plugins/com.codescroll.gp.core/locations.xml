@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<locations>
-<location key="FileSelectionComposite_FILE_PATH" value="D:\07_Working\KSC_LDC"/>
-<location key="AnalysisTargetComposite_FOLDERExclusion" value="D:\07_Working\KSC_LDC\components"/>
-<location key="CompileFlagConfigurationComposite_Import" value="D:\07_Working\KSC_LDC\CodeInspector\Include.cf"/>
-</locations>
