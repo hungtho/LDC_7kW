@@ -1,0 +1,33 @@
+
+################## STEP 1 #################20190925160113
+Count: 13
+D:\07_Working\KSC_LDC\source\HAL\Asw_Utility.c
+D:\07_Working\KSC_LDC\source\HAL\CAN_Drv.c
+D:\07_Working\KSC_LDC\source\UDS\GpFunc.c
+D:\07_Working\KSC_LDC\source\HAL\HalAdc.c
+D:\07_Working\KSC_LDC\source\HAL\HalPIT.c
+D:\07_Working\KSC_LDC\source\HAL\HalPwm.c
+D:\07_Working\KSC_LDC\source\HAL\LdcFaultDetection.c
+D:\07_Working\KSC_LDC\source\HAL\Os.c
+D:\07_Working\KSC_LDC\source\HAL\Pid_Ctrl.c
+D:\07_Working\KSC_LDC\source\HAL\StateMachine.c
+D:\07_Working\KSC_LDC\source\UDS\Tp_Func.c
+D:\07_Working\KSC_LDC\source\UDS\Uds_Func.c
+D:\07_Working\KSC_LDC\main.c
+################## STEP 2 #################20190925160114
+ INSERT INTO Module ( idModule, idImportInfo, name, configurationName, isActive, classPath, linkFlag, dependency, language, binaryKind, binaryName, idLinker, idArchive) VALUES  (1,-1,"Default Module",NULL,1,NULL,NULL,NULL,1,0,NULL,66,-1)
+################## STEP 3 #################20190925160114
+Count: 13
+D:\07_Working\KSC_LDC\source\HAL\Asw_Utility.c
+D:\07_Working\KSC_LDC\source\HAL\CAN_Drv.c
+D:\07_Working\KSC_LDC\source\UDS\GpFunc.c
+D:\07_Working\KSC_LDC\source\HAL\HalAdc.c
+D:\07_Working\KSC_LDC\source\HAL\HalPIT.c
+D:\07_Working\KSC_LDC\source\HAL\HalPwm.c
+D:\07_Working\KSC_LDC\source\HAL\LdcFaultDetection.c
+D:\07_Working\KSC_LDC\source\HAL\Os.c
+D:\07_Working\KSC_LDC\source\HAL\Pid_Ctrl.c
+D:\07_Working\KSC_LDC\source\HAL\StateMachine.c
+D:\07_Working\KSC_LDC\source\UDS\Tp_Func.c
+D:\07_Working\KSC_LDC\source\UDS\Uds_Func.c
+D:\07_Working\KSC_LDC\main.c

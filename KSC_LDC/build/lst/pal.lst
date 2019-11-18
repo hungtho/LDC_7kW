@@ -1,0 +1,3412 @@
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 1
+
+
+   1              		.file	"pal.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text.pal_init,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl pal_init
+   9              		.type	pal_init, @function
+  10              	pal_init:
+  11              	.LFB4:
+  12              		.file 1 "./components/spc570sxx_board_initialization_component_rla/lib/src/pal.c"
+  13              		.loc 1 34 0
+  14              		.cfi_startproc
+  15              	.LVL0:
+  16              		.loc 1 45 0
+  17 0000 C163     		se_lwz %r6,4(%r3)
+  18 0002 38E60002 		e_lha %r7,2(%r6)
+  19 0006 73E79FFF 		e_cmp16i %r7,-1
+  20 000a 7A12004A 		e_beq %cr0,.L2
+  21 000e 4805     		se_li %r5,0
+  22              		.loc 1 46 0
+  23 0010 70806000 		e_li %r4,-262144
+  24              		.loc 1 48 0
+  25 0014 2C00     		se_bmaski %r0,0
+  26              		.loc 1 50 0
+  27 0016 71600001 		e_li %r11,1
+  28              	.LVL1:
+  29              	.L4:
+  30              		.loc 1 46 0
+  31 001a A266     		se_lhz %r6,4(%r6)
+  32 001c 1CE70290 		e_add16i %r7,%r7,656
+  33 0020 6C27     		se_slwi %r7, 2
+  34 0022 7CC4392E 		stwx %r6,%r4,%r7
+  35              		.loc 1 48 0
+  36 0026 C173     		se_lwz %r7,4(%r3)
+  37 0028 7CE72AAE 		lhax %r7,%r7,%r5
+  38 002c 0C07     		se_cmp %r7,%r0
+  39 002e 7A120016 		e_beq %cr0,.L3
+  40              		.loc 1 50 0
+  41 0032 18E78090 		e_addi %r7,%r7,144
+  42 0036 6C27     		se_slwi %r7, 2
+  43 0038 7CC4382E 		lwzx %r6,%r4,%r7
+  44 003c 75669B18 		e_rlwimi %r6,%r11,19,12,12
+  45 0040 7CC4392E 		stwx %r6,%r4,%r7
+  46              	.L3:
+  47              		.loc 1 45 0
+  48 0044 2055     		se_addi %r5,6
+  49 0046 C163     		se_lwz %r6,4(%r3)
+  50 0048 0456     		se_add %r6,%r5
+  51 004a 38E60002 		e_lha %r7,2(%r6)
+  52 004e 0C07     		se_cmp %r7,%r0
+  53 0050 7A02FFCA 		e_bne %cr0,.L4
+  54              	.L2:
+  55              	.LVL2:
+  56              		.loc 1 57 0
+  57 0054 C053     		se_lwz %r5,0(%r3)
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 2
+
+
+  58 0056 38C50000 		e_lha %r6,0(%r5)
+  59 005a 73E69FFF 		e_cmp16i %r6,-1
+  60 005e 7A12003E 		e_beq %cr0,.L1
+  61 0062 4807     		se_li %r7,0
+  62              		.loc 1 58 0
+  63 0064 70806000 		e_li %r4,-262144
+  64              		.loc 1 57 0
+  65 0068 2C00     		se_bmaski %r0,0
+  66              	.LVL3:
+  67              	.L6:
+  68              		.loc 1 58 0
+  69 006a 8255     		se_lbz %r5,2(%r5)
+  70 006c 7CC43214 		add %r6,%r4,%r6
+  71 0070 34A61300 		e_stb %r5,4864(%r6)
+  72              		.loc 1 59 0
+  73 0074 C063     		se_lwz %r6,0(%r3)
+  74 0076 7CA63A14 		add %r5,%r6,%r7
+  75 007a 7CC63AAE 		lhax %r6,%r6,%r7
+  76              		.loc 1 60 0
+  77 007e C155     		se_lwz %r5,4(%r5)
+  78              		.loc 1 59 0
+  79 0080 18C68090 		e_addi %r6,%r6,144
+  80 0084 6C26     		se_slwi %r6, 2
+  81 0086 7CA4312E 		stwx %r5,%r4,%r6
+  82              		.loc 1 57 0
+  83 008a 2077     		se_addi %r7,8
+  84 008c C063     		se_lwz %r6,0(%r3)
+  85 008e 7CA63A14 		add %r5,%r6,%r7
+  86 0092 7CC63AAE 		lhax %r6,%r6,%r7
+  87 0096 0C06     		se_cmp %r6,%r0
+  88 0098 7A02FFD2 		e_bne %cr0,.L6
+  89              	.L1:
+  90 009c 0004     		se_blr
+  91              		.cfi_endproc
+  92              	.LFE4:
+  93              		.size	pal_init, .-pal_init
+  94              		.section	.text._pal_readgroup,"axv",@progbits
+  95              		.align 1
+  96              		.p2align 4,,15
+  97              		.globl _pal_readgroup
+  98              		.type	_pal_readgroup, @function
+  99              	_pal_readgroup:
+ 100              	.LFB5:
+ 101              		.loc 1 76 0
+ 102              		.cfi_startproc
+ 103              	.LVL4:
+ 104              		.loc 1 82 0
+ 105 0000 4803     		se_li %r3,0
+ 106              	.LVL5:
+ 107 0002 0004     		se_blr
+ 108              		.cfi_endproc
+ 109              	.LFE5:
+ 110              		.size	_pal_readgroup, .-_pal_readgroup
+ 111              		.section	.text._pal_writegroup,"axv",@progbits
+ 112              		.align 1
+ 113              		.p2align 4,,15
+ 114              		.globl _pal_writegroup
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 3
+
+
+ 115              		.type	_pal_writegroup, @function
+ 116              	_pal_writegroup:
+ 117              	.LFB6:
+ 118              		.loc 1 96 0
+ 119              		.cfi_startproc
+ 120              	.LVL6:
+ 121 0000 0004     		se_blr
+ 122              		.cfi_endproc
+ 123              	.LFE6:
+ 124              		.size	_pal_writegroup, .-_pal_writegroup
+ 125              		.section	.text._pal_setgroupmode,"axv",@progbits
+ 126              		.align 1
+ 127              		.p2align 4,,15
+ 128              		.globl _pal_setgroupmode
+ 129              		.type	_pal_setgroupmode, @function
+ 130              	_pal_setgroupmode:
+ 131              	.LFB7:
+ 132              		.loc 1 117 0
+ 133              		.cfi_startproc
+ 134              	.LVL7:
+ 135              		.loc 1 118 0
+ 136 0000 6C43     		se_slwi %r3, 4
+ 137              	.LVL8:
+ 138              		.loc 1 119 0
+ 139 0002 6307     		se_bgeni %r7,16
+ 140              		.loc 1 122 0
+ 141 0004 71606000 		e_li %r11,-262144
+ 142 0008 4906     		se_li %r6,16
+ 143 000a 00B6     		se_mtctr %r6
+ 144              	.LVL9:
+ 145              	.L13:
+ 146              		.loc 1 121 0
+ 147 000c 7CE62039 		and. %r6,%r7,%r4
+ 148 0010 7A12000E 		e_beq %cr0,.L12
+ 149              		.loc 1 122 0
+ 150 0014 18C38090 		e_addi %r6,%r3,144
+ 151 0018 6C26     		se_slwi %r6, 2
+ 152 001a 7CAB312E 		stwx %r5,%r11,%r6
+ 153              	.L12:
+ 154              		.loc 1 124 0
+ 155 001e 6817     		se_srwi %r7,1
+ 156              	.LVL10:
+ 157              		.loc 1 125 0
+ 158 0020 2003     		se_addi %r3,1
+ 159              	.LVL11:
+ 160              		.loc 1 120 0
+ 161 0022 7A20FFEA 		e_bdnz .L13
+ 162              		.loc 1 127 0
+ 163 0026 0004     		se_blr
+ 164              		.cfi_endproc
+ 165              	.LFE7:
+ 166              		.size	_pal_setgroupmode, .-_pal_setgroupmode
+ 167              		.section	".text","axv"
+ 168              	.Letext0:
+ 169              		.file 2 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.2019
+ 170              		.file 3 "c:\\spc5studio\\eclipse\\plugins\\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.2019
+ 171              		.file 4 "./components/spc570sxx_platform_component_rla/lib/include/typedefs.h"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 4
+
+
+ 172              		.file 5 "./components/spc570sxx_platform_component_rla/lib/include/xpc570s.h"
+ 173              		.file 6 "./components/spc570sxx_board_initialization_component_rla/lib/include/pal.h"
+ 174              		.section	.debug_info,"",@progbits
+ 175              	.Ldebug_info0:
+ 176 0000 00000E9C 		.4byte	0xe9c
+ 177 0004 0002     		.2byte	0x2
+ 178 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 179 000a 04       		.byte	0x4
+ 180 000b 01       		.uleb128 0x1
+ 181 000c 00000000 		.4byte	.LASF129
+ 182 0010 01       		.byte	0x1
+ 183 0011 00000000 		.4byte	.LASF130
+ 184 0015 00000000 		.4byte	.LASF131
+ 185 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 186 001d 00000000 		.4byte	0
+ 187 0021 00000000 		.4byte	0
+ 188 0025 00000000 		.4byte	.Ldebug_line0
+ 189 0029 02       		.uleb128 0x2
+ 190 002a 01       		.byte	0x1
+ 191 002b 06       		.byte	0x6
+ 192 002c 00000000 		.4byte	.LASF0
+ 193 0030 03       		.uleb128 0x3
+ 194 0031 00000000 		.4byte	.LASF2
+ 195 0035 02       		.byte	0x2
+ 196 0036 1D       		.byte	0x1d
+ 197 0037 0000003B 		.4byte	0x3b
+ 198 003b 02       		.uleb128 0x2
+ 199 003c 01       		.byte	0x1
+ 200 003d 08       		.byte	0x8
+ 201 003e 00000000 		.4byte	.LASF1
+ 202 0042 03       		.uleb128 0x3
+ 203 0043 00000000 		.4byte	.LASF3
+ 204 0047 02       		.byte	0x2
+ 205 0048 29       		.byte	0x29
+ 206 0049 0000004D 		.4byte	0x4d
+ 207 004d 02       		.uleb128 0x2
+ 208 004e 02       		.byte	0x2
+ 209 004f 05       		.byte	0x5
+ 210 0050 00000000 		.4byte	.LASF4
+ 211 0054 03       		.uleb128 0x3
+ 212 0055 00000000 		.4byte	.LASF5
+ 213 0059 02       		.byte	0x2
+ 214 005a 2B       		.byte	0x2b
+ 215 005b 0000005F 		.4byte	0x5f
+ 216 005f 02       		.uleb128 0x2
+ 217 0060 02       		.byte	0x2
+ 218 0061 07       		.byte	0x7
+ 219 0062 00000000 		.4byte	.LASF6
+ 220 0066 02       		.uleb128 0x2
+ 221 0067 04       		.byte	0x4
+ 222 0068 05       		.byte	0x5
+ 223 0069 00000000 		.4byte	.LASF7
+ 224 006d 03       		.uleb128 0x3
+ 225 006e 00000000 		.4byte	.LASF8
+ 226 0072 02       		.byte	0x2
+ 227 0073 41       		.byte	0x41
+ 228 0074 00000078 		.4byte	0x78
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 5
+
+
+ 229 0078 02       		.uleb128 0x2
+ 230 0079 04       		.byte	0x4
+ 231 007a 07       		.byte	0x7
+ 232 007b 00000000 		.4byte	.LASF9
+ 233 007f 02       		.uleb128 0x2
+ 234 0080 08       		.byte	0x8
+ 235 0081 05       		.byte	0x5
+ 236 0082 00000000 		.4byte	.LASF10
+ 237 0086 02       		.uleb128 0x2
+ 238 0087 08       		.byte	0x8
+ 239 0088 07       		.byte	0x7
+ 240 0089 00000000 		.4byte	.LASF11
+ 241 008d 04       		.uleb128 0x4
+ 242 008e 04       		.byte	0x4
+ 243 008f 05       		.byte	0x5
+ 244 0090 696E7400 		.string	"int"
+ 245 0094 02       		.uleb128 0x2
+ 246 0095 04       		.byte	0x4
+ 247 0096 07       		.byte	0x7
+ 248 0097 00000000 		.4byte	.LASF12
+ 249 009b 03       		.uleb128 0x3
+ 250 009c 00000000 		.4byte	.LASF13
+ 251 00a0 03       		.byte	0x3
+ 252 00a1 15       		.byte	0x15
+ 253 00a2 00000030 		.4byte	0x30
+ 254 00a6 03       		.uleb128 0x3
+ 255 00a7 00000000 		.4byte	.LASF14
+ 256 00ab 03       		.byte	0x3
+ 257 00ac 20       		.byte	0x20
+ 258 00ad 00000042 		.4byte	0x42
+ 259 00b1 03       		.uleb128 0x3
+ 260 00b2 00000000 		.4byte	.LASF15
+ 261 00b6 03       		.byte	0x3
+ 262 00b7 21       		.byte	0x21
+ 263 00b8 00000054 		.4byte	0x54
+ 264 00bc 03       		.uleb128 0x3
+ 265 00bd 00000000 		.4byte	.LASF16
+ 266 00c1 03       		.byte	0x3
+ 267 00c2 2D       		.byte	0x2d
+ 268 00c3 0000006D 		.4byte	0x6d
+ 269 00c7 03       		.uleb128 0x3
+ 270 00c8 00000000 		.4byte	.LASF17
+ 271 00cc 03       		.byte	0x3
+ 272 00cd 4B       		.byte	0x4b
+ 273 00ce 00000094 		.4byte	0x94
+ 274 00d2 03       		.uleb128 0x3
+ 275 00d3 00000000 		.4byte	.LASF18
+ 276 00d7 04       		.byte	0x4
+ 277 00d8 1D       		.byte	0x1d
+ 278 00d9 000000DD 		.4byte	0xdd
+ 279 00dd 05       		.uleb128 0x5
+ 280 00de 0000009B 		.4byte	0x9b
+ 281 00e2 03       		.uleb128 0x3
+ 282 00e3 00000000 		.4byte	.LASF19
+ 283 00e7 04       		.byte	0x4
+ 284 00e8 1F       		.byte	0x1f
+ 285 00e9 000000ED 		.4byte	0xed
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 6
+
+
+ 286 00ed 05       		.uleb128 0x5
+ 287 00ee 000000B1 		.4byte	0xb1
+ 288 00f2 03       		.uleb128 0x3
+ 289 00f3 00000000 		.4byte	.LASF20
+ 290 00f7 04       		.byte	0x4
+ 291 00f8 21       		.byte	0x21
+ 292 00f9 000000FD 		.4byte	0xfd
+ 293 00fd 05       		.uleb128 0x5
+ 294 00fe 000000BC 		.4byte	0xbc
+ 295 0102 06       		.uleb128 0x6
+ 296 0103 000000D2 		.4byte	0xd2
+ 297 0107 00000112 		.4byte	0x112
+ 298 010b 07       		.uleb128 0x7
+ 299 010c 00000112 		.4byte	0x112
+ 300 0110 03       		.byte	0x3
+ 301 0111 00       		.byte	0
+ 302 0112 02       		.uleb128 0x2
+ 303 0113 04       		.byte	0x4
+ 304 0114 07       		.byte	0x7
+ 305 0115 00000000 		.4byte	.LASF21
+ 306 0119 06       		.uleb128 0x6
+ 307 011a 000000D2 		.4byte	0xd2
+ 308 011e 00000129 		.4byte	0x129
+ 309 0122 07       		.uleb128 0x7
+ 310 0123 00000112 		.4byte	0x112
+ 311 0127 BF       		.byte	0xbf
+ 312 0128 00       		.byte	0
+ 313 0129 08       		.uleb128 0x8
+ 314 012a 04       		.byte	0x4
+ 315 012b 05       		.byte	0x5
+ 316 012c 1CEA     		.2byte	0x1cea
+ 317 012e 0000019E 		.4byte	0x19e
+ 318 0132 09       		.uleb128 0x9
+ 319 0133 00000000 		.4byte	.LASF22
+ 320 0137 05       		.byte	0x5
+ 321 0138 1CEB     		.2byte	0x1ceb
+ 322 013a 000000F2 		.4byte	0xf2
+ 323 013e 04       		.byte	0x4
+ 324 013f 10       		.byte	0x10
+ 325 0140 00       		.byte	0
+ 326 0141 02       		.byte	0x2
+ 327 0142 23       		.byte	0x23
+ 328 0143 00       		.uleb128 0
+ 329 0144 0A       		.uleb128 0xa
+ 330 0145 454400   		.string	"ED"
+ 331 0148 05       		.byte	0x5
+ 332 0149 1CEC     		.2byte	0x1cec
+ 333 014b 000000F2 		.4byte	0xf2
+ 334 014f 04       		.byte	0x4
+ 335 0150 01       		.byte	0x1
+ 336 0151 10       		.byte	0x10
+ 337 0152 02       		.byte	0x2
+ 338 0153 23       		.byte	0x23
+ 339 0154 00       		.uleb128 0
+ 340 0155 0A       		.uleb128 0xa
+ 341 0156 504B4700 		.string	"PKG"
+ 342 015a 05       		.byte	0x5
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 7
+
+
+ 343 015b 1CED     		.2byte	0x1ced
+ 344 015d 000000F2 		.4byte	0xf2
+ 345 0161 04       		.byte	0x4
+ 346 0162 05       		.byte	0x5
+ 347 0163 11       		.byte	0x11
+ 348 0164 02       		.byte	0x2
+ 349 0165 23       		.byte	0x23
+ 350 0166 00       		.uleb128 0
+ 351 0167 09       		.uleb128 0x9
+ 352 0168 00000000 		.4byte	.LASF23
+ 353 016c 05       		.byte	0x5
+ 354 016d 1CEE     		.2byte	0x1cee
+ 355 016f 000000F2 		.4byte	0xf2
+ 356 0173 04       		.byte	0x4
+ 357 0174 02       		.byte	0x2
+ 358 0175 16       		.byte	0x16
+ 359 0176 02       		.byte	0x2
+ 360 0177 23       		.byte	0x23
+ 361 0178 00       		.uleb128 0
+ 362 0179 09       		.uleb128 0x9
+ 363 017a 00000000 		.4byte	.LASF24
+ 364 017e 05       		.byte	0x5
+ 365 017f 1CEF     		.2byte	0x1cef
+ 366 0181 000000F2 		.4byte	0xf2
+ 367 0185 04       		.byte	0x4
+ 368 0186 04       		.byte	0x4
+ 369 0187 18       		.byte	0x18
+ 370 0188 02       		.byte	0x2
+ 371 0189 23       		.byte	0x23
+ 372 018a 00       		.uleb128 0
+ 373 018b 09       		.uleb128 0x9
+ 374 018c 00000000 		.4byte	.LASF25
+ 375 0190 05       		.byte	0x5
+ 376 0191 1CF0     		.2byte	0x1cf0
+ 377 0193 000000F2 		.4byte	0xf2
+ 378 0197 04       		.byte	0x4
+ 379 0198 04       		.byte	0x4
+ 380 0199 1C       		.byte	0x1c
+ 381 019a 02       		.byte	0x2
+ 382 019b 23       		.byte	0x23
+ 383 019c 00       		.uleb128 0
+ 384 019d 00       		.byte	0
+ 385 019e 0B       		.uleb128 0xb
+ 386 019f 04       		.byte	0x4
+ 387 01a0 05       		.byte	0x5
+ 388 01a1 1CE8     		.2byte	0x1ce8
+ 389 01a3 000001BC 		.4byte	0x1bc
+ 390 01a7 0C       		.uleb128 0xc
+ 391 01a8 5200     		.string	"R"
+ 392 01aa 05       		.byte	0x5
+ 393 01ab 1CE9     		.2byte	0x1ce9
+ 394 01ad 000000F2 		.4byte	0xf2
+ 395 01b1 0C       		.uleb128 0xc
+ 396 01b2 4200     		.string	"B"
+ 397 01b4 05       		.byte	0x5
+ 398 01b5 1CF1     		.2byte	0x1cf1
+ 399 01b7 00000129 		.4byte	0x129
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 8
+
+
+ 400 01bb 00       		.byte	0
+ 401 01bc 08       		.uleb128 0x8
+ 402 01bd 04       		.byte	0x4
+ 403 01be 05       		.byte	0x5
+ 404 01bf 1CF6     		.2byte	0x1cf6
+ 405 01c1 00000232 		.4byte	0x232
+ 406 01c5 09       		.uleb128 0x9
+ 407 01c6 00000000 		.4byte	.LASF26
+ 408 01ca 05       		.byte	0x5
+ 409 01cb 1CF7     		.2byte	0x1cf7
+ 410 01cd 000000F2 		.4byte	0xf2
+ 411 01d1 04       		.byte	0x4
+ 412 01d2 01       		.byte	0x1
+ 413 01d3 00       		.byte	0
+ 414 01d4 02       		.byte	0x2
+ 415 01d5 23       		.byte	0x23
+ 416 01d6 00       		.uleb128 0
+ 417 01d7 09       		.uleb128 0x9
+ 418 01d8 00000000 		.4byte	.LASF27
+ 419 01dc 05       		.byte	0x5
+ 420 01dd 1CF8     		.2byte	0x1cf8
+ 421 01df 000000F2 		.4byte	0xf2
+ 422 01e3 04       		.byte	0x4
+ 423 01e4 04       		.byte	0x4
+ 424 01e5 01       		.byte	0x1
+ 425 01e6 02       		.byte	0x2
+ 426 01e7 23       		.byte	0x23
+ 427 01e8 00       		.uleb128 0
+ 428 01e9 09       		.uleb128 0x9
+ 429 01ea 00000000 		.4byte	.LASF28
+ 430 01ee 05       		.byte	0x5
+ 431 01ef 1CF9     		.2byte	0x1cf9
+ 432 01f1 000000F2 		.4byte	0xf2
+ 433 01f5 04       		.byte	0x4
+ 434 01f6 04       		.byte	0x4
+ 435 01f7 05       		.byte	0x5
+ 436 01f8 02       		.byte	0x2
+ 437 01f9 23       		.byte	0x23
+ 438 01fa 00       		.uleb128 0
+ 439 01fb 09       		.uleb128 0x9
+ 440 01fc 00000000 		.4byte	.LASF29
+ 441 0200 05       		.byte	0x5
+ 442 0201 1CFA     		.2byte	0x1cfa
+ 443 0203 000000F2 		.4byte	0xf2
+ 444 0207 04       		.byte	0x4
+ 445 0208 07       		.byte	0x7
+ 446 0209 09       		.byte	0x9
+ 447 020a 02       		.byte	0x2
+ 448 020b 23       		.byte	0x23
+ 449 020c 00       		.uleb128 0
+ 450 020d 09       		.uleb128 0x9
+ 451 020e 00000000 		.4byte	.LASF30
+ 452 0212 05       		.byte	0x5
+ 453 0213 1CFB     		.2byte	0x1cfb
+ 454 0215 000000F2 		.4byte	0xf2
+ 455 0219 04       		.byte	0x4
+ 456 021a 08       		.byte	0x8
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 9
+
+
+ 457 021b 10       		.byte	0x10
+ 458 021c 02       		.byte	0x2
+ 459 021d 23       		.byte	0x23
+ 460 021e 00       		.uleb128 0
+ 461 021f 09       		.uleb128 0x9
+ 462 0220 00000000 		.4byte	.LASF23
+ 463 0224 05       		.byte	0x5
+ 464 0225 1CFC     		.2byte	0x1cfc
+ 465 0227 000000F2 		.4byte	0xf2
+ 466 022b 04       		.byte	0x4
+ 467 022c 08       		.byte	0x8
+ 468 022d 18       		.byte	0x18
+ 469 022e 02       		.byte	0x2
+ 470 022f 23       		.byte	0x23
+ 471 0230 00       		.uleb128 0
+ 472 0231 00       		.byte	0
+ 473 0232 0B       		.uleb128 0xb
+ 474 0233 04       		.byte	0x4
+ 475 0234 05       		.byte	0x5
+ 476 0235 1CF4     		.2byte	0x1cf4
+ 477 0237 00000250 		.4byte	0x250
+ 478 023b 0C       		.uleb128 0xc
+ 479 023c 5200     		.string	"R"
+ 480 023e 05       		.byte	0x5
+ 481 023f 1CF5     		.2byte	0x1cf5
+ 482 0241 000000F2 		.4byte	0xf2
+ 483 0245 0C       		.uleb128 0xc
+ 484 0246 4200     		.string	"B"
+ 485 0248 05       		.byte	0x5
+ 486 0249 1CFD     		.2byte	0x1cfd
+ 487 024b 000001BC 		.4byte	0x1bc
+ 488 024f 00       		.byte	0
+ 489 0250 08       		.uleb128 0x8
+ 490 0251 04       		.byte	0x4
+ 491 0252 05       		.byte	0x5
+ 492 0253 1D04     		.2byte	0x1d04
+ 493 0255 000002D8 		.4byte	0x2d8
+ 494 0259 09       		.uleb128 0x9
+ 495 025a 00000000 		.4byte	.LASF23
+ 496 025e 05       		.byte	0x5
+ 497 025f 1D05     		.2byte	0x1d05
+ 498 0261 000000F2 		.4byte	0xf2
+ 499 0265 04       		.byte	0x4
+ 500 0266 1A       		.byte	0x1a
+ 501 0267 00       		.byte	0
+ 502 0268 02       		.byte	0x2
+ 503 0269 23       		.byte	0x23
+ 504 026a 00       		.uleb128 0
+ 505 026b 09       		.uleb128 0x9
+ 506 026c 00000000 		.4byte	.LASF31
+ 507 0270 05       		.byte	0x5
+ 508 0271 1D06     		.2byte	0x1d06
+ 509 0273 000000F2 		.4byte	0xf2
+ 510 0277 04       		.byte	0x4
+ 511 0278 01       		.byte	0x1
+ 512 0279 1A       		.byte	0x1a
+ 513 027a 02       		.byte	0x2
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 10
+
+
+ 514 027b 23       		.byte	0x23
+ 515 027c 00       		.uleb128 0
+ 516 027d 09       		.uleb128 0x9
+ 517 027e 00000000 		.4byte	.LASF32
+ 518 0282 05       		.byte	0x5
+ 519 0283 1D07     		.2byte	0x1d07
+ 520 0285 000000F2 		.4byte	0xf2
+ 521 0289 04       		.byte	0x4
+ 522 028a 01       		.byte	0x1
+ 523 028b 1B       		.byte	0x1b
+ 524 028c 02       		.byte	0x2
+ 525 028d 23       		.byte	0x23
+ 526 028e 00       		.uleb128 0
+ 527 028f 09       		.uleb128 0x9
+ 528 0290 00000000 		.4byte	.LASF33
+ 529 0294 05       		.byte	0x5
+ 530 0295 1D08     		.2byte	0x1d08
+ 531 0297 000000F2 		.4byte	0xf2
+ 532 029b 04       		.byte	0x4
+ 533 029c 01       		.byte	0x1
+ 534 029d 1C       		.byte	0x1c
+ 535 029e 02       		.byte	0x2
+ 536 029f 23       		.byte	0x23
+ 537 02a0 00       		.uleb128 0
+ 538 02a1 09       		.uleb128 0x9
+ 539 02a2 00000000 		.4byte	.LASF34
+ 540 02a6 05       		.byte	0x5
+ 541 02a7 1D09     		.2byte	0x1d09
+ 542 02a9 000000F2 		.4byte	0xf2
+ 543 02ad 04       		.byte	0x4
+ 544 02ae 01       		.byte	0x1
+ 545 02af 1D       		.byte	0x1d
+ 546 02b0 02       		.byte	0x2
+ 547 02b1 23       		.byte	0x23
+ 548 02b2 00       		.uleb128 0
+ 549 02b3 09       		.uleb128 0x9
+ 550 02b4 00000000 		.4byte	.LASF35
+ 551 02b8 05       		.byte	0x5
+ 552 02b9 1D0A     		.2byte	0x1d0a
+ 553 02bb 000000F2 		.4byte	0xf2
+ 554 02bf 04       		.byte	0x4
+ 555 02c0 01       		.byte	0x1
+ 556 02c1 1E       		.byte	0x1e
+ 557 02c2 02       		.byte	0x2
+ 558 02c3 23       		.byte	0x23
+ 559 02c4 00       		.uleb128 0
+ 560 02c5 09       		.uleb128 0x9
+ 561 02c6 00000000 		.4byte	.LASF36
+ 562 02ca 05       		.byte	0x5
+ 563 02cb 1D0B     		.2byte	0x1d0b
+ 564 02cd 000000F2 		.4byte	0xf2
+ 565 02d1 04       		.byte	0x4
+ 566 02d2 01       		.byte	0x1
+ 567 02d3 1F       		.byte	0x1f
+ 568 02d4 02       		.byte	0x2
+ 569 02d5 23       		.byte	0x23
+ 570 02d6 00       		.uleb128 0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 11
+
+
+ 571 02d7 00       		.byte	0
+ 572 02d8 0B       		.uleb128 0xb
+ 573 02d9 04       		.byte	0x4
+ 574 02da 05       		.byte	0x5
+ 575 02db 1D02     		.2byte	0x1d02
+ 576 02dd 000002F6 		.4byte	0x2f6
+ 577 02e1 0C       		.uleb128 0xc
+ 578 02e2 5200     		.string	"R"
+ 579 02e4 05       		.byte	0x5
+ 580 02e5 1D03     		.2byte	0x1d03
+ 581 02e7 000000F2 		.4byte	0xf2
+ 582 02eb 0C       		.uleb128 0xc
+ 583 02ec 4200     		.string	"B"
+ 584 02ee 05       		.byte	0x5
+ 585 02ef 1D0C     		.2byte	0x1d0c
+ 586 02f1 00000250 		.4byte	0x250
+ 587 02f5 00       		.byte	0
+ 588 02f6 08       		.uleb128 0x8
+ 589 02f7 04       		.byte	0x4
+ 590 02f8 05       		.byte	0x5
+ 591 02f9 1D13     		.2byte	0x1d13
+ 592 02fb 0000037E 		.4byte	0x37e
+ 593 02ff 09       		.uleb128 0x9
+ 594 0300 00000000 		.4byte	.LASF23
+ 595 0304 05       		.byte	0x5
+ 596 0305 1D14     		.2byte	0x1d14
+ 597 0307 000000F2 		.4byte	0xf2
+ 598 030b 04       		.byte	0x4
+ 599 030c 1A       		.byte	0x1a
+ 600 030d 00       		.byte	0
+ 601 030e 02       		.byte	0x2
+ 602 030f 23       		.byte	0x23
+ 603 0310 00       		.uleb128 0
+ 604 0311 09       		.uleb128 0x9
+ 605 0312 00000000 		.4byte	.LASF37
+ 606 0316 05       		.byte	0x5
+ 607 0317 1D15     		.2byte	0x1d15
+ 608 0319 000000F2 		.4byte	0xf2
+ 609 031d 04       		.byte	0x4
+ 610 031e 01       		.byte	0x1
+ 611 031f 1A       		.byte	0x1a
+ 612 0320 02       		.byte	0x2
+ 613 0321 23       		.byte	0x23
+ 614 0322 00       		.uleb128 0
+ 615 0323 09       		.uleb128 0x9
+ 616 0324 00000000 		.4byte	.LASF38
+ 617 0328 05       		.byte	0x5
+ 618 0329 1D16     		.2byte	0x1d16
+ 619 032b 000000F2 		.4byte	0xf2
+ 620 032f 04       		.byte	0x4
+ 621 0330 01       		.byte	0x1
+ 622 0331 1B       		.byte	0x1b
+ 623 0332 02       		.byte	0x2
+ 624 0333 23       		.byte	0x23
+ 625 0334 00       		.uleb128 0
+ 626 0335 09       		.uleb128 0x9
+ 627 0336 00000000 		.4byte	.LASF39
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 12
+
+
+ 628 033a 05       		.byte	0x5
+ 629 033b 1D17     		.2byte	0x1d17
+ 630 033d 000000F2 		.4byte	0xf2
+ 631 0341 04       		.byte	0x4
+ 632 0342 01       		.byte	0x1
+ 633 0343 1C       		.byte	0x1c
+ 634 0344 02       		.byte	0x2
+ 635 0345 23       		.byte	0x23
+ 636 0346 00       		.uleb128 0
+ 637 0347 09       		.uleb128 0x9
+ 638 0348 00000000 		.4byte	.LASF40
+ 639 034c 05       		.byte	0x5
+ 640 034d 1D18     		.2byte	0x1d18
+ 641 034f 000000F2 		.4byte	0xf2
+ 642 0353 04       		.byte	0x4
+ 643 0354 01       		.byte	0x1
+ 644 0355 1D       		.byte	0x1d
+ 645 0356 02       		.byte	0x2
+ 646 0357 23       		.byte	0x23
+ 647 0358 00       		.uleb128 0
+ 648 0359 09       		.uleb128 0x9
+ 649 035a 00000000 		.4byte	.LASF41
+ 650 035e 05       		.byte	0x5
+ 651 035f 1D19     		.2byte	0x1d19
+ 652 0361 000000F2 		.4byte	0xf2
+ 653 0365 04       		.byte	0x4
+ 654 0366 01       		.byte	0x1
+ 655 0367 1E       		.byte	0x1e
+ 656 0368 02       		.byte	0x2
+ 657 0369 23       		.byte	0x23
+ 658 036a 00       		.uleb128 0
+ 659 036b 09       		.uleb128 0x9
+ 660 036c 00000000 		.4byte	.LASF42
+ 661 0370 05       		.byte	0x5
+ 662 0371 1D1A     		.2byte	0x1d1a
+ 663 0373 000000F2 		.4byte	0xf2
+ 664 0377 04       		.byte	0x4
+ 665 0378 01       		.byte	0x1
+ 666 0379 1F       		.byte	0x1f
+ 667 037a 02       		.byte	0x2
+ 668 037b 23       		.byte	0x23
+ 669 037c 00       		.uleb128 0
+ 670 037d 00       		.byte	0
+ 671 037e 0B       		.uleb128 0xb
+ 672 037f 04       		.byte	0x4
+ 673 0380 05       		.byte	0x5
+ 674 0381 1D11     		.2byte	0x1d11
+ 675 0383 0000039C 		.4byte	0x39c
+ 676 0387 0C       		.uleb128 0xc
+ 677 0388 5200     		.string	"R"
+ 678 038a 05       		.byte	0x5
+ 679 038b 1D12     		.2byte	0x1d12
+ 680 038d 000000F2 		.4byte	0xf2
+ 681 0391 0C       		.uleb128 0xc
+ 682 0392 4200     		.string	"B"
+ 683 0394 05       		.byte	0x5
+ 684 0395 1D1B     		.2byte	0x1d1b
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 13
+
+
+ 685 0397 000002F6 		.4byte	0x2f6
+ 686 039b 00       		.byte	0
+ 687 039c 08       		.uleb128 0x8
+ 688 039d 04       		.byte	0x4
+ 689 039e 05       		.byte	0x5
+ 690 039f 1D22     		.2byte	0x1d22
+ 691 03a1 00000424 		.4byte	0x424
+ 692 03a5 09       		.uleb128 0x9
+ 693 03a6 00000000 		.4byte	.LASF23
+ 694 03aa 05       		.byte	0x5
+ 695 03ab 1D23     		.2byte	0x1d23
+ 696 03ad 000000F2 		.4byte	0xf2
+ 697 03b1 04       		.byte	0x4
+ 698 03b2 1A       		.byte	0x1a
+ 699 03b3 00       		.byte	0
+ 700 03b4 02       		.byte	0x2
+ 701 03b5 23       		.byte	0x23
+ 702 03b6 00       		.uleb128 0
+ 703 03b7 09       		.uleb128 0x9
+ 704 03b8 00000000 		.4byte	.LASF43
+ 705 03bc 05       		.byte	0x5
+ 706 03bd 1D24     		.2byte	0x1d24
+ 707 03bf 000000F2 		.4byte	0xf2
+ 708 03c3 04       		.byte	0x4
+ 709 03c4 01       		.byte	0x1
+ 710 03c5 1A       		.byte	0x1a
+ 711 03c6 02       		.byte	0x2
+ 712 03c7 23       		.byte	0x23
+ 713 03c8 00       		.uleb128 0
+ 714 03c9 09       		.uleb128 0x9
+ 715 03ca 00000000 		.4byte	.LASF44
+ 716 03ce 05       		.byte	0x5
+ 717 03cf 1D25     		.2byte	0x1d25
+ 718 03d1 000000F2 		.4byte	0xf2
+ 719 03d5 04       		.byte	0x4
+ 720 03d6 01       		.byte	0x1
+ 721 03d7 1B       		.byte	0x1b
+ 722 03d8 02       		.byte	0x2
+ 723 03d9 23       		.byte	0x23
+ 724 03da 00       		.uleb128 0
+ 725 03db 09       		.uleb128 0x9
+ 726 03dc 00000000 		.4byte	.LASF45
+ 727 03e0 05       		.byte	0x5
+ 728 03e1 1D26     		.2byte	0x1d26
+ 729 03e3 000000F2 		.4byte	0xf2
+ 730 03e7 04       		.byte	0x4
+ 731 03e8 01       		.byte	0x1
+ 732 03e9 1C       		.byte	0x1c
+ 733 03ea 02       		.byte	0x2
+ 734 03eb 23       		.byte	0x23
+ 735 03ec 00       		.uleb128 0
+ 736 03ed 09       		.uleb128 0x9
+ 737 03ee 00000000 		.4byte	.LASF46
+ 738 03f2 05       		.byte	0x5
+ 739 03f3 1D27     		.2byte	0x1d27
+ 740 03f5 000000F2 		.4byte	0xf2
+ 741 03f9 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 14
+
+
+ 742 03fa 01       		.byte	0x1
+ 743 03fb 1D       		.byte	0x1d
+ 744 03fc 02       		.byte	0x2
+ 745 03fd 23       		.byte	0x23
+ 746 03fe 00       		.uleb128 0
+ 747 03ff 09       		.uleb128 0x9
+ 748 0400 00000000 		.4byte	.LASF47
+ 749 0404 05       		.byte	0x5
+ 750 0405 1D28     		.2byte	0x1d28
+ 751 0407 000000F2 		.4byte	0xf2
+ 752 040b 04       		.byte	0x4
+ 753 040c 01       		.byte	0x1
+ 754 040d 1E       		.byte	0x1e
+ 755 040e 02       		.byte	0x2
+ 756 040f 23       		.byte	0x23
+ 757 0410 00       		.uleb128 0
+ 758 0411 09       		.uleb128 0x9
+ 759 0412 00000000 		.4byte	.LASF48
+ 760 0416 05       		.byte	0x5
+ 761 0417 1D29     		.2byte	0x1d29
+ 762 0419 000000F2 		.4byte	0xf2
+ 763 041d 04       		.byte	0x4
+ 764 041e 01       		.byte	0x1
+ 765 041f 1F       		.byte	0x1f
+ 766 0420 02       		.byte	0x2
+ 767 0421 23       		.byte	0x23
+ 768 0422 00       		.uleb128 0
+ 769 0423 00       		.byte	0
+ 770 0424 0B       		.uleb128 0xb
+ 771 0425 04       		.byte	0x4
+ 772 0426 05       		.byte	0x5
+ 773 0427 1D20     		.2byte	0x1d20
+ 774 0429 00000442 		.4byte	0x442
+ 775 042d 0C       		.uleb128 0xc
+ 776 042e 5200     		.string	"R"
+ 777 0430 05       		.byte	0x5
+ 778 0431 1D21     		.2byte	0x1d21
+ 779 0433 000000F2 		.4byte	0xf2
+ 780 0437 0C       		.uleb128 0xc
+ 781 0438 4200     		.string	"B"
+ 782 043a 05       		.byte	0x5
+ 783 043b 1D2A     		.2byte	0x1d2a
+ 784 043d 0000039C 		.4byte	0x39c
+ 785 0441 00       		.byte	0
+ 786 0442 08       		.uleb128 0x8
+ 787 0443 04       		.byte	0x4
+ 788 0444 05       		.byte	0x5
+ 789 0445 1D31     		.2byte	0x1d31
+ 790 0447 000004CA 		.4byte	0x4ca
+ 791 044b 09       		.uleb128 0x9
+ 792 044c 00000000 		.4byte	.LASF23
+ 793 0450 05       		.byte	0x5
+ 794 0451 1D32     		.2byte	0x1d32
+ 795 0453 000000F2 		.4byte	0xf2
+ 796 0457 04       		.byte	0x4
+ 797 0458 1A       		.byte	0x1a
+ 798 0459 00       		.byte	0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 15
+
+
+ 799 045a 02       		.byte	0x2
+ 800 045b 23       		.byte	0x23
+ 801 045c 00       		.uleb128 0
+ 802 045d 09       		.uleb128 0x9
+ 803 045e 00000000 		.4byte	.LASF49
+ 804 0462 05       		.byte	0x5
+ 805 0463 1D33     		.2byte	0x1d33
+ 806 0465 000000F2 		.4byte	0xf2
+ 807 0469 04       		.byte	0x4
+ 808 046a 01       		.byte	0x1
+ 809 046b 1A       		.byte	0x1a
+ 810 046c 02       		.byte	0x2
+ 811 046d 23       		.byte	0x23
+ 812 046e 00       		.uleb128 0
+ 813 046f 09       		.uleb128 0x9
+ 814 0470 00000000 		.4byte	.LASF50
+ 815 0474 05       		.byte	0x5
+ 816 0475 1D34     		.2byte	0x1d34
+ 817 0477 000000F2 		.4byte	0xf2
+ 818 047b 04       		.byte	0x4
+ 819 047c 01       		.byte	0x1
+ 820 047d 1B       		.byte	0x1b
+ 821 047e 02       		.byte	0x2
+ 822 047f 23       		.byte	0x23
+ 823 0480 00       		.uleb128 0
+ 824 0481 09       		.uleb128 0x9
+ 825 0482 00000000 		.4byte	.LASF51
+ 826 0486 05       		.byte	0x5
+ 827 0487 1D35     		.2byte	0x1d35
+ 828 0489 000000F2 		.4byte	0xf2
+ 829 048d 04       		.byte	0x4
+ 830 048e 01       		.byte	0x1
+ 831 048f 1C       		.byte	0x1c
+ 832 0490 02       		.byte	0x2
+ 833 0491 23       		.byte	0x23
+ 834 0492 00       		.uleb128 0
+ 835 0493 09       		.uleb128 0x9
+ 836 0494 00000000 		.4byte	.LASF52
+ 837 0498 05       		.byte	0x5
+ 838 0499 1D36     		.2byte	0x1d36
+ 839 049b 000000F2 		.4byte	0xf2
+ 840 049f 04       		.byte	0x4
+ 841 04a0 01       		.byte	0x1
+ 842 04a1 1D       		.byte	0x1d
+ 843 04a2 02       		.byte	0x2
+ 844 04a3 23       		.byte	0x23
+ 845 04a4 00       		.uleb128 0
+ 846 04a5 09       		.uleb128 0x9
+ 847 04a6 00000000 		.4byte	.LASF53
+ 848 04aa 05       		.byte	0x5
+ 849 04ab 1D37     		.2byte	0x1d37
+ 850 04ad 000000F2 		.4byte	0xf2
+ 851 04b1 04       		.byte	0x4
+ 852 04b2 01       		.byte	0x1
+ 853 04b3 1E       		.byte	0x1e
+ 854 04b4 02       		.byte	0x2
+ 855 04b5 23       		.byte	0x23
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 16
+
+
+ 856 04b6 00       		.uleb128 0
+ 857 04b7 09       		.uleb128 0x9
+ 858 04b8 00000000 		.4byte	.LASF54
+ 859 04bc 05       		.byte	0x5
+ 860 04bd 1D38     		.2byte	0x1d38
+ 861 04bf 000000F2 		.4byte	0xf2
+ 862 04c3 04       		.byte	0x4
+ 863 04c4 01       		.byte	0x1
+ 864 04c5 1F       		.byte	0x1f
+ 865 04c6 02       		.byte	0x2
+ 866 04c7 23       		.byte	0x23
+ 867 04c8 00       		.uleb128 0
+ 868 04c9 00       		.byte	0
+ 869 04ca 0B       		.uleb128 0xb
+ 870 04cb 04       		.byte	0x4
+ 871 04cc 05       		.byte	0x5
+ 872 04cd 1D2F     		.2byte	0x1d2f
+ 873 04cf 000004E8 		.4byte	0x4e8
+ 874 04d3 0C       		.uleb128 0xc
+ 875 04d4 5200     		.string	"R"
+ 876 04d6 05       		.byte	0x5
+ 877 04d7 1D30     		.2byte	0x1d30
+ 878 04d9 000000F2 		.4byte	0xf2
+ 879 04dd 0C       		.uleb128 0xc
+ 880 04de 4200     		.string	"B"
+ 881 04e0 05       		.byte	0x5
+ 882 04e1 1D39     		.2byte	0x1d39
+ 883 04e3 00000442 		.4byte	0x442
+ 884 04e7 00       		.byte	0
+ 885 04e8 08       		.uleb128 0x8
+ 886 04e9 04       		.byte	0x4
+ 887 04ea 05       		.byte	0x5
+ 888 04eb 1D40     		.2byte	0x1d40
+ 889 04ed 00000570 		.4byte	0x570
+ 890 04f1 09       		.uleb128 0x9
+ 891 04f2 00000000 		.4byte	.LASF23
+ 892 04f6 05       		.byte	0x5
+ 893 04f7 1D41     		.2byte	0x1d41
+ 894 04f9 000000F2 		.4byte	0xf2
+ 895 04fd 04       		.byte	0x4
+ 896 04fe 1A       		.byte	0x1a
+ 897 04ff 00       		.byte	0
+ 898 0500 02       		.byte	0x2
+ 899 0501 23       		.byte	0x23
+ 900 0502 00       		.uleb128 0
+ 901 0503 09       		.uleb128 0x9
+ 902 0504 00000000 		.4byte	.LASF55
+ 903 0508 05       		.byte	0x5
+ 904 0509 1D42     		.2byte	0x1d42
+ 905 050b 000000F2 		.4byte	0xf2
+ 906 050f 04       		.byte	0x4
+ 907 0510 01       		.byte	0x1
+ 908 0511 1A       		.byte	0x1a
+ 909 0512 02       		.byte	0x2
+ 910 0513 23       		.byte	0x23
+ 911 0514 00       		.uleb128 0
+ 912 0515 09       		.uleb128 0x9
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 17
+
+
+ 913 0516 00000000 		.4byte	.LASF56
+ 914 051a 05       		.byte	0x5
+ 915 051b 1D43     		.2byte	0x1d43
+ 916 051d 000000F2 		.4byte	0xf2
+ 917 0521 04       		.byte	0x4
+ 918 0522 01       		.byte	0x1
+ 919 0523 1B       		.byte	0x1b
+ 920 0524 02       		.byte	0x2
+ 921 0525 23       		.byte	0x23
+ 922 0526 00       		.uleb128 0
+ 923 0527 09       		.uleb128 0x9
+ 924 0528 00000000 		.4byte	.LASF57
+ 925 052c 05       		.byte	0x5
+ 926 052d 1D44     		.2byte	0x1d44
+ 927 052f 000000F2 		.4byte	0xf2
+ 928 0533 04       		.byte	0x4
+ 929 0534 01       		.byte	0x1
+ 930 0535 1C       		.byte	0x1c
+ 931 0536 02       		.byte	0x2
+ 932 0537 23       		.byte	0x23
+ 933 0538 00       		.uleb128 0
+ 934 0539 09       		.uleb128 0x9
+ 935 053a 00000000 		.4byte	.LASF58
+ 936 053e 05       		.byte	0x5
+ 937 053f 1D45     		.2byte	0x1d45
+ 938 0541 000000F2 		.4byte	0xf2
+ 939 0545 04       		.byte	0x4
+ 940 0546 01       		.byte	0x1
+ 941 0547 1D       		.byte	0x1d
+ 942 0548 02       		.byte	0x2
+ 943 0549 23       		.byte	0x23
+ 944 054a 00       		.uleb128 0
+ 945 054b 09       		.uleb128 0x9
+ 946 054c 00000000 		.4byte	.LASF59
+ 947 0550 05       		.byte	0x5
+ 948 0551 1D46     		.2byte	0x1d46
+ 949 0553 000000F2 		.4byte	0xf2
+ 950 0557 04       		.byte	0x4
+ 951 0558 01       		.byte	0x1
+ 952 0559 1E       		.byte	0x1e
+ 953 055a 02       		.byte	0x2
+ 954 055b 23       		.byte	0x23
+ 955 055c 00       		.uleb128 0
+ 956 055d 09       		.uleb128 0x9
+ 957 055e 00000000 		.4byte	.LASF60
+ 958 0562 05       		.byte	0x5
+ 959 0563 1D47     		.2byte	0x1d47
+ 960 0565 000000F2 		.4byte	0xf2
+ 961 0569 04       		.byte	0x4
+ 962 056a 01       		.byte	0x1
+ 963 056b 1F       		.byte	0x1f
+ 964 056c 02       		.byte	0x2
+ 965 056d 23       		.byte	0x23
+ 966 056e 00       		.uleb128 0
+ 967 056f 00       		.byte	0
+ 968 0570 0B       		.uleb128 0xb
+ 969 0571 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 18
+
+
+ 970 0572 05       		.byte	0x5
+ 971 0573 1D3E     		.2byte	0x1d3e
+ 972 0575 0000058E 		.4byte	0x58e
+ 973 0579 0C       		.uleb128 0xc
+ 974 057a 5200     		.string	"R"
+ 975 057c 05       		.byte	0x5
+ 976 057d 1D3F     		.2byte	0x1d3f
+ 977 057f 000000F2 		.4byte	0xf2
+ 978 0583 0C       		.uleb128 0xc
+ 979 0584 4200     		.string	"B"
+ 980 0586 05       		.byte	0x5
+ 981 0587 1D48     		.2byte	0x1d48
+ 982 0589 000004E8 		.4byte	0x4e8
+ 983 058d 00       		.byte	0
+ 984 058e 08       		.uleb128 0x8
+ 985 058f 04       		.byte	0x4
+ 986 0590 05       		.byte	0x5
+ 987 0591 1D4F     		.2byte	0x1d4f
+ 988 0593 00000616 		.4byte	0x616
+ 989 0597 09       		.uleb128 0x9
+ 990 0598 00000000 		.4byte	.LASF23
+ 991 059c 05       		.byte	0x5
+ 992 059d 1D50     		.2byte	0x1d50
+ 993 059f 000000F2 		.4byte	0xf2
+ 994 05a3 04       		.byte	0x4
+ 995 05a4 1A       		.byte	0x1a
+ 996 05a5 00       		.byte	0
+ 997 05a6 02       		.byte	0x2
+ 998 05a7 23       		.byte	0x23
+ 999 05a8 00       		.uleb128 0
+ 1000 05a9 09       		.uleb128 0x9
+ 1001 05aa 00000000 		.4byte	.LASF61
+ 1002 05ae 05       		.byte	0x5
+ 1003 05af 1D51     		.2byte	0x1d51
+ 1004 05b1 000000F2 		.4byte	0xf2
+ 1005 05b5 04       		.byte	0x4
+ 1006 05b6 01       		.byte	0x1
+ 1007 05b7 1A       		.byte	0x1a
+ 1008 05b8 02       		.byte	0x2
+ 1009 05b9 23       		.byte	0x23
+ 1010 05ba 00       		.uleb128 0
+ 1011 05bb 09       		.uleb128 0x9
+ 1012 05bc 00000000 		.4byte	.LASF62
+ 1013 05c0 05       		.byte	0x5
+ 1014 05c1 1D52     		.2byte	0x1d52
+ 1015 05c3 000000F2 		.4byte	0xf2
+ 1016 05c7 04       		.byte	0x4
+ 1017 05c8 01       		.byte	0x1
+ 1018 05c9 1B       		.byte	0x1b
+ 1019 05ca 02       		.byte	0x2
+ 1020 05cb 23       		.byte	0x23
+ 1021 05cc 00       		.uleb128 0
+ 1022 05cd 09       		.uleb128 0x9
+ 1023 05ce 00000000 		.4byte	.LASF63
+ 1024 05d2 05       		.byte	0x5
+ 1025 05d3 1D53     		.2byte	0x1d53
+ 1026 05d5 000000F2 		.4byte	0xf2
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 19
+
+
+ 1027 05d9 04       		.byte	0x4
+ 1028 05da 01       		.byte	0x1
+ 1029 05db 1C       		.byte	0x1c
+ 1030 05dc 02       		.byte	0x2
+ 1031 05dd 23       		.byte	0x23
+ 1032 05de 00       		.uleb128 0
+ 1033 05df 09       		.uleb128 0x9
+ 1034 05e0 00000000 		.4byte	.LASF64
+ 1035 05e4 05       		.byte	0x5
+ 1036 05e5 1D54     		.2byte	0x1d54
+ 1037 05e7 000000F2 		.4byte	0xf2
+ 1038 05eb 04       		.byte	0x4
+ 1039 05ec 01       		.byte	0x1
+ 1040 05ed 1D       		.byte	0x1d
+ 1041 05ee 02       		.byte	0x2
+ 1042 05ef 23       		.byte	0x23
+ 1043 05f0 00       		.uleb128 0
+ 1044 05f1 09       		.uleb128 0x9
+ 1045 05f2 00000000 		.4byte	.LASF65
+ 1046 05f6 05       		.byte	0x5
+ 1047 05f7 1D55     		.2byte	0x1d55
+ 1048 05f9 000000F2 		.4byte	0xf2
+ 1049 05fd 04       		.byte	0x4
+ 1050 05fe 01       		.byte	0x1
+ 1051 05ff 1E       		.byte	0x1e
+ 1052 0600 02       		.byte	0x2
+ 1053 0601 23       		.byte	0x23
+ 1054 0602 00       		.uleb128 0
+ 1055 0603 09       		.uleb128 0x9
+ 1056 0604 00000000 		.4byte	.LASF66
+ 1057 0608 05       		.byte	0x5
+ 1058 0609 1D56     		.2byte	0x1d56
+ 1059 060b 000000F2 		.4byte	0xf2
+ 1060 060f 04       		.byte	0x4
+ 1061 0610 01       		.byte	0x1
+ 1062 0611 1F       		.byte	0x1f
+ 1063 0612 02       		.byte	0x2
+ 1064 0613 23       		.byte	0x23
+ 1065 0614 00       		.uleb128 0
+ 1066 0615 00       		.byte	0
+ 1067 0616 0B       		.uleb128 0xb
+ 1068 0617 04       		.byte	0x4
+ 1069 0618 05       		.byte	0x5
+ 1070 0619 1D4D     		.2byte	0x1d4d
+ 1071 061b 00000634 		.4byte	0x634
+ 1072 061f 0C       		.uleb128 0xc
+ 1073 0620 5200     		.string	"R"
+ 1074 0622 05       		.byte	0x5
+ 1075 0623 1D4E     		.2byte	0x1d4e
+ 1076 0625 000000F2 		.4byte	0xf2
+ 1077 0629 0C       		.uleb128 0xc
+ 1078 062a 4200     		.string	"B"
+ 1079 062c 05       		.byte	0x5
+ 1080 062d 1D57     		.2byte	0x1d57
+ 1081 062f 0000058E 		.4byte	0x58e
+ 1082 0633 00       		.byte	0
+ 1083 0634 08       		.uleb128 0x8
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 20
+
+
+ 1084 0635 04       		.byte	0x4
+ 1085 0636 05       		.byte	0x5
+ 1086 0637 1D5E     		.2byte	0x1d5e
+ 1087 0639 00000662 		.4byte	0x662
+ 1088 063d 09       		.uleb128 0x9
+ 1089 063e 00000000 		.4byte	.LASF23
+ 1090 0642 05       		.byte	0x5
+ 1091 0643 1D5F     		.2byte	0x1d5f
+ 1092 0645 000000F2 		.4byte	0xf2
+ 1093 0649 04       		.byte	0x4
+ 1094 064a 1C       		.byte	0x1c
+ 1095 064b 00       		.byte	0
+ 1096 064c 02       		.byte	0x2
+ 1097 064d 23       		.byte	0x23
+ 1098 064e 00       		.uleb128 0
+ 1099 064f 09       		.uleb128 0x9
+ 1100 0650 00000000 		.4byte	.LASF67
+ 1101 0654 05       		.byte	0x5
+ 1102 0655 1D60     		.2byte	0x1d60
+ 1103 0657 000000F2 		.4byte	0xf2
+ 1104 065b 04       		.byte	0x4
+ 1105 065c 04       		.byte	0x4
+ 1106 065d 1C       		.byte	0x1c
+ 1107 065e 02       		.byte	0x2
+ 1108 065f 23       		.byte	0x23
+ 1109 0660 00       		.uleb128 0
+ 1110 0661 00       		.byte	0
+ 1111 0662 0B       		.uleb128 0xb
+ 1112 0663 04       		.byte	0x4
+ 1113 0664 05       		.byte	0x5
+ 1114 0665 1D5C     		.2byte	0x1d5c
+ 1115 0667 00000680 		.4byte	0x680
+ 1116 066b 0C       		.uleb128 0xc
+ 1117 066c 5200     		.string	"R"
+ 1118 066e 05       		.byte	0x5
+ 1119 066f 1D5D     		.2byte	0x1d5d
+ 1120 0671 000000F2 		.4byte	0xf2
+ 1121 0675 0C       		.uleb128 0xc
+ 1122 0676 4200     		.string	"B"
+ 1123 0678 05       		.byte	0x5
+ 1124 0679 1D61     		.2byte	0x1d61
+ 1125 067b 00000634 		.4byte	0x634
+ 1126 067f 00       		.byte	0
+ 1127 0680 08       		.uleb128 0x8
+ 1128 0681 04       		.byte	0x4
+ 1129 0682 05       		.byte	0x5
+ 1130 0683 1D66     		.2byte	0x1d66
+ 1131 0685 000006AE 		.4byte	0x6ae
+ 1132 0689 09       		.uleb128 0x9
+ 1133 068a 00000000 		.4byte	.LASF23
+ 1134 068e 05       		.byte	0x5
+ 1135 068f 1D67     		.2byte	0x1d67
+ 1136 0691 000000F2 		.4byte	0xf2
+ 1137 0695 04       		.byte	0x4
+ 1138 0696 1C       		.byte	0x1c
+ 1139 0697 00       		.byte	0
+ 1140 0698 02       		.byte	0x2
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 21
+
+
+ 1141 0699 23       		.byte	0x23
+ 1142 069a 00       		.uleb128 0
+ 1143 069b 09       		.uleb128 0x9
+ 1144 069c 00000000 		.4byte	.LASF68
+ 1145 06a0 05       		.byte	0x5
+ 1146 06a1 1D68     		.2byte	0x1d68
+ 1147 06a3 000000F2 		.4byte	0xf2
+ 1148 06a7 04       		.byte	0x4
+ 1149 06a8 04       		.byte	0x4
+ 1150 06a9 1C       		.byte	0x1c
+ 1151 06aa 02       		.byte	0x2
+ 1152 06ab 23       		.byte	0x23
+ 1153 06ac 00       		.uleb128 0
+ 1154 06ad 00       		.byte	0
+ 1155 06ae 0B       		.uleb128 0xb
+ 1156 06af 04       		.byte	0x4
+ 1157 06b0 05       		.byte	0x5
+ 1158 06b1 1D64     		.2byte	0x1d64
+ 1159 06b3 000006CC 		.4byte	0x6cc
+ 1160 06b7 0C       		.uleb128 0xc
+ 1161 06b8 5200     		.string	"R"
+ 1162 06ba 05       		.byte	0x5
+ 1163 06bb 1D65     		.2byte	0x1d65
+ 1164 06bd 000000F2 		.4byte	0xf2
+ 1165 06c1 0C       		.uleb128 0xc
+ 1166 06c2 4200     		.string	"B"
+ 1167 06c4 05       		.byte	0x5
+ 1168 06c5 1D69     		.2byte	0x1d69
+ 1169 06c7 00000680 		.4byte	0x680
+ 1170 06cb 00       		.byte	0
+ 1171 06cc 08       		.uleb128 0x8
+ 1172 06cd 04       		.byte	0x4
+ 1173 06ce 05       		.byte	0x5
+ 1174 06cf 1D70     		.2byte	0x1d70
+ 1175 06d1 000007C0 		.4byte	0x7c0
+ 1176 06d5 09       		.uleb128 0x9
+ 1177 06d6 00000000 		.4byte	.LASF69
+ 1178 06da 05       		.byte	0x5
+ 1179 06db 1D71     		.2byte	0x1d71
+ 1180 06dd 000000F2 		.4byte	0xf2
+ 1181 06e1 04       		.byte	0x4
+ 1182 06e2 01       		.byte	0x1
+ 1183 06e3 00       		.byte	0
+ 1184 06e4 02       		.byte	0x2
+ 1185 06e5 23       		.byte	0x23
+ 1186 06e6 00       		.uleb128 0
+ 1187 06e7 09       		.uleb128 0x9
+ 1188 06e8 00000000 		.4byte	.LASF70
+ 1189 06ec 05       		.byte	0x5
+ 1190 06ed 1D72     		.2byte	0x1d72
+ 1191 06ef 000000F2 		.4byte	0xf2
+ 1192 06f3 04       		.byte	0x4
+ 1193 06f4 03       		.byte	0x3
+ 1194 06f5 01       		.byte	0x1
+ 1195 06f6 02       		.byte	0x2
+ 1196 06f7 23       		.byte	0x23
+ 1197 06f8 00       		.uleb128 0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 22
+
+
+ 1198 06f9 09       		.uleb128 0x9
+ 1199 06fa 00000000 		.4byte	.LASF29
+ 1200 06fe 05       		.byte	0x5
+ 1201 06ff 1D73     		.2byte	0x1d73
+ 1202 0701 000000F2 		.4byte	0xf2
+ 1203 0705 04       		.byte	0x4
+ 1204 0706 02       		.byte	0x2
+ 1205 0707 04       		.byte	0x4
+ 1206 0708 02       		.byte	0x2
+ 1207 0709 23       		.byte	0x23
+ 1208 070a 00       		.uleb128 0
+ 1209 070b 0A       		.uleb128 0xa
+ 1210 070c 4F444300 		.string	"ODC"
+ 1211 0710 05       		.byte	0x5
+ 1212 0711 1D74     		.2byte	0x1d74
+ 1213 0713 000000F2 		.4byte	0xf2
+ 1214 0717 04       		.byte	0x4
+ 1215 0718 02       		.byte	0x2
+ 1216 0719 06       		.byte	0x6
+ 1217 071a 02       		.byte	0x2
+ 1218 071b 23       		.byte	0x23
+ 1219 071c 00       		.uleb128 0
+ 1220 071d 0A       		.uleb128 0xa
+ 1221 071e 534D4300 		.string	"SMC"
+ 1222 0722 05       		.byte	0x5
+ 1223 0723 1D75     		.2byte	0x1d75
+ 1224 0725 000000F2 		.4byte	0xf2
+ 1225 0729 04       		.byte	0x4
+ 1226 072a 01       		.byte	0x1
+ 1227 072b 08       		.byte	0x8
+ 1228 072c 02       		.byte	0x2
+ 1229 072d 23       		.byte	0x23
+ 1230 072e 00       		.uleb128 0
+ 1231 072f 0A       		.uleb128 0xa
+ 1232 0730 41504300 		.string	"APC"
+ 1233 0734 05       		.byte	0x5
+ 1234 0735 1D76     		.2byte	0x1d76
+ 1235 0737 000000F2 		.4byte	0xf2
+ 1236 073b 04       		.byte	0x4
+ 1237 073c 01       		.byte	0x1
+ 1238 073d 09       		.byte	0x9
+ 1239 073e 02       		.byte	0x2
+ 1240 073f 23       		.byte	0x23
+ 1241 0740 00       		.uleb128 0
+ 1242 0741 0A       		.uleb128 0xa
+ 1243 0742 494C5300 		.string	"ILS"
+ 1244 0746 05       		.byte	0x5
+ 1245 0747 1D77     		.2byte	0x1d77
+ 1246 0749 000000F2 		.4byte	0xf2
+ 1247 074d 04       		.byte	0x4
+ 1248 074e 02       		.byte	0x2
+ 1249 074f 0A       		.byte	0xa
+ 1250 0750 02       		.byte	0x2
+ 1251 0751 23       		.byte	0x23
+ 1252 0752 00       		.uleb128 0
+ 1253 0753 0A       		.uleb128 0xa
+ 1254 0754 49424500 		.string	"IBE"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 23
+
+
+ 1255 0758 05       		.byte	0x5
+ 1256 0759 1D78     		.2byte	0x1d78
+ 1257 075b 000000F2 		.4byte	0xf2
+ 1258 075f 04       		.byte	0x4
+ 1259 0760 01       		.byte	0x1
+ 1260 0761 0C       		.byte	0xc
+ 1261 0762 02       		.byte	0x2
+ 1262 0763 23       		.byte	0x23
+ 1263 0764 00       		.uleb128 0
+ 1264 0765 0A       		.uleb128 0xa
+ 1265 0766 48595300 		.string	"HYS"
+ 1266 076a 05       		.byte	0x5
+ 1267 076b 1D79     		.2byte	0x1d79
+ 1268 076d 000000F2 		.4byte	0xf2
+ 1269 0771 04       		.byte	0x4
+ 1270 0772 01       		.byte	0x1
+ 1271 0773 0D       		.byte	0xd
+ 1272 0774 02       		.byte	0x2
+ 1273 0775 23       		.byte	0x23
+ 1274 0776 00       		.uleb128 0
+ 1275 0777 09       		.uleb128 0x9
+ 1276 0778 00000000 		.4byte	.LASF71
+ 1277 077c 05       		.byte	0x5
+ 1278 077d 1D7A     		.2byte	0x1d7a
+ 1279 077f 000000F2 		.4byte	0xf2
+ 1280 0783 04       		.byte	0x4
+ 1281 0784 01       		.byte	0x1
+ 1282 0785 0E       		.byte	0xe
+ 1283 0786 02       		.byte	0x2
+ 1284 0787 23       		.byte	0x23
+ 1285 0788 00       		.uleb128 0
+ 1286 0789 09       		.uleb128 0x9
+ 1287 078a 00000000 		.4byte	.LASF72
+ 1288 078e 05       		.byte	0x5
+ 1289 078f 1D7B     		.2byte	0x1d7b
+ 1290 0791 000000F2 		.4byte	0xf2
+ 1291 0795 04       		.byte	0x4
+ 1292 0796 01       		.byte	0x1
+ 1293 0797 0F       		.byte	0xf
+ 1294 0798 02       		.byte	0x2
+ 1295 0799 23       		.byte	0x23
+ 1296 079a 00       		.uleb128 0
+ 1297 079b 09       		.uleb128 0x9
+ 1298 079c 00000000 		.4byte	.LASF23
+ 1299 07a0 05       		.byte	0x5
+ 1300 07a1 1D7C     		.2byte	0x1d7c
+ 1301 07a3 000000F2 		.4byte	0xf2
+ 1302 07a7 04       		.byte	0x4
+ 1303 07a8 08       		.byte	0x8
+ 1304 07a9 10       		.byte	0x10
+ 1305 07aa 02       		.byte	0x2
+ 1306 07ab 23       		.byte	0x23
+ 1307 07ac 00       		.uleb128 0
+ 1308 07ad 0A       		.uleb128 0xa
+ 1309 07ae 53535300 		.string	"SSS"
+ 1310 07b2 05       		.byte	0x5
+ 1311 07b3 1D7D     		.2byte	0x1d7d
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 24
+
+
+ 1312 07b5 000000F2 		.4byte	0xf2
+ 1313 07b9 04       		.byte	0x4
+ 1314 07ba 08       		.byte	0x8
+ 1315 07bb 18       		.byte	0x18
+ 1316 07bc 02       		.byte	0x2
+ 1317 07bd 23       		.byte	0x23
+ 1318 07be 00       		.uleb128 0
+ 1319 07bf 00       		.byte	0
+ 1320 07c0 0B       		.uleb128 0xb
+ 1321 07c1 04       		.byte	0x4
+ 1322 07c2 05       		.byte	0x5
+ 1323 07c3 1D6E     		.2byte	0x1d6e
+ 1324 07c5 000007DE 		.4byte	0x7de
+ 1325 07c9 0C       		.uleb128 0xc
+ 1326 07ca 5200     		.string	"R"
+ 1327 07cc 05       		.byte	0x5
+ 1328 07cd 1D6F     		.2byte	0x1d6f
+ 1329 07cf 000000F2 		.4byte	0xf2
+ 1330 07d3 0C       		.uleb128 0xc
+ 1331 07d4 4200     		.string	"B"
+ 1332 07d6 05       		.byte	0x5
+ 1333 07d7 1D7E     		.2byte	0x1d7e
+ 1334 07d9 000006CC 		.4byte	0x6cc
+ 1335 07dd 00       		.byte	0
+ 1336 07de 08       		.uleb128 0x8
+ 1337 07df 04       		.byte	0x4
+ 1338 07e0 05       		.byte	0x5
+ 1339 07e1 1D83     		.2byte	0x1d83
+ 1340 07e3 00000830 		.4byte	0x830
+ 1341 07e7 09       		.uleb128 0x9
+ 1342 07e8 00000000 		.4byte	.LASF29
+ 1343 07ec 05       		.byte	0x5
+ 1344 07ed 1D84     		.2byte	0x1d84
+ 1345 07ef 000000F2 		.4byte	0xf2
+ 1346 07f3 04       		.byte	0x4
+ 1347 07f4 10       		.byte	0x10
+ 1348 07f5 00       		.byte	0
+ 1349 07f6 02       		.byte	0x2
+ 1350 07f7 23       		.byte	0x23
+ 1351 07f8 00       		.uleb128 0
+ 1352 07f9 0A       		.uleb128 0xa
+ 1353 07fa 494E5600 		.string	"INV"
+ 1354 07fe 05       		.byte	0x5
+ 1355 07ff 1D85     		.2byte	0x1d85
+ 1356 0801 000000F2 		.4byte	0xf2
+ 1357 0805 04       		.byte	0x4
+ 1358 0806 01       		.byte	0x1
+ 1359 0807 10       		.byte	0x10
+ 1360 0808 02       		.byte	0x2
+ 1361 0809 23       		.byte	0x23
+ 1362 080a 00       		.uleb128 0
+ 1363 080b 09       		.uleb128 0x9
+ 1364 080c 00000000 		.4byte	.LASF23
+ 1365 0810 05       		.byte	0x5
+ 1366 0811 1D86     		.2byte	0x1d86
+ 1367 0813 000000F2 		.4byte	0xf2
+ 1368 0817 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 25
+
+
+ 1369 0818 07       		.byte	0x7
+ 1370 0819 11       		.byte	0x11
+ 1371 081a 02       		.byte	0x2
+ 1372 081b 23       		.byte	0x23
+ 1373 081c 00       		.uleb128 0
+ 1374 081d 0A       		.uleb128 0xa
+ 1375 081e 53535300 		.string	"SSS"
+ 1376 0822 05       		.byte	0x5
+ 1377 0823 1D87     		.2byte	0x1d87
+ 1378 0825 000000F2 		.4byte	0xf2
+ 1379 0829 04       		.byte	0x4
+ 1380 082a 08       		.byte	0x8
+ 1381 082b 18       		.byte	0x18
+ 1382 082c 02       		.byte	0x2
+ 1383 082d 23       		.byte	0x23
+ 1384 082e 00       		.uleb128 0
+ 1385 082f 00       		.byte	0
+ 1386 0830 0B       		.uleb128 0xb
+ 1387 0831 04       		.byte	0x4
+ 1388 0832 05       		.byte	0x5
+ 1389 0833 1D81     		.2byte	0x1d81
+ 1390 0835 0000084E 		.4byte	0x84e
+ 1391 0839 0C       		.uleb128 0xc
+ 1392 083a 5200     		.string	"R"
+ 1393 083c 05       		.byte	0x5
+ 1394 083d 1D82     		.2byte	0x1d82
+ 1395 083f 000000F2 		.4byte	0xf2
+ 1396 0843 0C       		.uleb128 0xc
+ 1397 0844 4200     		.string	"B"
+ 1398 0846 05       		.byte	0x5
+ 1399 0847 1D88     		.2byte	0x1d88
+ 1400 0849 000007DE 		.4byte	0x7de
+ 1401 084d 00       		.byte	0
+ 1402 084e 08       		.uleb128 0x8
+ 1403 084f 01       		.byte	0x1
+ 1404 0850 05       		.byte	0x5
+ 1405 0851 1D8F     		.2byte	0x1d8f
+ 1406 0853 0000087C 		.4byte	0x87c
+ 1407 0857 09       		.uleb128 0x9
+ 1408 0858 00000000 		.4byte	.LASF23
+ 1409 085c 05       		.byte	0x5
+ 1410 085d 1D90     		.2byte	0x1d90
+ 1411 085f 000000D2 		.4byte	0xd2
+ 1412 0863 01       		.byte	0x1
+ 1413 0864 07       		.byte	0x7
+ 1414 0865 00       		.byte	0
+ 1415 0866 02       		.byte	0x2
+ 1416 0867 23       		.byte	0x23
+ 1417 0868 00       		.uleb128 0
+ 1418 0869 0A       		.uleb128 0xa
+ 1419 086a 50444F00 		.string	"PDO"
+ 1420 086e 05       		.byte	0x5
+ 1421 086f 1D91     		.2byte	0x1d91
+ 1422 0871 000000D2 		.4byte	0xd2
+ 1423 0875 01       		.byte	0x1
+ 1424 0876 01       		.byte	0x1
+ 1425 0877 07       		.byte	0x7
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 26
+
+
+ 1426 0878 02       		.byte	0x2
+ 1427 0879 23       		.byte	0x23
+ 1428 087a 00       		.uleb128 0
+ 1429 087b 00       		.byte	0
+ 1430 087c 0B       		.uleb128 0xb
+ 1431 087d 01       		.byte	0x1
+ 1432 087e 05       		.byte	0x5
+ 1433 087f 1D8D     		.2byte	0x1d8d
+ 1434 0881 0000089A 		.4byte	0x89a
+ 1435 0885 0C       		.uleb128 0xc
+ 1436 0886 5200     		.string	"R"
+ 1437 0888 05       		.byte	0x5
+ 1438 0889 1D8E     		.2byte	0x1d8e
+ 1439 088b 000000D2 		.4byte	0xd2
+ 1440 088f 0C       		.uleb128 0xc
+ 1441 0890 4200     		.string	"B"
+ 1442 0892 05       		.byte	0x5
+ 1443 0893 1D92     		.2byte	0x1d92
+ 1444 0895 0000084E 		.4byte	0x84e
+ 1445 0899 00       		.byte	0
+ 1446 089a 08       		.uleb128 0x8
+ 1447 089b 01       		.byte	0x1
+ 1448 089c 05       		.byte	0x5
+ 1449 089d 1D99     		.2byte	0x1d99
+ 1450 089f 000008C8 		.4byte	0x8c8
+ 1451 08a3 09       		.uleb128 0x9
+ 1452 08a4 00000000 		.4byte	.LASF23
+ 1453 08a8 05       		.byte	0x5
+ 1454 08a9 1D9A     		.2byte	0x1d9a
+ 1455 08ab 000000D2 		.4byte	0xd2
+ 1456 08af 01       		.byte	0x1
+ 1457 08b0 07       		.byte	0x7
+ 1458 08b1 00       		.byte	0
+ 1459 08b2 02       		.byte	0x2
+ 1460 08b3 23       		.byte	0x23
+ 1461 08b4 00       		.uleb128 0
+ 1462 08b5 0A       		.uleb128 0xa
+ 1463 08b6 50444900 		.string	"PDI"
+ 1464 08ba 05       		.byte	0x5
+ 1465 08bb 1D9B     		.2byte	0x1d9b
+ 1466 08bd 000000D2 		.4byte	0xd2
+ 1467 08c1 01       		.byte	0x1
+ 1468 08c2 01       		.byte	0x1
+ 1469 08c3 07       		.byte	0x7
+ 1470 08c4 02       		.byte	0x2
+ 1471 08c5 23       		.byte	0x23
+ 1472 08c6 00       		.uleb128 0
+ 1473 08c7 00       		.byte	0
+ 1474 08c8 0B       		.uleb128 0xb
+ 1475 08c9 01       		.byte	0x1
+ 1476 08ca 05       		.byte	0x5
+ 1477 08cb 1D97     		.2byte	0x1d97
+ 1478 08cd 000008E6 		.4byte	0x8e6
+ 1479 08d1 0C       		.uleb128 0xc
+ 1480 08d2 5200     		.string	"R"
+ 1481 08d4 05       		.byte	0x5
+ 1482 08d5 1D98     		.2byte	0x1d98
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 27
+
+
+ 1483 08d7 000000D2 		.4byte	0xd2
+ 1484 08db 0C       		.uleb128 0xc
+ 1485 08dc 4200     		.string	"B"
+ 1486 08de 05       		.byte	0x5
+ 1487 08df 1D9C     		.2byte	0x1d9c
+ 1488 08e1 0000089A 		.4byte	0x89a
+ 1489 08e5 00       		.byte	0
+ 1490 08e6 08       		.uleb128 0x8
+ 1491 08e7 02       		.byte	0x2
+ 1492 08e8 05       		.byte	0x5
+ 1493 08e9 1DA3     		.2byte	0x1da3
+ 1494 08eb 00000902 		.4byte	0x902
+ 1495 08ef 09       		.uleb128 0x9
+ 1496 08f0 00000000 		.4byte	.LASF73
+ 1497 08f4 05       		.byte	0x5
+ 1498 08f5 1DA4     		.2byte	0x1da4
+ 1499 08f7 000000E2 		.4byte	0xe2
+ 1500 08fb 02       		.byte	0x2
+ 1501 08fc 10       		.byte	0x10
+ 1502 08fd 00       		.byte	0
+ 1503 08fe 02       		.byte	0x2
+ 1504 08ff 23       		.byte	0x23
+ 1505 0900 00       		.uleb128 0
+ 1506 0901 00       		.byte	0
+ 1507 0902 0B       		.uleb128 0xb
+ 1508 0903 02       		.byte	0x2
+ 1509 0904 05       		.byte	0x5
+ 1510 0905 1DA1     		.2byte	0x1da1
+ 1511 0907 00000920 		.4byte	0x920
+ 1512 090b 0C       		.uleb128 0xc
+ 1513 090c 5200     		.string	"R"
+ 1514 090e 05       		.byte	0x5
+ 1515 090f 1DA2     		.2byte	0x1da2
+ 1516 0911 000000E2 		.4byte	0xe2
+ 1517 0915 0C       		.uleb128 0xc
+ 1518 0916 4200     		.string	"B"
+ 1519 0918 05       		.byte	0x5
+ 1520 0919 1DA5     		.2byte	0x1da5
+ 1521 091b 000008E6 		.4byte	0x8e6
+ 1522 091f 00       		.byte	0
+ 1523 0920 08       		.uleb128 0x8
+ 1524 0921 02       		.byte	0x2
+ 1525 0922 05       		.byte	0x5
+ 1526 0923 1DAC     		.2byte	0x1dac
+ 1527 0925 0000093C 		.4byte	0x93c
+ 1528 0929 09       		.uleb128 0x9
+ 1529 092a 00000000 		.4byte	.LASF74
+ 1530 092e 05       		.byte	0x5
+ 1531 092f 1DAD     		.2byte	0x1dad
+ 1532 0931 000000E2 		.4byte	0xe2
+ 1533 0935 02       		.byte	0x2
+ 1534 0936 10       		.byte	0x10
+ 1535 0937 00       		.byte	0
+ 1536 0938 02       		.byte	0x2
+ 1537 0939 23       		.byte	0x23
+ 1538 093a 00       		.uleb128 0
+ 1539 093b 00       		.byte	0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 28
+
+
+ 1540 093c 0B       		.uleb128 0xb
+ 1541 093d 02       		.byte	0x2
+ 1542 093e 05       		.byte	0x5
+ 1543 093f 1DAA     		.2byte	0x1daa
+ 1544 0941 0000095A 		.4byte	0x95a
+ 1545 0945 0C       		.uleb128 0xc
+ 1546 0946 5200     		.string	"R"
+ 1547 0948 05       		.byte	0x5
+ 1548 0949 1DAB     		.2byte	0x1dab
+ 1549 094b 000000E2 		.4byte	0xe2
+ 1550 094f 0C       		.uleb128 0xc
+ 1551 0950 4200     		.string	"B"
+ 1552 0952 05       		.byte	0x5
+ 1553 0953 1DAE     		.2byte	0x1dae
+ 1554 0955 00000920 		.4byte	0x920
+ 1555 0959 00       		.byte	0
+ 1556 095a 08       		.uleb128 0x8
+ 1557 095b 04       		.byte	0x4
+ 1558 095c 05       		.byte	0x5
+ 1559 095d 1DB5     		.2byte	0x1db5
+ 1560 095f 00000988 		.4byte	0x988
+ 1561 0963 09       		.uleb128 0x9
+ 1562 0964 00000000 		.4byte	.LASF75
+ 1563 0968 05       		.byte	0x5
+ 1564 0969 1DB6     		.2byte	0x1db6
+ 1565 096b 000000F2 		.4byte	0xf2
+ 1566 096f 04       		.byte	0x4
+ 1567 0970 10       		.byte	0x10
+ 1568 0971 00       		.byte	0
+ 1569 0972 02       		.byte	0x2
+ 1570 0973 23       		.byte	0x23
+ 1571 0974 00       		.uleb128 0
+ 1572 0975 09       		.uleb128 0x9
+ 1573 0976 00000000 		.4byte	.LASF76
+ 1574 097a 05       		.byte	0x5
+ 1575 097b 1DB7     		.2byte	0x1db7
+ 1576 097d 000000F2 		.4byte	0xf2
+ 1577 0981 04       		.byte	0x4
+ 1578 0982 10       		.byte	0x10
+ 1579 0983 10       		.byte	0x10
+ 1580 0984 02       		.byte	0x2
+ 1581 0985 23       		.byte	0x23
+ 1582 0986 00       		.uleb128 0
+ 1583 0987 00       		.byte	0
+ 1584 0988 0B       		.uleb128 0xb
+ 1585 0989 04       		.byte	0x4
+ 1586 098a 05       		.byte	0x5
+ 1587 098b 1DB3     		.2byte	0x1db3
+ 1588 098d 000009A6 		.4byte	0x9a6
+ 1589 0991 0C       		.uleb128 0xc
+ 1590 0992 5200     		.string	"R"
+ 1591 0994 05       		.byte	0x5
+ 1592 0995 1DB4     		.2byte	0x1db4
+ 1593 0997 000000F2 		.4byte	0xf2
+ 1594 099b 0C       		.uleb128 0xc
+ 1595 099c 4200     		.string	"B"
+ 1596 099e 05       		.byte	0x5
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 29
+
+
+ 1597 099f 1DB8     		.2byte	0x1db8
+ 1598 09a1 0000095A 		.4byte	0x95a
+ 1599 09a5 00       		.byte	0
+ 1600 09a6 0D       		.uleb128 0xd
+ 1601 09a7 00000000 		.4byte	.LASF132
+ 1602 09ab 1794     		.2byte	0x1794
+ 1603 09ad 05       		.byte	0x5
+ 1604 09ae 1CE5     		.2byte	0x1ce5
+ 1605 09b0 00000B94 		.4byte	0xb94
+ 1606 09b4 0E       		.uleb128 0xe
+ 1607 09b5 00000000 		.4byte	.LASF77
+ 1608 09b9 05       		.byte	0x5
+ 1609 09ba 1CE6     		.2byte	0x1ce6
+ 1610 09bc 00000B94 		.4byte	0xb94
+ 1611 09c0 02       		.byte	0x2
+ 1612 09c1 23       		.byte	0x23
+ 1613 09c2 00       		.uleb128 0
+ 1614 09c3 0E       		.uleb128 0xe
+ 1615 09c4 00000000 		.4byte	.LASF78
+ 1616 09c8 05       		.byte	0x5
+ 1617 09c9 1CF2     		.2byte	0x1cf2
+ 1618 09cb 0000019E 		.4byte	0x19e
+ 1619 09cf 02       		.byte	0x2
+ 1620 09d0 23       		.byte	0x23
+ 1621 09d1 04       		.uleb128 0x4
+ 1622 09d2 0E       		.uleb128 0xe
+ 1623 09d3 00000000 		.4byte	.LASF79
+ 1624 09d7 05       		.byte	0x5
+ 1625 09d8 1CFE     		.2byte	0x1cfe
+ 1626 09da 00000232 		.4byte	0x232
+ 1627 09de 02       		.byte	0x2
+ 1628 09df 23       		.byte	0x23
+ 1629 09e0 08       		.uleb128 0x8
+ 1630 09e1 0E       		.uleb128 0xe
+ 1631 09e2 00000000 		.4byte	.LASF80
+ 1632 09e6 05       		.byte	0x5
+ 1633 09e7 1D00     		.2byte	0x1d00
+ 1634 09e9 00000B99 		.4byte	0xb99
+ 1635 09ed 02       		.byte	0x2
+ 1636 09ee 23       		.byte	0x23
+ 1637 09ef 0C       		.uleb128 0xc
+ 1638 09f0 0E       		.uleb128 0xe
+ 1639 09f1 00000000 		.4byte	.LASF81
+ 1640 09f5 05       		.byte	0x5
+ 1641 09f6 1D0D     		.2byte	0x1d0d
+ 1642 09f8 000002D8 		.4byte	0x2d8
+ 1643 09fc 02       		.byte	0x2
+ 1644 09fd 23       		.byte	0x23
+ 1645 09fe 10       		.uleb128 0x10
+ 1646 09ff 0E       		.uleb128 0xe
+ 1647 0a00 00000000 		.4byte	.LASF82
+ 1648 0a04 05       		.byte	0x5
+ 1649 0a05 1D0F     		.2byte	0x1d0f
+ 1650 0a07 00000B9E 		.4byte	0xb9e
+ 1651 0a0b 02       		.byte	0x2
+ 1652 0a0c 23       		.byte	0x23
+ 1653 0a0d 14       		.uleb128 0x14
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 30
+
+
+ 1654 0a0e 0E       		.uleb128 0xe
+ 1655 0a0f 00000000 		.4byte	.LASF83
+ 1656 0a13 05       		.byte	0x5
+ 1657 0a14 1D1C     		.2byte	0x1d1c
+ 1658 0a16 0000037E 		.4byte	0x37e
+ 1659 0a1a 02       		.byte	0x2
+ 1660 0a1b 23       		.byte	0x23
+ 1661 0a1c 18       		.uleb128 0x18
+ 1662 0a1d 0E       		.uleb128 0xe
+ 1663 0a1e 00000000 		.4byte	.LASF84
+ 1664 0a22 05       		.byte	0x5
+ 1665 0a23 1D1E     		.2byte	0x1d1e
+ 1666 0a25 00000BA3 		.4byte	0xba3
+ 1667 0a29 02       		.byte	0x2
+ 1668 0a2a 23       		.byte	0x23
+ 1669 0a2b 1C       		.uleb128 0x1c
+ 1670 0a2c 0E       		.uleb128 0xe
+ 1671 0a2d 00000000 		.4byte	.LASF85
+ 1672 0a31 05       		.byte	0x5
+ 1673 0a32 1D2B     		.2byte	0x1d2b
+ 1674 0a34 00000424 		.4byte	0x424
+ 1675 0a38 02       		.byte	0x2
+ 1676 0a39 23       		.byte	0x23
+ 1677 0a3a 20       		.uleb128 0x20
+ 1678 0a3b 0E       		.uleb128 0xe
+ 1679 0a3c 00000000 		.4byte	.LASF86
+ 1680 0a40 05       		.byte	0x5
+ 1681 0a41 1D2D     		.2byte	0x1d2d
+ 1682 0a43 00000BA8 		.4byte	0xba8
+ 1683 0a47 02       		.byte	0x2
+ 1684 0a48 23       		.byte	0x23
+ 1685 0a49 24       		.uleb128 0x24
+ 1686 0a4a 0E       		.uleb128 0xe
+ 1687 0a4b 00000000 		.4byte	.LASF87
+ 1688 0a4f 05       		.byte	0x5
+ 1689 0a50 1D3A     		.2byte	0x1d3a
+ 1690 0a52 000004CA 		.4byte	0x4ca
+ 1691 0a56 02       		.byte	0x2
+ 1692 0a57 23       		.byte	0x23
+ 1693 0a58 28       		.uleb128 0x28
+ 1694 0a59 0E       		.uleb128 0xe
+ 1695 0a5a 00000000 		.4byte	.LASF88
+ 1696 0a5e 05       		.byte	0x5
+ 1697 0a5f 1D3C     		.2byte	0x1d3c
+ 1698 0a61 00000BAD 		.4byte	0xbad
+ 1699 0a65 02       		.byte	0x2
+ 1700 0a66 23       		.byte	0x23
+ 1701 0a67 2C       		.uleb128 0x2c
+ 1702 0a68 0E       		.uleb128 0xe
+ 1703 0a69 00000000 		.4byte	.LASF89
+ 1704 0a6d 05       		.byte	0x5
+ 1705 0a6e 1D49     		.2byte	0x1d49
+ 1706 0a70 00000570 		.4byte	0x570
+ 1707 0a74 02       		.byte	0x2
+ 1708 0a75 23       		.byte	0x23
+ 1709 0a76 30       		.uleb128 0x30
+ 1710 0a77 0E       		.uleb128 0xe
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 31
+
+
+ 1711 0a78 00000000 		.4byte	.LASF90
+ 1712 0a7c 05       		.byte	0x5
+ 1713 0a7d 1D4B     		.2byte	0x1d4b
+ 1714 0a7f 00000BB2 		.4byte	0xbb2
+ 1715 0a83 02       		.byte	0x2
+ 1716 0a84 23       		.byte	0x23
+ 1717 0a85 34       		.uleb128 0x34
+ 1718 0a86 0E       		.uleb128 0xe
+ 1719 0a87 00000000 		.4byte	.LASF91
+ 1720 0a8b 05       		.byte	0x5
+ 1721 0a8c 1D58     		.2byte	0x1d58
+ 1722 0a8e 00000616 		.4byte	0x616
+ 1723 0a92 02       		.byte	0x2
+ 1724 0a93 23       		.byte	0x23
+ 1725 0a94 38       		.uleb128 0x38
+ 1726 0a95 0E       		.uleb128 0xe
+ 1727 0a96 00000000 		.4byte	.LASF92
+ 1728 0a9a 05       		.byte	0x5
+ 1729 0a9b 1D5A     		.2byte	0x1d5a
+ 1730 0a9d 00000BB7 		.4byte	0xbb7
+ 1731 0aa1 02       		.byte	0x2
+ 1732 0aa2 23       		.byte	0x23
+ 1733 0aa3 3C       		.uleb128 0x3c
+ 1734 0aa4 0E       		.uleb128 0xe
+ 1735 0aa5 00000000 		.4byte	.LASF93
+ 1736 0aa9 05       		.byte	0x5
+ 1737 0aaa 1D62     		.2byte	0x1d62
+ 1738 0aac 00000BBC 		.4byte	0xbbc
+ 1739 0ab0 02       		.byte	0x2
+ 1740 0ab1 23       		.byte	0x23
+ 1741 0ab2 40       		.uleb128 0x40
+ 1742 0ab3 0E       		.uleb128 0xe
+ 1743 0ab4 00000000 		.4byte	.LASF94
+ 1744 0ab8 05       		.byte	0x5
+ 1745 0ab9 1D6A     		.2byte	0x1d6a
+ 1746 0abb 000006AE 		.4byte	0x6ae
+ 1747 0abf 03       		.byte	0x3
+ 1748 0ac0 23       		.byte	0x23
+ 1749 0ac1 C001     		.uleb128 0xc0
+ 1750 0ac3 0E       		.uleb128 0xe
+ 1751 0ac4 00000000 		.4byte	.LASF95
+ 1752 0ac8 05       		.byte	0x5
+ 1753 0ac9 1D6C     		.2byte	0x1d6c
+ 1754 0acb 00000BDD 		.4byte	0xbdd
+ 1755 0acf 03       		.byte	0x3
+ 1756 0ad0 23       		.byte	0x23
+ 1757 0ad1 C401     		.uleb128 0xc4
+ 1758 0ad3 0E       		.uleb128 0xe
+ 1759 0ad4 00000000 		.4byte	.LASF96
+ 1760 0ad8 05       		.byte	0x5
+ 1761 0ad9 1D7F     		.2byte	0x1d7f
+ 1762 0adb 00000BE2 		.4byte	0xbe2
+ 1763 0adf 03       		.byte	0x3
+ 1764 0ae0 23       		.byte	0x23
+ 1765 0ae1 C004     		.uleb128 0x240
+ 1766 0ae3 0E       		.uleb128 0xe
+ 1767 0ae4 00000000 		.4byte	.LASF97
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 32
+
+
+ 1768 0ae8 05       		.byte	0x5
+ 1769 0ae9 1D89     		.2byte	0x1d89
+ 1770 0aeb 00000BF3 		.4byte	0xbf3
+ 1771 0aef 03       		.byte	0x3
+ 1772 0af0 23       		.byte	0x23
+ 1773 0af1 C014     		.uleb128 0xa40
+ 1774 0af3 0E       		.uleb128 0xe
+ 1775 0af4 00000000 		.4byte	.LASF98
+ 1776 0af8 05       		.byte	0x5
+ 1777 0af9 1D8B     		.2byte	0x1d8b
+ 1778 0afb 00000C04 		.4byte	0xc04
+ 1779 0aff 03       		.byte	0x3
+ 1780 0b00 23       		.byte	0x23
+ 1781 0b01 C024     		.uleb128 0x1240
+ 1782 0b03 0E       		.uleb128 0xe
+ 1783 0b04 00000000 		.4byte	.LASF99
+ 1784 0b08 05       		.byte	0x5
+ 1785 0b09 1D93     		.2byte	0x1d93
+ 1786 0b0b 00000C09 		.4byte	0xc09
+ 1787 0b0f 03       		.byte	0x3
+ 1788 0b10 23       		.byte	0x23
+ 1789 0b11 8026     		.uleb128 0x1300
+ 1790 0b13 0E       		.uleb128 0xe
+ 1791 0b14 00000000 		.4byte	.LASF100
+ 1792 0b18 05       		.byte	0x5
+ 1793 0b19 1D95     		.2byte	0x1d95
+ 1794 0b1b 00000C2A 		.4byte	0xc2a
+ 1795 0b1f 03       		.byte	0x3
+ 1796 0b20 23       		.byte	0x23
+ 1797 0b21 D026     		.uleb128 0x1350
+ 1798 0b23 0E       		.uleb128 0xe
+ 1799 0b24 00000000 		.4byte	.LASF101
+ 1800 0b28 05       		.byte	0x5
+ 1801 0b29 1D9D     		.2byte	0x1d9d
+ 1802 0b2b 00000C2F 		.4byte	0xc2f
+ 1803 0b2f 03       		.byte	0x3
+ 1804 0b30 23       		.byte	0x23
+ 1805 0b31 802A     		.uleb128 0x1500
+ 1806 0b33 0E       		.uleb128 0xe
+ 1807 0b34 00000000 		.4byte	.LASF102
+ 1808 0b38 05       		.byte	0x5
+ 1809 0b39 1D9F     		.2byte	0x1d9f
+ 1810 0b3b 00000C3F 		.4byte	0xc3f
+ 1811 0b3f 03       		.byte	0x3
+ 1812 0b40 23       		.byte	0x23
+ 1813 0b41 D02A     		.uleb128 0x1550
+ 1814 0b43 0E       		.uleb128 0xe
+ 1815 0b44 00000000 		.4byte	.LASF103
+ 1816 0b48 05       		.byte	0x5
+ 1817 0b49 1DA6     		.2byte	0x1da6
+ 1818 0b4b 00000C44 		.4byte	0xc44
+ 1819 0b4f 03       		.byte	0x3
+ 1820 0b50 23       		.byte	0x23
+ 1821 0b51 802E     		.uleb128 0x1700
+ 1822 0b53 0E       		.uleb128 0xe
+ 1823 0b54 00000000 		.4byte	.LASF104
+ 1824 0b58 05       		.byte	0x5
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 33
+
+
+ 1825 0b59 1DA8     		.2byte	0x1da8
+ 1826 0b5b 00000C64 		.4byte	0xc64
+ 1827 0b5f 03       		.byte	0x3
+ 1828 0b60 23       		.byte	0x23
+ 1829 0b61 8A2E     		.uleb128 0x170a
+ 1830 0b63 0E       		.uleb128 0xe
+ 1831 0b64 00000000 		.4byte	.LASF105
+ 1832 0b68 05       		.byte	0x5
+ 1833 0b69 1DAF     		.2byte	0x1daf
+ 1834 0b6b 00000C69 		.4byte	0xc69
+ 1835 0b6f 03       		.byte	0x3
+ 1836 0b70 23       		.byte	0x23
+ 1837 0b71 C02E     		.uleb128 0x1740
+ 1838 0b73 0E       		.uleb128 0xe
+ 1839 0b74 00000000 		.4byte	.LASF106
+ 1840 0b78 05       		.byte	0x5
+ 1841 0b79 1DB1     		.2byte	0x1db1
+ 1842 0b7b 00000C79 		.4byte	0xc79
+ 1843 0b7f 03       		.byte	0x3
+ 1844 0b80 23       		.byte	0x23
+ 1845 0b81 CA2E     		.uleb128 0x174a
+ 1846 0b83 0E       		.uleb128 0xe
+ 1847 0b84 00000000 		.4byte	.LASF107
+ 1848 0b88 05       		.byte	0x5
+ 1849 0b89 1DB9     		.2byte	0x1db9
+ 1850 0b8b 00000C7E 		.4byte	0xc7e
+ 1851 0b8f 03       		.byte	0x3
+ 1852 0b90 23       		.byte	0x23
+ 1853 0b91 802F     		.uleb128 0x1780
+ 1854 0b93 00       		.byte	0
+ 1855 0b94 05       		.uleb128 0x5
+ 1856 0b95 00000102 		.4byte	0x102
+ 1857 0b99 05       		.uleb128 0x5
+ 1858 0b9a 00000102 		.4byte	0x102
+ 1859 0b9e 05       		.uleb128 0x5
+ 1860 0b9f 00000102 		.4byte	0x102
+ 1861 0ba3 05       		.uleb128 0x5
+ 1862 0ba4 00000102 		.4byte	0x102
+ 1863 0ba8 05       		.uleb128 0x5
+ 1864 0ba9 00000102 		.4byte	0x102
+ 1865 0bad 05       		.uleb128 0x5
+ 1866 0bae 00000102 		.4byte	0x102
+ 1867 0bb2 05       		.uleb128 0x5
+ 1868 0bb3 00000102 		.4byte	0x102
+ 1869 0bb7 05       		.uleb128 0x5
+ 1870 0bb8 00000102 		.4byte	0x102
+ 1871 0bbc 06       		.uleb128 0x6
+ 1872 0bbd 00000662 		.4byte	0x662
+ 1873 0bc1 00000BCC 		.4byte	0xbcc
+ 1874 0bc5 07       		.uleb128 0x7
+ 1875 0bc6 00000112 		.4byte	0x112
+ 1876 0bca 1F       		.byte	0x1f
+ 1877 0bcb 00       		.byte	0
+ 1878 0bcc 06       		.uleb128 0x6
+ 1879 0bcd 000000D2 		.4byte	0xd2
+ 1880 0bd1 00000BDD 		.4byte	0xbdd
+ 1881 0bd5 0F       		.uleb128 0xf
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 34
+
+
+ 1882 0bd6 00000112 		.4byte	0x112
+ 1883 0bda 017B     		.2byte	0x17b
+ 1884 0bdc 00       		.byte	0
+ 1885 0bdd 05       		.uleb128 0x5
+ 1886 0bde 00000BCC 		.4byte	0xbcc
+ 1887 0be2 06       		.uleb128 0x6
+ 1888 0be3 000007C0 		.4byte	0x7c0
+ 1889 0be7 00000BF3 		.4byte	0xbf3
+ 1890 0beb 0F       		.uleb128 0xf
+ 1891 0bec 00000112 		.4byte	0x112
+ 1892 0bf0 01FF     		.2byte	0x1ff
+ 1893 0bf2 00       		.byte	0
+ 1894 0bf3 06       		.uleb128 0x6
+ 1895 0bf4 00000830 		.4byte	0x830
+ 1896 0bf8 00000C04 		.4byte	0xc04
+ 1897 0bfc 0F       		.uleb128 0xf
+ 1898 0bfd 00000112 		.4byte	0x112
+ 1899 0c01 01FF     		.2byte	0x1ff
+ 1900 0c03 00       		.byte	0
+ 1901 0c04 05       		.uleb128 0x5
+ 1902 0c05 00000119 		.4byte	0x119
+ 1903 0c09 06       		.uleb128 0x6
+ 1904 0c0a 0000087C 		.4byte	0x87c
+ 1905 0c0e 00000C19 		.4byte	0xc19
+ 1906 0c12 07       		.uleb128 0x7
+ 1907 0c13 00000112 		.4byte	0x112
+ 1908 0c17 4F       		.byte	0x4f
+ 1909 0c18 00       		.byte	0
+ 1910 0c19 06       		.uleb128 0x6
+ 1911 0c1a 000000D2 		.4byte	0xd2
+ 1912 0c1e 00000C2A 		.4byte	0xc2a
+ 1913 0c22 0F       		.uleb128 0xf
+ 1914 0c23 00000112 		.4byte	0x112
+ 1915 0c27 01AF     		.2byte	0x1af
+ 1916 0c29 00       		.byte	0
+ 1917 0c2a 05       		.uleb128 0x5
+ 1918 0c2b 00000C19 		.4byte	0xc19
+ 1919 0c2f 06       		.uleb128 0x6
+ 1920 0c30 000008C8 		.4byte	0x8c8
+ 1921 0c34 00000C3F 		.4byte	0xc3f
+ 1922 0c38 07       		.uleb128 0x7
+ 1923 0c39 00000112 		.4byte	0x112
+ 1924 0c3d 4F       		.byte	0x4f
+ 1925 0c3e 00       		.byte	0
+ 1926 0c3f 05       		.uleb128 0x5
+ 1927 0c40 00000C19 		.4byte	0xc19
+ 1928 0c44 06       		.uleb128 0x6
+ 1929 0c45 00000902 		.4byte	0x902
+ 1930 0c49 00000C54 		.4byte	0xc54
+ 1931 0c4d 07       		.uleb128 0x7
+ 1932 0c4e 00000112 		.4byte	0x112
+ 1933 0c52 04       		.byte	0x4
+ 1934 0c53 00       		.byte	0
+ 1935 0c54 06       		.uleb128 0x6
+ 1936 0c55 000000D2 		.4byte	0xd2
+ 1937 0c59 00000C64 		.4byte	0xc64
+ 1938 0c5d 07       		.uleb128 0x7
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 35
+
+
+ 1939 0c5e 00000112 		.4byte	0x112
+ 1940 0c62 35       		.byte	0x35
+ 1941 0c63 00       		.byte	0
+ 1942 0c64 05       		.uleb128 0x5
+ 1943 0c65 00000C54 		.4byte	0xc54
+ 1944 0c69 06       		.uleb128 0x6
+ 1945 0c6a 0000093C 		.4byte	0x93c
+ 1946 0c6e 00000C79 		.4byte	0xc79
+ 1947 0c72 07       		.uleb128 0x7
+ 1948 0c73 00000112 		.4byte	0x112
+ 1949 0c77 04       		.byte	0x4
+ 1950 0c78 00       		.byte	0
+ 1951 0c79 05       		.uleb128 0x5
+ 1952 0c7a 00000C54 		.4byte	0xc54
+ 1953 0c7e 06       		.uleb128 0x6
+ 1954 0c7f 00000988 		.4byte	0x988
+ 1955 0c83 00000C8E 		.4byte	0xc8e
+ 1956 0c87 07       		.uleb128 0x7
+ 1957 0c88 00000112 		.4byte	0x112
+ 1958 0c8c 04       		.byte	0x4
+ 1959 0c8d 00       		.byte	0
+ 1960 0c8e 03       		.uleb128 0x3
+ 1961 0c8f 00000000 		.4byte	.LASF108
+ 1962 0c93 06       		.byte	0x6
+ 1963 0c94 B2       		.byte	0xb2
+ 1964 0c95 000000B1 		.4byte	0xb1
+ 1965 0c99 03       		.uleb128 0x3
+ 1966 0c9a 00000000 		.4byte	.LASF109
+ 1967 0c9e 06       		.byte	0x6
+ 1968 0c9f B7       		.byte	0xb7
+ 1969 0ca0 000000BC 		.4byte	0xbc
+ 1970 0ca4 03       		.uleb128 0x3
+ 1971 0ca5 00000000 		.4byte	.LASF110
+ 1972 0ca9 06       		.byte	0x6
+ 1973 0caa BF       		.byte	0xbf
+ 1974 0cab 000000BC 		.4byte	0xbc
+ 1975 0caf 10       		.uleb128 0x10
+ 1976 0cb0 08       		.byte	0x8
+ 1977 0cb1 06       		.byte	0x6
+ 1978 0cb2 C4       		.byte	0xc4
+ 1979 0cb3 00000CE2 		.4byte	0xce2
+ 1980 0cb7 11       		.uleb128 0x11
+ 1981 0cb8 00000000 		.4byte	.LASF111
+ 1982 0cbc 06       		.byte	0x6
+ 1983 0cbd C5       		.byte	0xc5
+ 1984 0cbe 000000A6 		.4byte	0xa6
+ 1985 0cc2 02       		.byte	0x2
+ 1986 0cc3 23       		.byte	0x23
+ 1987 0cc4 00       		.uleb128 0
+ 1988 0cc5 11       		.uleb128 0x11
+ 1989 0cc6 00000000 		.4byte	.LASF112
+ 1990 0cca 06       		.byte	0x6
+ 1991 0ccb C6       		.byte	0xc6
+ 1992 0ccc 0000009B 		.4byte	0x9b
+ 1993 0cd0 02       		.byte	0x2
+ 1994 0cd1 23       		.byte	0x23
+ 1995 0cd2 02       		.uleb128 0x2
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 36
+
+
+ 1996 0cd3 11       		.uleb128 0x11
+ 1997 0cd4 00000000 		.4byte	.LASF113
+ 1998 0cd8 06       		.byte	0x6
+ 1999 0cd9 C7       		.byte	0xc7
+ 2000 0cda 00000C99 		.4byte	0xc99
+ 2001 0cde 02       		.byte	0x2
+ 2002 0cdf 23       		.byte	0x23
+ 2003 0ce0 04       		.uleb128 0x4
+ 2004 0ce1 00       		.byte	0
+ 2005 0ce2 03       		.uleb128 0x3
+ 2006 0ce3 00000000 		.4byte	.LASF114
+ 2007 0ce7 06       		.byte	0x6
+ 2008 0ce8 C8       		.byte	0xc8
+ 2009 0ce9 00000CAF 		.4byte	0xcaf
+ 2010 0ced 10       		.uleb128 0x10
+ 2011 0cee 06       		.byte	0x6
+ 2012 0cef 06       		.byte	0x6
+ 2013 0cf0 CD       		.byte	0xcd
+ 2014 0cf1 00000D20 		.4byte	0xd20
+ 2015 0cf5 11       		.uleb128 0x11
+ 2016 0cf6 00000000 		.4byte	.LASF115
+ 2017 0cfa 06       		.byte	0x6
+ 2018 0cfb CE       		.byte	0xce
+ 2019 0cfc 000000A6 		.4byte	0xa6
+ 2020 0d00 02       		.byte	0x2
+ 2021 0d01 23       		.byte	0x23
+ 2022 0d02 00       		.uleb128 0
+ 2023 0d03 11       		.uleb128 0x11
+ 2024 0d04 00000000 		.4byte	.LASF111
+ 2025 0d08 06       		.byte	0x6
+ 2026 0d09 CF       		.byte	0xcf
+ 2027 0d0a 000000A6 		.4byte	0xa6
+ 2028 0d0e 02       		.byte	0x2
+ 2029 0d0f 23       		.byte	0x23
+ 2030 0d10 02       		.uleb128 0x2
+ 2031 0d11 11       		.uleb128 0x11
+ 2032 0d12 00000000 		.4byte	.LASF113
+ 2033 0d16 06       		.byte	0x6
+ 2034 0d17 D0       		.byte	0xd0
+ 2035 0d18 000000B1 		.4byte	0xb1
+ 2036 0d1c 02       		.byte	0x2
+ 2037 0d1d 23       		.byte	0x23
+ 2038 0d1e 04       		.uleb128 0x4
+ 2039 0d1f 00       		.byte	0
+ 2040 0d20 03       		.uleb128 0x3
+ 2041 0d21 00000000 		.4byte	.LASF116
+ 2042 0d25 06       		.byte	0x6
+ 2043 0d26 D1       		.byte	0xd1
+ 2044 0d27 00000CED 		.4byte	0xced
+ 2045 0d2b 10       		.uleb128 0x10
+ 2046 0d2c 08       		.byte	0x8
+ 2047 0d2d 06       		.byte	0x6
+ 2048 0d2e DC       		.byte	0xdc
+ 2049 0d2f 00000D50 		.4byte	0xd50
+ 2050 0d33 11       		.uleb128 0x11
+ 2051 0d34 00000000 		.4byte	.LASF117
+ 2052 0d38 06       		.byte	0x6
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 37
+
+
+ 2053 0d39 DD       		.byte	0xdd
+ 2054 0d3a 00000D50 		.4byte	0xd50
+ 2055 0d3e 02       		.byte	0x2
+ 2056 0d3f 23       		.byte	0x23
+ 2057 0d40 00       		.uleb128 0
+ 2058 0d41 11       		.uleb128 0x11
+ 2059 0d42 00000000 		.4byte	.LASF118
+ 2060 0d46 06       		.byte	0x6
+ 2061 0d47 DE       		.byte	0xde
+ 2062 0d48 00000D5B 		.4byte	0xd5b
+ 2063 0d4c 02       		.byte	0x2
+ 2064 0d4d 23       		.byte	0x23
+ 2065 0d4e 04       		.uleb128 0x4
+ 2066 0d4f 00       		.byte	0
+ 2067 0d50 12       		.uleb128 0x12
+ 2068 0d51 04       		.byte	0x4
+ 2069 0d52 00000D56 		.4byte	0xd56
+ 2070 0d56 13       		.uleb128 0x13
+ 2071 0d57 00000CE2 		.4byte	0xce2
+ 2072 0d5b 12       		.uleb128 0x12
+ 2073 0d5c 04       		.byte	0x4
+ 2074 0d5d 00000D61 		.4byte	0xd61
+ 2075 0d61 13       		.uleb128 0x13
+ 2076 0d62 00000D20 		.4byte	0xd20
+ 2077 0d66 03       		.uleb128 0x3
+ 2078 0d67 00000000 		.4byte	.LASF119
+ 2079 0d6b 06       		.byte	0x6
+ 2080 0d6c DF       		.byte	0xdf
+ 2081 0d6d 00000D2B 		.4byte	0xd2b
+ 2082 0d71 14       		.uleb128 0x14
+ 2083 0d72 01       		.byte	0x1
+ 2084 0d73 00000000 		.4byte	.LASF124
+ 2085 0d77 01       		.byte	0x1
+ 2086 0d78 22       		.byte	0x22
+ 2087 0d79 01       		.byte	0x1
+ 2088 0d7a 00000000 		.4byte	.LFB4
+ 2089 0d7e 00000000 		.4byte	.LFE4
+ 2090 0d82 02       		.byte	0x2
+ 2091 0d83 71       		.byte	0x71
+ 2092 0d84 00       		.sleb128 0
+ 2093 0d85 01       		.byte	0x1
+ 2094 0d86 00000DA5 		.4byte	0xda5
+ 2095 0d8a 15       		.uleb128 0x15
+ 2096 0d8b 00000000 		.4byte	.LASF120
+ 2097 0d8f 01       		.byte	0x1
+ 2098 0d90 22       		.byte	0x22
+ 2099 0d91 00000DA5 		.4byte	0xda5
+ 2100 0d95 01       		.byte	0x1
+ 2101 0d96 53       		.byte	0x53
+ 2102 0d97 16       		.uleb128 0x16
+ 2103 0d98 6900     		.string	"i"
+ 2104 0d9a 01       		.byte	0x1
+ 2105 0d9b 23       		.byte	0x23
+ 2106 0d9c 00000094 		.4byte	0x94
+ 2107 0da0 00000000 		.4byte	.LLST0
+ 2108 0da4 00       		.byte	0
+ 2109 0da5 12       		.uleb128 0x12
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 38
+
+
+ 2110 0da6 04       		.byte	0x4
+ 2111 0da7 00000DAB 		.4byte	0xdab
+ 2112 0dab 13       		.uleb128 0x13
+ 2113 0dac 00000D66 		.4byte	0xd66
+ 2114 0db0 17       		.uleb128 0x17
+ 2115 0db1 01       		.byte	0x1
+ 2116 0db2 00000000 		.4byte	.LASF133
+ 2117 0db6 01       		.byte	0x1
+ 2118 0db7 4B       		.byte	0x4b
+ 2119 0db8 01       		.byte	0x1
+ 2120 0db9 00000C8E 		.4byte	0xc8e
+ 2121 0dbd 00000000 		.4byte	.LFB5
+ 2122 0dc1 00000000 		.4byte	.LFE5
+ 2123 0dc5 02       		.byte	0x2
+ 2124 0dc6 71       		.byte	0x71
+ 2125 0dc7 00       		.sleb128 0
+ 2126 0dc8 01       		.byte	0x1
+ 2127 0dc9 00000DF7 		.4byte	0xdf7
+ 2128 0dcd 18       		.uleb128 0x18
+ 2129 0dce 00000000 		.4byte	.LASF121
+ 2130 0dd2 01       		.byte	0x1
+ 2131 0dd3 4B       		.byte	0x4b
+ 2132 0dd4 00000CA4 		.4byte	0xca4
+ 2133 0dd8 00000000 		.4byte	.LLST1
+ 2134 0ddc 15       		.uleb128 0x15
+ 2135 0ddd 00000000 		.4byte	.LASF122
+ 2136 0de1 01       		.byte	0x1
+ 2137 0de2 4B       		.byte	0x4b
+ 2138 0de3 00000C8E 		.4byte	0xc8e
+ 2139 0de7 01       		.byte	0x1
+ 2140 0de8 54       		.byte	0x54
+ 2141 0de9 15       		.uleb128 0x15
+ 2142 0dea 00000000 		.4byte	.LASF123
+ 2143 0dee 01       		.byte	0x1
+ 2144 0def 4C       		.byte	0x4c
+ 2145 0df0 000000C7 		.4byte	0xc7
+ 2146 0df4 01       		.byte	0x1
+ 2147 0df5 55       		.byte	0x55
+ 2148 0df6 00       		.byte	0
+ 2149 0df7 14       		.uleb128 0x14
+ 2150 0df8 01       		.byte	0x1
+ 2151 0df9 00000000 		.4byte	.LASF125
+ 2152 0dfd 01       		.byte	0x1
+ 2153 0dfe 5F       		.byte	0x5f
+ 2154 0dff 01       		.byte	0x1
+ 2155 0e00 00000000 		.4byte	.LFB6
+ 2156 0e04 00000000 		.4byte	.LFE6
+ 2157 0e08 02       		.byte	0x2
+ 2158 0e09 71       		.byte	0x71
+ 2159 0e0a 00       		.sleb128 0
+ 2160 0e0b 01       		.byte	0x1
+ 2161 0e0c 00000E45 		.4byte	0xe45
+ 2162 0e10 15       		.uleb128 0x15
+ 2163 0e11 00000000 		.4byte	.LASF121
+ 2164 0e15 01       		.byte	0x1
+ 2165 0e16 5F       		.byte	0x5f
+ 2166 0e17 00000CA4 		.4byte	0xca4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 39
+
+
+ 2167 0e1b 01       		.byte	0x1
+ 2168 0e1c 53       		.byte	0x53
+ 2169 0e1d 15       		.uleb128 0x15
+ 2170 0e1e 00000000 		.4byte	.LASF122
+ 2171 0e22 01       		.byte	0x1
+ 2172 0e23 5F       		.byte	0x5f
+ 2173 0e24 00000C8E 		.4byte	0xc8e
+ 2174 0e28 01       		.byte	0x1
+ 2175 0e29 54       		.byte	0x54
+ 2176 0e2a 15       		.uleb128 0x15
+ 2177 0e2b 00000000 		.4byte	.LASF123
+ 2178 0e2f 01       		.byte	0x1
+ 2179 0e30 5F       		.byte	0x5f
+ 2180 0e31 000000C7 		.4byte	0xc7
+ 2181 0e35 01       		.byte	0x1
+ 2182 0e36 55       		.byte	0x55
+ 2183 0e37 15       		.uleb128 0x15
+ 2184 0e38 00000000 		.4byte	.LASF126
+ 2185 0e3c 01       		.byte	0x1
+ 2186 0e3d 60       		.byte	0x60
+ 2187 0e3e 00000C8E 		.4byte	0xc8e
+ 2188 0e42 01       		.byte	0x1
+ 2189 0e43 56       		.byte	0x56
+ 2190 0e44 00       		.byte	0
+ 2191 0e45 19       		.uleb128 0x19
+ 2192 0e46 01       		.byte	0x1
+ 2193 0e47 00000000 		.4byte	.LASF134
+ 2194 0e4b 01       		.byte	0x1
+ 2195 0e4c 75       		.byte	0x75
+ 2196 0e4d 01       		.byte	0x1
+ 2197 0e4e 00000000 		.4byte	.LFB7
+ 2198 0e52 00000000 		.4byte	.LFE7
+ 2199 0e56 02       		.byte	0x2
+ 2200 0e57 71       		.byte	0x71
+ 2201 0e58 00       		.sleb128 0
+ 2202 0e59 01       		.byte	0x1
+ 2203 0e5a 18       		.uleb128 0x18
+ 2204 0e5b 00000000 		.4byte	.LASF121
+ 2205 0e5f 01       		.byte	0x1
+ 2206 0e60 75       		.byte	0x75
+ 2207 0e61 00000CA4 		.4byte	0xca4
+ 2208 0e65 00000000 		.4byte	.LLST2
+ 2209 0e69 15       		.uleb128 0x15
+ 2210 0e6a 00000000 		.4byte	.LASF122
+ 2211 0e6e 01       		.byte	0x1
+ 2212 0e6f 75       		.byte	0x75
+ 2213 0e70 00000C8E 		.4byte	0xc8e
+ 2214 0e74 01       		.byte	0x1
+ 2215 0e75 54       		.byte	0x54
+ 2216 0e76 15       		.uleb128 0x15
+ 2217 0e77 00000000 		.4byte	.LASF127
+ 2218 0e7b 01       		.byte	0x1
+ 2219 0e7c 75       		.byte	0x75
+ 2220 0e7d 00000C99 		.4byte	0xc99
+ 2221 0e81 01       		.byte	0x1
+ 2222 0e82 55       		.byte	0x55
+ 2223 0e83 1A       		.uleb128 0x1a
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 40
+
+
+ 2224 0e84 00000000 		.4byte	.LASF128
+ 2225 0e88 01       		.byte	0x1
+ 2226 0e89 76       		.byte	0x76
+ 2227 0e8a 000000BC 		.4byte	0xbc
+ 2228 0e8e 01       		.byte	0x1
+ 2229 0e8f 53       		.byte	0x53
+ 2230 0e90 16       		.uleb128 0x16
+ 2231 0e91 6D3100   		.string	"m1"
+ 2232 0e94 01       		.byte	0x1
+ 2233 0e95 77       		.byte	0x77
+ 2234 0e96 00000C8E 		.4byte	0xc8e
+ 2235 0e9a 00000000 		.4byte	.LLST3
+ 2236 0e9e 00       		.byte	0
+ 2237 0e9f 00       		.byte	0
+ 2238              		.section	.debug_abbrev,"",@progbits
+ 2239              	.Ldebug_abbrev0:
+ 2240 0000 01       		.uleb128 0x1
+ 2241 0001 11       		.uleb128 0x11
+ 2242 0002 01       		.byte	0x1
+ 2243 0003 25       		.uleb128 0x25
+ 2244 0004 0E       		.uleb128 0xe
+ 2245 0005 13       		.uleb128 0x13
+ 2246 0006 0B       		.uleb128 0xb
+ 2247 0007 03       		.uleb128 0x3
+ 2248 0008 0E       		.uleb128 0xe
+ 2249 0009 1B       		.uleb128 0x1b
+ 2250 000a 0E       		.uleb128 0xe
+ 2251 000b 55       		.uleb128 0x55
+ 2252 000c 06       		.uleb128 0x6
+ 2253 000d 11       		.uleb128 0x11
+ 2254 000e 01       		.uleb128 0x1
+ 2255 000f 52       		.uleb128 0x52
+ 2256 0010 01       		.uleb128 0x1
+ 2257 0011 10       		.uleb128 0x10
+ 2258 0012 06       		.uleb128 0x6
+ 2259 0013 00       		.byte	0
+ 2260 0014 00       		.byte	0
+ 2261 0015 02       		.uleb128 0x2
+ 2262 0016 24       		.uleb128 0x24
+ 2263 0017 00       		.byte	0
+ 2264 0018 0B       		.uleb128 0xb
+ 2265 0019 0B       		.uleb128 0xb
+ 2266 001a 3E       		.uleb128 0x3e
+ 2267 001b 0B       		.uleb128 0xb
+ 2268 001c 03       		.uleb128 0x3
+ 2269 001d 0E       		.uleb128 0xe
+ 2270 001e 00       		.byte	0
+ 2271 001f 00       		.byte	0
+ 2272 0020 03       		.uleb128 0x3
+ 2273 0021 16       		.uleb128 0x16
+ 2274 0022 00       		.byte	0
+ 2275 0023 03       		.uleb128 0x3
+ 2276 0024 0E       		.uleb128 0xe
+ 2277 0025 3A       		.uleb128 0x3a
+ 2278 0026 0B       		.uleb128 0xb
+ 2279 0027 3B       		.uleb128 0x3b
+ 2280 0028 0B       		.uleb128 0xb
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 41
+
+
+ 2281 0029 49       		.uleb128 0x49
+ 2282 002a 13       		.uleb128 0x13
+ 2283 002b 00       		.byte	0
+ 2284 002c 00       		.byte	0
+ 2285 002d 04       		.uleb128 0x4
+ 2286 002e 24       		.uleb128 0x24
+ 2287 002f 00       		.byte	0
+ 2288 0030 0B       		.uleb128 0xb
+ 2289 0031 0B       		.uleb128 0xb
+ 2290 0032 3E       		.uleb128 0x3e
+ 2291 0033 0B       		.uleb128 0xb
+ 2292 0034 03       		.uleb128 0x3
+ 2293 0035 08       		.uleb128 0x8
+ 2294 0036 00       		.byte	0
+ 2295 0037 00       		.byte	0
+ 2296 0038 05       		.uleb128 0x5
+ 2297 0039 35       		.uleb128 0x35
+ 2298 003a 00       		.byte	0
+ 2299 003b 49       		.uleb128 0x49
+ 2300 003c 13       		.uleb128 0x13
+ 2301 003d 00       		.byte	0
+ 2302 003e 00       		.byte	0
+ 2303 003f 06       		.uleb128 0x6
+ 2304 0040 01       		.uleb128 0x1
+ 2305 0041 01       		.byte	0x1
+ 2306 0042 49       		.uleb128 0x49
+ 2307 0043 13       		.uleb128 0x13
+ 2308 0044 01       		.uleb128 0x1
+ 2309 0045 13       		.uleb128 0x13
+ 2310 0046 00       		.byte	0
+ 2311 0047 00       		.byte	0
+ 2312 0048 07       		.uleb128 0x7
+ 2313 0049 21       		.uleb128 0x21
+ 2314 004a 00       		.byte	0
+ 2315 004b 49       		.uleb128 0x49
+ 2316 004c 13       		.uleb128 0x13
+ 2317 004d 2F       		.uleb128 0x2f
+ 2318 004e 0B       		.uleb128 0xb
+ 2319 004f 00       		.byte	0
+ 2320 0050 00       		.byte	0
+ 2321 0051 08       		.uleb128 0x8
+ 2322 0052 13       		.uleb128 0x13
+ 2323 0053 01       		.byte	0x1
+ 2324 0054 0B       		.uleb128 0xb
+ 2325 0055 0B       		.uleb128 0xb
+ 2326 0056 3A       		.uleb128 0x3a
+ 2327 0057 0B       		.uleb128 0xb
+ 2328 0058 3B       		.uleb128 0x3b
+ 2329 0059 05       		.uleb128 0x5
+ 2330 005a 01       		.uleb128 0x1
+ 2331 005b 13       		.uleb128 0x13
+ 2332 005c 00       		.byte	0
+ 2333 005d 00       		.byte	0
+ 2334 005e 09       		.uleb128 0x9
+ 2335 005f 0D       		.uleb128 0xd
+ 2336 0060 00       		.byte	0
+ 2337 0061 03       		.uleb128 0x3
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 42
+
+
+ 2338 0062 0E       		.uleb128 0xe
+ 2339 0063 3A       		.uleb128 0x3a
+ 2340 0064 0B       		.uleb128 0xb
+ 2341 0065 3B       		.uleb128 0x3b
+ 2342 0066 05       		.uleb128 0x5
+ 2343 0067 49       		.uleb128 0x49
+ 2344 0068 13       		.uleb128 0x13
+ 2345 0069 0B       		.uleb128 0xb
+ 2346 006a 0B       		.uleb128 0xb
+ 2347 006b 0D       		.uleb128 0xd
+ 2348 006c 0B       		.uleb128 0xb
+ 2349 006d 0C       		.uleb128 0xc
+ 2350 006e 0B       		.uleb128 0xb
+ 2351 006f 38       		.uleb128 0x38
+ 2352 0070 0A       		.uleb128 0xa
+ 2353 0071 00       		.byte	0
+ 2354 0072 00       		.byte	0
+ 2355 0073 0A       		.uleb128 0xa
+ 2356 0074 0D       		.uleb128 0xd
+ 2357 0075 00       		.byte	0
+ 2358 0076 03       		.uleb128 0x3
+ 2359 0077 08       		.uleb128 0x8
+ 2360 0078 3A       		.uleb128 0x3a
+ 2361 0079 0B       		.uleb128 0xb
+ 2362 007a 3B       		.uleb128 0x3b
+ 2363 007b 05       		.uleb128 0x5
+ 2364 007c 49       		.uleb128 0x49
+ 2365 007d 13       		.uleb128 0x13
+ 2366 007e 0B       		.uleb128 0xb
+ 2367 007f 0B       		.uleb128 0xb
+ 2368 0080 0D       		.uleb128 0xd
+ 2369 0081 0B       		.uleb128 0xb
+ 2370 0082 0C       		.uleb128 0xc
+ 2371 0083 0B       		.uleb128 0xb
+ 2372 0084 38       		.uleb128 0x38
+ 2373 0085 0A       		.uleb128 0xa
+ 2374 0086 00       		.byte	0
+ 2375 0087 00       		.byte	0
+ 2376 0088 0B       		.uleb128 0xb
+ 2377 0089 17       		.uleb128 0x17
+ 2378 008a 01       		.byte	0x1
+ 2379 008b 0B       		.uleb128 0xb
+ 2380 008c 0B       		.uleb128 0xb
+ 2381 008d 3A       		.uleb128 0x3a
+ 2382 008e 0B       		.uleb128 0xb
+ 2383 008f 3B       		.uleb128 0x3b
+ 2384 0090 05       		.uleb128 0x5
+ 2385 0091 01       		.uleb128 0x1
+ 2386 0092 13       		.uleb128 0x13
+ 2387 0093 00       		.byte	0
+ 2388 0094 00       		.byte	0
+ 2389 0095 0C       		.uleb128 0xc
+ 2390 0096 0D       		.uleb128 0xd
+ 2391 0097 00       		.byte	0
+ 2392 0098 03       		.uleb128 0x3
+ 2393 0099 08       		.uleb128 0x8
+ 2394 009a 3A       		.uleb128 0x3a
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 43
+
+
+ 2395 009b 0B       		.uleb128 0xb
+ 2396 009c 3B       		.uleb128 0x3b
+ 2397 009d 05       		.uleb128 0x5
+ 2398 009e 49       		.uleb128 0x49
+ 2399 009f 13       		.uleb128 0x13
+ 2400 00a0 00       		.byte	0
+ 2401 00a1 00       		.byte	0
+ 2402 00a2 0D       		.uleb128 0xd
+ 2403 00a3 13       		.uleb128 0x13
+ 2404 00a4 01       		.byte	0x1
+ 2405 00a5 03       		.uleb128 0x3
+ 2406 00a6 0E       		.uleb128 0xe
+ 2407 00a7 0B       		.uleb128 0xb
+ 2408 00a8 05       		.uleb128 0x5
+ 2409 00a9 3A       		.uleb128 0x3a
+ 2410 00aa 0B       		.uleb128 0xb
+ 2411 00ab 3B       		.uleb128 0x3b
+ 2412 00ac 05       		.uleb128 0x5
+ 2413 00ad 01       		.uleb128 0x1
+ 2414 00ae 13       		.uleb128 0x13
+ 2415 00af 00       		.byte	0
+ 2416 00b0 00       		.byte	0
+ 2417 00b1 0E       		.uleb128 0xe
+ 2418 00b2 0D       		.uleb128 0xd
+ 2419 00b3 00       		.byte	0
+ 2420 00b4 03       		.uleb128 0x3
+ 2421 00b5 0E       		.uleb128 0xe
+ 2422 00b6 3A       		.uleb128 0x3a
+ 2423 00b7 0B       		.uleb128 0xb
+ 2424 00b8 3B       		.uleb128 0x3b
+ 2425 00b9 05       		.uleb128 0x5
+ 2426 00ba 49       		.uleb128 0x49
+ 2427 00bb 13       		.uleb128 0x13
+ 2428 00bc 38       		.uleb128 0x38
+ 2429 00bd 0A       		.uleb128 0xa
+ 2430 00be 00       		.byte	0
+ 2431 00bf 00       		.byte	0
+ 2432 00c0 0F       		.uleb128 0xf
+ 2433 00c1 21       		.uleb128 0x21
+ 2434 00c2 00       		.byte	0
+ 2435 00c3 49       		.uleb128 0x49
+ 2436 00c4 13       		.uleb128 0x13
+ 2437 00c5 2F       		.uleb128 0x2f
+ 2438 00c6 05       		.uleb128 0x5
+ 2439 00c7 00       		.byte	0
+ 2440 00c8 00       		.byte	0
+ 2441 00c9 10       		.uleb128 0x10
+ 2442 00ca 13       		.uleb128 0x13
+ 2443 00cb 01       		.byte	0x1
+ 2444 00cc 0B       		.uleb128 0xb
+ 2445 00cd 0B       		.uleb128 0xb
+ 2446 00ce 3A       		.uleb128 0x3a
+ 2447 00cf 0B       		.uleb128 0xb
+ 2448 00d0 3B       		.uleb128 0x3b
+ 2449 00d1 0B       		.uleb128 0xb
+ 2450 00d2 01       		.uleb128 0x1
+ 2451 00d3 13       		.uleb128 0x13
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 44
+
+
+ 2452 00d4 00       		.byte	0
+ 2453 00d5 00       		.byte	0
+ 2454 00d6 11       		.uleb128 0x11
+ 2455 00d7 0D       		.uleb128 0xd
+ 2456 00d8 00       		.byte	0
+ 2457 00d9 03       		.uleb128 0x3
+ 2458 00da 0E       		.uleb128 0xe
+ 2459 00db 3A       		.uleb128 0x3a
+ 2460 00dc 0B       		.uleb128 0xb
+ 2461 00dd 3B       		.uleb128 0x3b
+ 2462 00de 0B       		.uleb128 0xb
+ 2463 00df 49       		.uleb128 0x49
+ 2464 00e0 13       		.uleb128 0x13
+ 2465 00e1 38       		.uleb128 0x38
+ 2466 00e2 0A       		.uleb128 0xa
+ 2467 00e3 00       		.byte	0
+ 2468 00e4 00       		.byte	0
+ 2469 00e5 12       		.uleb128 0x12
+ 2470 00e6 0F       		.uleb128 0xf
+ 2471 00e7 00       		.byte	0
+ 2472 00e8 0B       		.uleb128 0xb
+ 2473 00e9 0B       		.uleb128 0xb
+ 2474 00ea 49       		.uleb128 0x49
+ 2475 00eb 13       		.uleb128 0x13
+ 2476 00ec 00       		.byte	0
+ 2477 00ed 00       		.byte	0
+ 2478 00ee 13       		.uleb128 0x13
+ 2479 00ef 26       		.uleb128 0x26
+ 2480 00f0 00       		.byte	0
+ 2481 00f1 49       		.uleb128 0x49
+ 2482 00f2 13       		.uleb128 0x13
+ 2483 00f3 00       		.byte	0
+ 2484 00f4 00       		.byte	0
+ 2485 00f5 14       		.uleb128 0x14
+ 2486 00f6 2E       		.uleb128 0x2e
+ 2487 00f7 01       		.byte	0x1
+ 2488 00f8 3F       		.uleb128 0x3f
+ 2489 00f9 0C       		.uleb128 0xc
+ 2490 00fa 03       		.uleb128 0x3
+ 2491 00fb 0E       		.uleb128 0xe
+ 2492 00fc 3A       		.uleb128 0x3a
+ 2493 00fd 0B       		.uleb128 0xb
+ 2494 00fe 3B       		.uleb128 0x3b
+ 2495 00ff 0B       		.uleb128 0xb
+ 2496 0100 27       		.uleb128 0x27
+ 2497 0101 0C       		.uleb128 0xc
+ 2498 0102 11       		.uleb128 0x11
+ 2499 0103 01       		.uleb128 0x1
+ 2500 0104 12       		.uleb128 0x12
+ 2501 0105 01       		.uleb128 0x1
+ 2502 0106 40       		.uleb128 0x40
+ 2503 0107 0A       		.uleb128 0xa
+ 2504 0108 9742     		.uleb128 0x2117
+ 2505 010a 0C       		.uleb128 0xc
+ 2506 010b 01       		.uleb128 0x1
+ 2507 010c 13       		.uleb128 0x13
+ 2508 010d 00       		.byte	0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 45
+
+
+ 2509 010e 00       		.byte	0
+ 2510 010f 15       		.uleb128 0x15
+ 2511 0110 05       		.uleb128 0x5
+ 2512 0111 00       		.byte	0
+ 2513 0112 03       		.uleb128 0x3
+ 2514 0113 0E       		.uleb128 0xe
+ 2515 0114 3A       		.uleb128 0x3a
+ 2516 0115 0B       		.uleb128 0xb
+ 2517 0116 3B       		.uleb128 0x3b
+ 2518 0117 0B       		.uleb128 0xb
+ 2519 0118 49       		.uleb128 0x49
+ 2520 0119 13       		.uleb128 0x13
+ 2521 011a 02       		.uleb128 0x2
+ 2522 011b 0A       		.uleb128 0xa
+ 2523 011c 00       		.byte	0
+ 2524 011d 00       		.byte	0
+ 2525 011e 16       		.uleb128 0x16
+ 2526 011f 34       		.uleb128 0x34
+ 2527 0120 00       		.byte	0
+ 2528 0121 03       		.uleb128 0x3
+ 2529 0122 08       		.uleb128 0x8
+ 2530 0123 3A       		.uleb128 0x3a
+ 2531 0124 0B       		.uleb128 0xb
+ 2532 0125 3B       		.uleb128 0x3b
+ 2533 0126 0B       		.uleb128 0xb
+ 2534 0127 49       		.uleb128 0x49
+ 2535 0128 13       		.uleb128 0x13
+ 2536 0129 02       		.uleb128 0x2
+ 2537 012a 06       		.uleb128 0x6
+ 2538 012b 00       		.byte	0
+ 2539 012c 00       		.byte	0
+ 2540 012d 17       		.uleb128 0x17
+ 2541 012e 2E       		.uleb128 0x2e
+ 2542 012f 01       		.byte	0x1
+ 2543 0130 3F       		.uleb128 0x3f
+ 2544 0131 0C       		.uleb128 0xc
+ 2545 0132 03       		.uleb128 0x3
+ 2546 0133 0E       		.uleb128 0xe
+ 2547 0134 3A       		.uleb128 0x3a
+ 2548 0135 0B       		.uleb128 0xb
+ 2549 0136 3B       		.uleb128 0x3b
+ 2550 0137 0B       		.uleb128 0xb
+ 2551 0138 27       		.uleb128 0x27
+ 2552 0139 0C       		.uleb128 0xc
+ 2553 013a 49       		.uleb128 0x49
+ 2554 013b 13       		.uleb128 0x13
+ 2555 013c 11       		.uleb128 0x11
+ 2556 013d 01       		.uleb128 0x1
+ 2557 013e 12       		.uleb128 0x12
+ 2558 013f 01       		.uleb128 0x1
+ 2559 0140 40       		.uleb128 0x40
+ 2560 0141 0A       		.uleb128 0xa
+ 2561 0142 9742     		.uleb128 0x2117
+ 2562 0144 0C       		.uleb128 0xc
+ 2563 0145 01       		.uleb128 0x1
+ 2564 0146 13       		.uleb128 0x13
+ 2565 0147 00       		.byte	0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 46
+
+
+ 2566 0148 00       		.byte	0
+ 2567 0149 18       		.uleb128 0x18
+ 2568 014a 05       		.uleb128 0x5
+ 2569 014b 00       		.byte	0
+ 2570 014c 03       		.uleb128 0x3
+ 2571 014d 0E       		.uleb128 0xe
+ 2572 014e 3A       		.uleb128 0x3a
+ 2573 014f 0B       		.uleb128 0xb
+ 2574 0150 3B       		.uleb128 0x3b
+ 2575 0151 0B       		.uleb128 0xb
+ 2576 0152 49       		.uleb128 0x49
+ 2577 0153 13       		.uleb128 0x13
+ 2578 0154 02       		.uleb128 0x2
+ 2579 0155 06       		.uleb128 0x6
+ 2580 0156 00       		.byte	0
+ 2581 0157 00       		.byte	0
+ 2582 0158 19       		.uleb128 0x19
+ 2583 0159 2E       		.uleb128 0x2e
+ 2584 015a 01       		.byte	0x1
+ 2585 015b 3F       		.uleb128 0x3f
+ 2586 015c 0C       		.uleb128 0xc
+ 2587 015d 03       		.uleb128 0x3
+ 2588 015e 0E       		.uleb128 0xe
+ 2589 015f 3A       		.uleb128 0x3a
+ 2590 0160 0B       		.uleb128 0xb
+ 2591 0161 3B       		.uleb128 0x3b
+ 2592 0162 0B       		.uleb128 0xb
+ 2593 0163 27       		.uleb128 0x27
+ 2594 0164 0C       		.uleb128 0xc
+ 2595 0165 11       		.uleb128 0x11
+ 2596 0166 01       		.uleb128 0x1
+ 2597 0167 12       		.uleb128 0x12
+ 2598 0168 01       		.uleb128 0x1
+ 2599 0169 40       		.uleb128 0x40
+ 2600 016a 0A       		.uleb128 0xa
+ 2601 016b 9742     		.uleb128 0x2117
+ 2602 016d 0C       		.uleb128 0xc
+ 2603 016e 00       		.byte	0
+ 2604 016f 00       		.byte	0
+ 2605 0170 1A       		.uleb128 0x1a
+ 2606 0171 34       		.uleb128 0x34
+ 2607 0172 00       		.byte	0
+ 2608 0173 03       		.uleb128 0x3
+ 2609 0174 0E       		.uleb128 0xe
+ 2610 0175 3A       		.uleb128 0x3a
+ 2611 0176 0B       		.uleb128 0xb
+ 2612 0177 3B       		.uleb128 0x3b
+ 2613 0178 0B       		.uleb128 0xb
+ 2614 0179 49       		.uleb128 0x49
+ 2615 017a 13       		.uleb128 0x13
+ 2616 017b 02       		.uleb128 0x2
+ 2617 017c 0A       		.uleb128 0xa
+ 2618 017d 00       		.byte	0
+ 2619 017e 00       		.byte	0
+ 2620 017f 00       		.byte	0
+ 2621              		.section	.debug_loc,"",@progbits
+ 2622              	.Ldebug_loc0:
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 47
+
+
+ 2623              	.LLST0:
+ 2624 0000 00000000 		.4byte	.LVL0
+ 2625 0004 00000000 		.4byte	.LVL1
+ 2626 0008 0002     		.2byte	0x2
+ 2627 000a 30       		.byte	0x30
+ 2628 000b 9F       		.byte	0x9f
+ 2629 000c 00000000 		.4byte	.LVL2
+ 2630 0010 00000000 		.4byte	.LVL3
+ 2631 0014 0002     		.2byte	0x2
+ 2632 0016 30       		.byte	0x30
+ 2633 0017 9F       		.byte	0x9f
+ 2634 0018 00000000 		.4byte	0
+ 2635 001c 00000000 		.4byte	0
+ 2636              	.LLST1:
+ 2637 0020 00000000 		.4byte	.LVL4
+ 2638 0024 00000000 		.4byte	.LVL5
+ 2639 0028 0001     		.2byte	0x1
+ 2640 002a 53       		.byte	0x53
+ 2641 002b 00000000 		.4byte	.LVL5
+ 2642 002f 00000000 		.4byte	.LFE5
+ 2643 0033 0004     		.2byte	0x4
+ 2644 0035 F3       		.byte	0xf3
+ 2645 0036 01       		.uleb128 0x1
+ 2646 0037 53       		.byte	0x53
+ 2647 0038 9F       		.byte	0x9f
+ 2648 0039 00000000 		.4byte	0
+ 2649 003d 00000000 		.4byte	0
+ 2650              	.LLST2:
+ 2651 0041 00000000 		.4byte	.LVL7
+ 2652 0045 00000000 		.4byte	.LVL8
+ 2653 0049 0001     		.2byte	0x1
+ 2654 004b 53       		.byte	0x53
+ 2655 004c 00000000 		.4byte	.LVL8
+ 2656 0050 00000000 		.4byte	.LFE7
+ 2657 0054 0004     		.2byte	0x4
+ 2658 0056 F3       		.byte	0xf3
+ 2659 0057 01       		.uleb128 0x1
+ 2660 0058 53       		.byte	0x53
+ 2661 0059 9F       		.byte	0x9f
+ 2662 005a 00000000 		.4byte	0
+ 2663 005e 00000000 		.4byte	0
+ 2664              	.LLST3:
+ 2665 0062 00000000 		.4byte	.LVL8
+ 2666 0066 00000000 		.4byte	.LVL9
+ 2667 006a 0004     		.2byte	0x4
+ 2668 006c 0B       		.byte	0xb
+ 2669 006d 8000     		.2byte	0x8000
+ 2670 006f 9F       		.byte	0x9f
+ 2671 0070 00000000 		.4byte	.LVL9
+ 2672 0074 00000000 		.4byte	.LFE7
+ 2673 0078 0001     		.2byte	0x1
+ 2674 007a 57       		.byte	0x57
+ 2675 007b 00000000 		.4byte	0
+ 2676 007f 00000000 		.4byte	0
+ 2677              		.section	.debug_aranges,"",@progbits
+ 2678 0000 00000034 		.4byte	0x34
+ 2679 0004 0002     		.2byte	0x2
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 48
+
+
+ 2680 0006 00000000 		.4byte	.Ldebug_info0
+ 2681 000a 04       		.byte	0x4
+ 2682 000b 00       		.byte	0
+ 2683 000c 0000     		.2byte	0
+ 2684 000e 0000     		.2byte	0
+ 2685 0010 00000000 		.4byte	.LFB4
+ 2686 0014 0000009E 		.4byte	.LFE4-.LFB4
+ 2687 0018 00000000 		.4byte	.LFB5
+ 2688 001c 00000004 		.4byte	.LFE5-.LFB5
+ 2689 0020 00000000 		.4byte	.LFB6
+ 2690 0024 00000002 		.4byte	.LFE6-.LFB6
+ 2691 0028 00000000 		.4byte	.LFB7
+ 2692 002c 00000028 		.4byte	.LFE7-.LFB7
+ 2693 0030 00000000 		.4byte	0
+ 2694 0034 00000000 		.4byte	0
+ 2695              		.section	.debug_ranges,"",@progbits
+ 2696              	.Ldebug_ranges0:
+ 2697 0000 00000000 		.4byte	.LFB4
+ 2698 0004 00000000 		.4byte	.LFE4
+ 2699 0008 00000000 		.4byte	.LFB5
+ 2700 000c 00000000 		.4byte	.LFE5
+ 2701 0010 00000000 		.4byte	.LFB6
+ 2702 0014 00000000 		.4byte	.LFE6
+ 2703 0018 00000000 		.4byte	.LFB7
+ 2704 001c 00000000 		.4byte	.LFE7
+ 2705 0020 00000000 		.4byte	0
+ 2706 0024 00000000 		.4byte	0
+ 2707              		.section	.debug_line,"",@progbits
+ 2708              	.Ldebug_line0:
+ 2709 0000 00000291 		.section	.debug_str,"MS",@progbits,1
+ 2709      00020000 
+ 2709      022E0201 
+ 2709      FB0E0D00 
+ 2709      01010101 
+ 2710              	.LASF51:
+ 2711 0000 49524545 		.string	"IREE3"
+ 2711      3300
+ 2712              	.LASF50:
+ 2713 0006 49524545 		.string	"IREE4"
+ 2713      3400
+ 2714              	.LASF49:
+ 2715 000c 49524545 		.string	"IREE5"
+ 2715      3500
+ 2716              	.LASF25:
+ 2717 0012 4D494E4F 		.string	"MINOR_MASK"
+ 2717      525F4D41 
+ 2717      534B00
+ 2718              	.LASF81:
+ 2719 001d 44495352 		.string	"DISR0"
+ 2719      3000
+ 2720              	.LASF91:
+ 2721 0023 49464552 		.string	"IFER0"
+ 2721      3000
+ 2722              	.LASF113:
+ 2723 0029 6D736372 		.string	"mscr_value"
+ 2723      5F76616C 
+ 2723      756500
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 49
+
+
+ 2724              	.LASF2:
+ 2725 0034 5F5F7569 		.string	"__uint8_t"
+ 2725      6E74385F 
+ 2725      7400
+ 2726              	.LASF128:
+ 2727 003e 7063725F 		.string	"pcr_index"
+ 2727      696E6465 
+ 2727      7800
+ 2728              	.LASF108:
+ 2729 0048 696F706F 		.string	"ioportmask_t"
+ 2729      72746D61 
+ 2729      736B5F74 
+ 2729      00
+ 2730              	.LASF102:
+ 2731 0055 4144525F 		.string	"ADR_reserved11"
+ 2731      72657365 
+ 2731      72766564 
+ 2731      313100
+ 2732              	.LASF104:
+ 2733 0064 4144525F 		.string	"ADR_reserved12"
+ 2733      72657365 
+ 2733      72766564 
+ 2733      313200
+ 2734              	.LASF106:
+ 2735 0073 4144525F 		.string	"ADR_reserved13"
+ 2735      72657365 
+ 2735      72766564 
+ 2735      313300
+ 2736              	.LASF11:
+ 2737 0082 6C6F6E67 		.string	"long long unsigned int"
+ 2737      206C6F6E 
+ 2737      6720756E 
+ 2737      7369676E 
+ 2737      65642069 
+ 2738              	.LASF114:
+ 2739 0099 7370635F 		.string	"spc_mscr_io_init_t"
+ 2739      6D736372 
+ 2739      5F696F5F 
+ 2739      696E6974 
+ 2739      5F7400
+ 2740              	.LASF117:
+ 2741 00ac 6D736372 		.string	"mscr_io"
+ 2741      5F696F00 
+ 2742              	.LASF42:
+ 2743 00b4 45495245 		.string	"EIRE0"
+ 2743      3000
+ 2744              	.LASF41:
+ 2745 00ba 45495245 		.string	"EIRE1"
+ 2745      3100
+ 2746              	.LASF40:
+ 2747 00c0 45495245 		.string	"EIRE2"
+ 2747      3200
+ 2748              	.LASF39:
+ 2749 00c6 45495245 		.string	"EIRE3"
+ 2749      3300
+ 2750              	.LASF38:
+ 2751 00cc 45495245 		.string	"EIRE4"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 50
+
+
+ 2751      3400
+ 2752              	.LASF37:
+ 2753 00d2 45495245 		.string	"EIRE5"
+ 2753      3500
+ 2754              	.LASF14:
+ 2755 00d8 696E7431 		.string	"int16_t"
+ 2755      365F7400 
+ 2756              	.LASF10:
+ 2757 00e0 6C6F6E67 		.string	"long long int"
+ 2757      206C6F6E 
+ 2757      6720696E 
+ 2757      7400
+ 2758              	.LASF0:
+ 2759 00ee 7369676E 		.string	"signed char"
+ 2759      65642063 
+ 2759      68617200 
+ 2760              	.LASF134:
+ 2761 00fa 5F70616C 		.string	"_pal_setgroupmode"
+ 2761      5F736574 
+ 2761      67726F75 
+ 2761      706D6F64 
+ 2761      6500
+ 2762              	.LASF57:
+ 2763 010c 49464545 		.string	"IFEE3"
+ 2763      3300
+ 2764              	.LASF94:
+ 2765 0112 49464350 		.string	"IFCPR"
+ 2765      5200
+ 2766              	.LASF110:
+ 2767 0118 696F706F 		.string	"ioportid_t"
+ 2767      72746964 
+ 2767      5F7400
+ 2768              	.LASF7:
+ 2769 0123 6C6F6E67 		.string	"long int"
+ 2769      20696E74 
+ 2769      00
+ 2770              	.LASF67:
+ 2771 012c 4D415843 		.string	"MAXCNT"
+ 2771      4E5400
+ 2772              	.LASF70:
+ 2773 0133 4F455243 		.string	"OERC"
+ 2773      00
+ 2774              	.LASF15:
+ 2775 0138 75696E74 		.string	"uint16_t"
+ 2775      31365F74 
+ 2775      00
+ 2776              	.LASF83:
+ 2777 0141 44495245 		.string	"DIRER0"
+ 2777      523000
+ 2778              	.LASF24:
+ 2779 0148 4D414A4F 		.string	"MAJOR_MASK"
+ 2779      525F4D41 
+ 2779      534B00
+ 2780              	.LASF8:
+ 2781 0153 5F5F7569 		.string	"__uint32_t"
+ 2781      6E743332 
+ 2781      5F7400
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 51
+
+
+ 2782              	.LASF101:
+ 2783 015e 47504449 		.string	"GPDI"
+ 2783      00
+ 2784              	.LASF115:
+ 2785 0163 6D736372 		.string	"mscr_io_index"
+ 2785      5F696F5F 
+ 2785      696E6465 
+ 2785      7800
+ 2786              	.LASF99:
+ 2787 0171 4750444F 		.string	"GPDO"
+ 2787      00
+ 2788              	.LASF30:
+ 2789 0176 46414D49 		.string	"FAMILYNUM"
+ 2789      4C594E55 
+ 2789      4D00
+ 2790              	.LASF73:
+ 2791 0180 5050444F 		.string	"PPDO"
+ 2791      00
+ 2792              	.LASF121:
+ 2793 0185 706F7274 		.string	"port"
+ 2793      00
+ 2794              	.LASF75:
+ 2795 018a 4D41534B 		.string	"MASK"
+ 2795      00
+ 2796              	.LASF60:
+ 2797 018f 49464545 		.string	"IFEE0"
+ 2797      3000
+ 2798              	.LASF59:
+ 2799 0195 49464545 		.string	"IFEE1"
+ 2799      3100
+ 2800              	.LASF58:
+ 2801 019b 49464545 		.string	"IFEE2"
+ 2801      3200
+ 2802              	.LASF27:
+ 2803 01a1 464C4153 		.string	"FLASH_SIZE_1"
+ 2803      485F5349 
+ 2803      5A455F31 
+ 2803      00
+ 2804              	.LASF56:
+ 2805 01ae 49464545 		.string	"IFEE4"
+ 2805      3400
+ 2806              	.LASF55:
+ 2807 01b4 49464545 		.string	"IFEE5"
+ 2807      3500
+ 2808              	.LASF12:
+ 2809 01ba 756E7369 		.string	"unsigned int"
+ 2809      676E6564 
+ 2809      20696E74 
+ 2809      00
+ 2810              	.LASF48:
+ 2811 01c7 44495253 		.string	"DIRS0"
+ 2811      3000
+ 2812              	.LASF47:
+ 2813 01cd 44495253 		.string	"DIRS1"
+ 2813      3100
+ 2814              	.LASF46:
+ 2815 01d3 44495253 		.string	"DIRS2"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 52
+
+
+ 2815      3200
+ 2816              	.LASF45:
+ 2817 01d9 44495253 		.string	"DIRS3"
+ 2817      3300
+ 2818              	.LASF44:
+ 2819 01df 44495253 		.string	"DIRS4"
+ 2819      3400
+ 2820              	.LASF43:
+ 2821 01e5 44495253 		.string	"DIRS5"
+ 2821      3500
+ 2822              	.LASF9:
+ 2823 01eb 6C6F6E67 		.string	"long unsigned int"
+ 2823      20756E73 
+ 2823      69676E65 
+ 2823      6420696E 
+ 2823      7400
+ 2824              	.LASF116:
+ 2825 01fd 7370635F 		.string	"spc_mscr_mux_init_t"
+ 2825      6D736372 
+ 2825      5F6D7578 
+ 2825      5F696E69 
+ 2825      745F7400 
+ 2826              	.LASF6:
+ 2827 0211 73686F72 		.string	"short unsigned int"
+ 2827      7420756E 
+ 2827      7369676E 
+ 2827      65642069 
+ 2827      6E7400
+ 2828              	.LASF78:
+ 2829 0224 4D494452 		.string	"MIDR1"
+ 2829      3100
+ 2830              	.LASF87:
+ 2831 022a 49524545 		.string	"IREER0"
+ 2831      523000
+ 2832              	.LASF85:
+ 2833 0231 44495253 		.string	"DIRSR0"
+ 2833      523000
+ 2834              	.LASF74:
+ 2835 0238 50504449 		.string	"PPDI"
+ 2835      00
+ 2836              	.LASF23:
+ 2837 023d 756E7573 		.string	"unused_0"
+ 2837      65645F30 
+ 2837      00
+ 2838              	.LASF29:
+ 2839 0246 756E7573 		.string	"unused_1"
+ 2839      65645F31 
+ 2839      00
+ 2840              	.LASF69:
+ 2841 024f 756E7573 		.string	"unused_2"
+ 2841      65645F32 
+ 2841      00
+ 2842              	.LASF20:
+ 2843 0258 7675696E 		.string	"vuint32_t"
+ 2843      7433325F 
+ 2843      7400
+ 2844              	.LASF126:
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 53
+
+
+ 2845 0262 62697473 		.string	"bits"
+ 2845      00
+ 2846              	.LASF133:
+ 2847 0267 5F70616C 		.string	"_pal_readgroup"
+ 2847      5F726561 
+ 2847      6467726F 
+ 2847      757000
+ 2848              	.LASF21:
+ 2849 0276 73697A65 		.string	"sizetype"
+ 2849      74797065 
+ 2849      00
+ 2850              	.LASF26:
+ 2851 027f 53555050 		.string	"SUPPLIER"
+ 2851      4C494552 
+ 2851      00
+ 2852              	.LASF71:
+ 2853 0288 57504445 		.string	"WPDE"
+ 2853      00
+ 2854              	.LASF105:
+ 2855 028d 50475044 		.string	"PGPDI"
+ 2855      4900
+ 2856              	.LASF103:
+ 2857 0293 50475044 		.string	"PGPDO"
+ 2857      4F00
+ 2858              	.LASF125:
+ 2859 0299 5F70616C 		.string	"_pal_writegroup"
+ 2859      5F777269 
+ 2859      74656772 
+ 2859      6F757000 
+ 2860              	.LASF90:
+ 2861 02a9 4144525F 		.string	"ADR_reserved6"
+ 2861      72657365 
+ 2861      72766564 
+ 2861      3600
+ 2862              	.LASF95:
+ 2863 02b7 4144525F 		.string	"ADR_reserved8"
+ 2863      72657365 
+ 2863      72766564 
+ 2863      3800
+ 2864              	.LASF98:
+ 2865 02c5 4144525F 		.string	"ADR_reserved9"
+ 2865      72657365 
+ 2865      72766564 
+ 2865      3900
+ 2866              	.LASF96:
+ 2867 02d3 4D534352 		.string	"MSCR_IO"
+ 2867      5F494F00 
+ 2868              	.LASF124:
+ 2869 02db 70616C5F 		.string	"pal_init"
+ 2869      696E6974 
+ 2869      00
+ 2870              	.LASF131:
+ 2871 02e4 443A5C57 		.string	"D:\\Workplace\\KSC_LDC"
+ 2871      6F726B70 
+ 2871      6C616365 
+ 2871      5C4B5343 
+ 2871      5F4C4443 
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 54
+
+
+ 2872              	.LASF93:
+ 2873 02f9 49464D43 		.string	"IFMCR"
+ 2873      5200
+ 2874              	.LASF1:
+ 2875 02ff 756E7369 		.string	"unsigned char"
+ 2875      676E6564 
+ 2875      20636861 
+ 2875      7200
+ 2876              	.LASF132:
+ 2877 030d 5349554C 		.string	"SIUL2_tag"
+ 2877      325F7461 
+ 2877      6700
+ 2878              	.LASF4:
+ 2879 0317 73686F72 		.string	"short int"
+ 2879      7420696E 
+ 2879      7400
+ 2880              	.LASF76:
+ 2881 0321 4D505044 		.string	"MPPDO"
+ 2881      4F00
+ 2882              	.LASF17:
+ 2883 0327 75696E74 		.string	"uint_fast8_t"
+ 2883      5F666173 
+ 2883      74385F74 
+ 2883      00
+ 2884              	.LASF18:
+ 2885 0334 7675696E 		.string	"vuint8_t"
+ 2885      74385F74 
+ 2885      00
+ 2886              	.LASF112:
+ 2887 033d 6770646F 		.string	"gpdo_value"
+ 2887      5F76616C 
+ 2887      756500
+ 2888              	.LASF129:
+ 2889 0348 474E5520 		.ascii	"GNU C 4.9.4 20160726 (Sat May 27 11:09:55 CDT 2017      "
+ 2889      4320342E 
+ 2889      392E3420 
+ 2889      32303136 
+ 2889      30373236 
+ 2890 0380 20202062 		.string	"   build.sh rev=gd8b6c20 s=F494 ELe200 -V release_gd8b6c20_build_Fed_ELe200_ML0) -mcall-s
+ 2890      75696C64 
+ 2890      2E736820 
+ 2890      7265763D 
+ 2890      67643862 
+ 2891              	.LASF16:
+ 2892 0481 75696E74 		.string	"uint32_t"
+ 2892      33325F74 
+ 2892      00
+ 2893              	.LASF89:
+ 2894 048a 49464545 		.string	"IFEER0"
+ 2894      523000
+ 2895              	.LASF68:
+ 2896 0491 49464350 		.string	"IFCP"
+ 2896      00
+ 2897              	.LASF97:
+ 2898 0496 4D534352 		.string	"MSCR_MUX"
+ 2898      5F4D5558 
+ 2898      00
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 55
+
+
+ 2899              	.LASF127:
+ 2900 049f 6D6F6465 		.string	"mode"
+ 2900      00
+ 2901              	.LASF120:
+ 2902 04a4 636F6E66 		.string	"config"
+ 2902      696700
+ 2903              	.LASF5:
+ 2904 04ab 5F5F7569 		.string	"__uint16_t"
+ 2904      6E743136 
+ 2904      5F7400
+ 2905              	.LASF111:
+ 2906 04b6 6D736372 		.string	"mscr_index"
+ 2906      5F696E64 
+ 2906      657800
+ 2907              	.LASF123:
+ 2908 04c1 6F666673 		.string	"offset"
+ 2908      657400
+ 2909              	.LASF77:
+ 2910 04c8 4144525F 		.string	"ADR_reserved0"
+ 2910      72657365 
+ 2910      72766564 
+ 2910      3000
+ 2911              	.LASF80:
+ 2912 04d6 4144525F 		.string	"ADR_reserved1"
+ 2912      72657365 
+ 2912      72766564 
+ 2912      3100
+ 2913              	.LASF82:
+ 2914 04e4 4144525F 		.string	"ADR_reserved2"
+ 2914      72657365 
+ 2914      72766564 
+ 2914      3200
+ 2915              	.LASF84:
+ 2916 04f2 4144525F 		.string	"ADR_reserved3"
+ 2916      72657365 
+ 2916      72766564 
+ 2916      3300
+ 2917              	.LASF86:
+ 2918 0500 4144525F 		.string	"ADR_reserved4"
+ 2918      72657365 
+ 2918      72766564 
+ 2918      3400
+ 2919              	.LASF88:
+ 2920 050e 4144525F 		.string	"ADR_reserved5"
+ 2920      72657365 
+ 2920      72766564 
+ 2920      3500
+ 2921              	.LASF92:
+ 2922 051c 4144525F 		.string	"ADR_reserved7"
+ 2922      72657365 
+ 2922      72766564 
+ 2922      3700
+ 2923              	.LASF107:
+ 2924 052a 4D504750 		.string	"MPGPDO"
+ 2924      444F00
+ 2925              	.LASF28:
+ 2926 0531 464C4153 		.string	"FLASH_SIZE_2"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 56
+
+
+ 2926      485F5349 
+ 2926      5A455F32 
+ 2926      00
+ 2927              	.LASF122:
+ 2928 053e 6D61736B 		.string	"mask"
+ 2928      00
+ 2929              	.LASF118:
+ 2930 0543 6D736372 		.string	"mscr_mux"
+ 2930      5F6D7578 
+ 2930      00
+ 2931              	.LASF13:
+ 2932 054c 75696E74 		.string	"uint8_t"
+ 2932      385F7400 
+ 2933              	.LASF3:
+ 2934 0554 5F5F696E 		.string	"__int16_t"
+ 2934      7431365F 
+ 2934      7400
+ 2935              	.LASF72:
+ 2936 055e 57505545 		.string	"WPUE"
+ 2936      00
+ 2937              	.LASF100:
+ 2938 0563 4144525F 		.string	"ADR_reserved10"
+ 2938      72657365 
+ 2938      72766564 
+ 2938      313000
+ 2939              	.LASF66:
+ 2940 0572 49464530 		.string	"IFE0"
+ 2940      00
+ 2941              	.LASF65:
+ 2942 0577 49464531 		.string	"IFE1"
+ 2942      00
+ 2943              	.LASF64:
+ 2944 057c 49464532 		.string	"IFE2"
+ 2944      00
+ 2945              	.LASF63:
+ 2946 0581 49464533 		.string	"IFE3"
+ 2946      00
+ 2947              	.LASF62:
+ 2948 0586 49464534 		.string	"IFE4"
+ 2948      00
+ 2949              	.LASF61:
+ 2950 058b 49464535 		.string	"IFE5"
+ 2950      00
+ 2951              	.LASF79:
+ 2952 0590 4D494452 		.string	"MIDR2"
+ 2952      3200
+ 2953              	.LASF130:
+ 2954 0596 2E2F636F 		.string	"./components/spc570sxx_board_initialization_component_rla/lib/src/pal.c"
+ 2954      6D706F6E 
+ 2954      656E7473 
+ 2954      2F737063 
+ 2954      35373073 
+ 2955              	.LASF109:
+ 2956 05de 696F6D6F 		.string	"iomode_t"
+ 2956      64655F74 
+ 2956      00
+ 2957              	.LASF119:
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 57
+
+
+ 2958 05e7 50414C43 		.string	"PALConfig"
+ 2958      6F6E6669 
+ 2958      6700
+ 2959              	.LASF19:
+ 2960 05f1 7675696E 		.string	"vuint16_t"
+ 2960      7431365F 
+ 2960      7400
+ 2961              	.LASF36:
+ 2962 05fb 45494630 		.string	"EIF0"
+ 2962      00
+ 2963              	.LASF35:
+ 2964 0600 45494631 		.string	"EIF1"
+ 2964      00
+ 2965              	.LASF34:
+ 2966 0605 45494632 		.string	"EIF2"
+ 2966      00
+ 2967              	.LASF33:
+ 2968 060a 45494633 		.string	"EIF3"
+ 2968      00
+ 2969              	.LASF32:
+ 2970 060f 45494634 		.string	"EIF4"
+ 2970      00
+ 2971              	.LASF31:
+ 2972 0614 45494635 		.string	"EIF5"
+ 2972      00
+ 2973              	.LASF22:
+ 2974 0619 50415254 		.string	"PARTNUM"
+ 2974      4E554D00 
+ 2975              	.LASF54:
+ 2976 0621 49524545 		.string	"IREE0"
+ 2976      3000
+ 2977              	.LASF53:
+ 2978 0627 49524545 		.string	"IREE1"
+ 2978      3100
+ 2979              	.LASF52:
+ 2980 062d 49524545 		.string	"IREE2"
+ 2980      3200
+ 2981              		.ident	"GCC: (GNU) 4.9.4 20160726 (Sat May 27 11:09:55 CDT 2017         build.sh rev=gd8b6c20 s=F4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s 			page 58
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 pal.c
+C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s:10     .text.pal_init:00000000 pal_init
+C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s:99     .text._pal_readgroup:00000000 _pal_readgroup
+C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s:116    .text._pal_writegroup:00000000 _pal_writegroup
+C:\Users\duchu\AppData\Local\Temp\ccUSHh50.s:130    .text._pal_setgroupmode:00000000 _pal_setgroupmode
+
+NO UNDEFINED SYMBOLS

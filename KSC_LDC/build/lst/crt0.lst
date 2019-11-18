@@ -1,0 +1,180 @@
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccsirxZY.s 			page 1
+
+
+   1              	# 1 "./components/spc570sxx_platform_component_rla/lib/src/crt0.s"
+   1              	/****************************************************************************
+   0              	
+   0              	
+   2              	*
+   3              	* Copyright © 2015-2019 STMicroelectronics - All Rights Reserved
+   4              	*
+   5              	* License terms: STMicroelectronics Proprietary in accordance with licensing
+   6              	* terms SLA0089 at www.st.com.
+   7              	* 
+   8              	* THIS SOFTWARE IS DISTRIBUTED "AS IS," AND ALL WARRANTIES ARE DISCLAIMED, 
+   9              	* INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  10              	*
+  11              	* EVALUATION ONLY - NOT FOR USE IN PRODUCTION
+  12              	*****************************************************************************/
+  13              	/**
+  14              	 * @file    crt0.s
+  15              	 * @brief   Generic PowerPC startup file for GCC.
+  16              	 *
+  17              	 * @addtogroup PPC_STARTUP
+  18              	 * @{
+  19              	 */
+  20              	
+  21              	#include "boot.h"
+   1              	/****************************************************************************
+  22              	#include "toolchain.h"
+   1              	/****************************************************************************
+  23              	
+  24              	#ifndef __CACHE_INIT
+  25              	/* Caches not enabled or not present
+  26              	 * Nop instruction.
+  27              	 */
+  28              	#define __CACHE_INIT	e_ori 0, 0, 0
+  29              	#endif
+  30              	
+  31              	#if !defined(__DOXYGEN__)
+  32              	
+  33              	        .section    .crt0, "axv"
+  34              	        .align		2
+  35              	        .globl      _boot_address
+  36              	        .type       _boot_address, @function
+  37              	_VLE
+  38              	_boot_address:
+  39              	        /*
+  40              	         * Stack setup.
+  41              	         */
+  42 0000 7020E000 			e_lis       %r1, HI(__process_stack_end__)
+  43 0004 7020C000 	        e_or2i      %r1, LO(__process_stack_end__)
+  44 0008 4800     	        se_li       %r0, 0
+  45 000a 180106F8 	        e_stwu      %r0, -8(%r1)
+  46              	        /*
+  47              	         * Small sections registers initialization.
+  48              	         */
+  49 000e 7040E000 	        e_lis       %r2,  HI(__sdata2_start__)
+  50 0012 7040C000 	        e_or2i      %r2,  LO(__sdata2_start__)
+  51 0016 71A0E000 	        e_lis       %r13, HI(__sdata_start__)
+  52 001a 71A0C000 	        e_or2i      %r13, LO(__sdata_start__)
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccsirxZY.s 			page 2
+
+
+  53              			/* 
+  54              			 * Cache initialization.
+  55              			 */
+  56 001e 1800D000 			__CACHE_INIT
+  57              	        /*
+  58              	         * Early initialization.
+  59              	         */
+  60 0022 78000001 	        e_bl        __early_init
+  61              	        /*
+  62              	         * BSS clearing.
+  63              	         */
+  64 0026 7080E000 	        e_lis       %r4, HI(__bss_start__)
+  65 002a 7080C000 	        e_or2i      %r4, LO(__bss_start__)
+  66 002e 70A0E000 	        e_lis       %r5, HI(__bss_end__)
+  67 0032 70A0C000 	        e_or2i      %r5, LO(__bss_end__)
+  68 0036 4807     	        se_li       %r7, 0
+  69              	.bssloop:
+  70 0038 7C042840 	        cmpl        cr0, %r4, %r5
+  71 003c E004     	        se_bge      .bssend
+  72 003e D074     	        se_stw      %r7, 0(%r4)
+  73 0040 2034     	        se_addi     %r4, 4
+  74 0042 E8FB     	        se_b        .bssloop
+  75              	.bssend:
+  76              	
+  77              	#if !BOOT_LOAD_IN_RAM
+  78              	        /*
+  79              	         * DATA initialization.
+  80              	         */
+  81 0044 7080E000 	        e_lis       %r4, HI(__romdata_start__)
+  82 0048 7080C000 	        e_or2i      %r4, LO(__romdata_start__)
+  83 004c 70A0E000 	        e_lis       %r5, HI(__data_start__)
+  84 0050 70A0C000 	        e_or2i      %r5, LO(__data_start__)
+  85 0054 70C0E000 	        e_lis       %r6, HI(__data_end__)
+  86 0058 70C0C000 	        e_or2i      %r6, LO(__data_end__)
+  87              	.dataloop:
+  88 005c 7C053040 	        cmpl        cr0, %r5, %r6
+  89 0060 E006     	        se_bge      .dataend
+  90 0062 C074     	        se_lwz      %r7, 0(%r4)
+  91 0064 2034     	        se_addi     %r4, 4
+  92 0066 D075     	        se_stw      %r7, 0(%r5)
+  93 0068 2035     	        se_addi     %r5, 4
+  94 006a E8F9     	        se_b        .dataloop
+  95              	.dataend:
+  96              	#endif
+  97              	
+  98              	        /*
+  99              	         * Late initialization.
+ 100              	         */
+ 101 006c 78000001 	        e_bl        __late_init
+ 102              	        /*
+ 103              	         * Main program invocation.
+ 104              	         */
+ 105 0070 78000001 	        e_bl        main
+ 106 0074 78000000 	        e_b         _main_exit_handler
+ 107              	
+ 108              	        /*
+ 109              	         * Default main exit code, infinite loop.
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccsirxZY.s 			page 3
+
+
+ 110              	         */
+ 111              	        .weak       _main_exit_handler
+ 112              	        .globl      _main_exit_handler
+ 113              	        .type       _main_exit_handler, @function
+ 114              	_main_exit_handler:
+ 115 0078 78000000 	        e_b         _main_exit_handler
+ 116              	
+ 117              	        /*
+ 118              	         * Default early initialization code, none.
+ 119              	         */
+ 120              	        .weak       __early_init
+ 121              	        .globl      __early_init
+ 122              	        .type       __early_init, @function
+ 123              	__early_init:
+ 124 007c 0004     	        se_blr
+ 125              	
+ 126              	        /*
+ 127              	         * Default late initialization code, none.
+ 128              	         */
+ 129              	        .weak       __late_init
+ 130              	        .globl      __late_init
+ 131              	        .type       __late_init, @function
+ 132              	__late_init:
+ 133 007e 0004     	        se_blr
+ 134              	
+ 135              	        /*
+ 136              	         * __eabi code, fix for freegcc 4.9.4.
+ 137              	         */
+ 138              	        .weak       __eabi
+ 139              	        .globl      __eabi
+ 140              	        .type       __eabi, @function
+ 141              	__eabi:
+ 142 0080 0004     	        se_blr
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccsirxZY.s 			page 4
+
+
+DEFINED SYMBOLS
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:38     .crt0:00000000 _boot_address
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:123    .crt0:0000007c __early_init
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:69     .crt0:00000038 .bssloop
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:75     .crt0:00000044 .bssend
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:87     .crt0:0000005c .dataloop
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:95     .crt0:0000006c .dataend
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:132    .crt0:0000007e __late_init
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:114    .crt0:00000078 _main_exit_handler
+./components/spc570sxx_platform_component_rla/lib/src/crt0.s:141    .crt0:00000080 __eabi
+
+UNDEFINED SYMBOLS
+__process_stack_end__
+__sdata2_start__
+__sdata_start__
+__bss_start__
+__bss_end__
+__romdata_start__
+__data_start__
+__data_end__
+main

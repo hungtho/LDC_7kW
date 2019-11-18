@@ -1,0 +1,509 @@
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 1
+
+
+   1              		.file	"components.c"
+   2              		.section	".text","axv"
+   3              	.Ltext0:
+   4              		.cfi_sections	.debug_frame
+   5              		.section	.text.componentsInit,"axv",@progbits
+   6              		.align 1
+   7              		.p2align 4,,15
+   8              		.globl componentsInit
+   9              		.type	componentsInit, @function
+  10              	componentsInit:
+  11              	.LFB4:
+  12              		.file 1 "./components/components.c"
+  13              		.loc 1 36 0
+  14              		.cfi_startproc
+  15 0000 182106F8 		e_stwu %r1,-8(%r1)
+  16              	.LCFI0:
+  17              		.cfi_def_cfa_offset 8
+  18 0004 0080     		se_mflr %r0
+  19 0006 D301     		se_stw %r0,12(%r1)
+  20              		.cfi_offset 65, 4
+  21              		.loc 1 38 0
+  22 0008 78000001 		e_bl boardInit
+  23              	.LVL0:
+  24              		.loc 1 39 0
+  25 000c 78000001 		e_bl irqInit
+  26              	.LVL1:
+  27              		.loc 1 40 0
+  28 0010 78000001 		e_bl eirqInit
+  29              	.LVL2:
+  30              		.loc 1 41 0
+  31 0014 78000001 		e_bl clockInit
+  32              	.LVL3:
+  33              		.loc 1 42 0
+  34 0018 78000001 		e_bl osalInit
+  35              	.LVL4:
+  36              		.loc 1 43 0
+  37 001c 78000001 		e_bl eeprom_init
+  38              	.LVL5:
+  39              		.loc 1 44 0
+  40 0020 78000001 		e_bl spc5LLDInit
+  41              	.LVL6:
+  42              		.loc 1 45 0
+  43 0024 C301     		se_lwz %r0,12(%r1)
+  44 0026 0090     		se_mtlr %r0
+  45              		.cfi_restore 65
+  46 0028 2071     		se_addi %r1,8
+  47              	.LCFI1:
+  48              		.cfi_def_cfa_offset 0
+  49 002a 0004     		se_blr
+  50              		.cfi_endproc
+  51              	.LFE4:
+  52              		.size	componentsInit, .-componentsInit
+  53              		.section	".text","axv"
+  54              	.Letext0:
+  55              		.file 2 "./components/spc570sxx_board_initialization_component_rla/cfg/board.h"
+  56              		.file 3 "./components/spc570sxx_irq_component_rla/lib/include/irq.h"
+  57              		.file 4 "./components/spc570sxx_irq_component_rla/lib/include/eirq.h"
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 2
+
+
+  58              		.file 5 "./components/spc570sxx_clock_component_rla/lib/include/clock.h"
+  59              		.file 6 "./components/spc570sxx_osal_component_rla/lib/include/osal.h"
+  60              		.file 7 "./components/eeprom_emulation_driver/lib/include/eeprom.h"
+  61              		.file 8 "./components/spc570sxx_low_level_drivers_component_rla/lib/include/spc5_lld.h"
+  62              		.section	.debug_info,"",@progbits
+  63              	.Ldebug_info0:
+  64 0000 00000114 		.4byte	0x114
+  65 0004 0002     		.2byte	0x2
+  66 0006 00000000 		.4byte	.Ldebug_abbrev0
+  67 000a 04       		.byte	0x4
+  68 000b 01       		.uleb128 0x1
+  69 000c 00000000 		.4byte	.LASF17
+  70 0010 01       		.byte	0x1
+  71 0011 00000000 		.4byte	.LASF18
+  72 0015 00000000 		.4byte	.LASF19
+  73 0019 00000000 		.4byte	.Ldebug_ranges0+0
+  74 001d 00000000 		.4byte	0
+  75 0021 00000000 		.4byte	0
+  76 0025 00000000 		.4byte	.Ldebug_line0
+  77 0029 02       		.uleb128 0x2
+  78 002a 01       		.byte	0x1
+  79 002b 06       		.byte	0x6
+  80 002c 00000000 		.4byte	.LASF0
+  81 0030 02       		.uleb128 0x2
+  82 0031 01       		.byte	0x1
+  83 0032 08       		.byte	0x8
+  84 0033 00000000 		.4byte	.LASF1
+  85 0037 02       		.uleb128 0x2
+  86 0038 02       		.byte	0x2
+  87 0039 05       		.byte	0x5
+  88 003a 00000000 		.4byte	.LASF2
+  89 003e 02       		.uleb128 0x2
+  90 003f 02       		.byte	0x2
+  91 0040 07       		.byte	0x7
+  92 0041 00000000 		.4byte	.LASF3
+  93 0045 02       		.uleb128 0x2
+  94 0046 04       		.byte	0x4
+  95 0047 05       		.byte	0x5
+  96 0048 00000000 		.4byte	.LASF4
+  97 004c 02       		.uleb128 0x2
+  98 004d 04       		.byte	0x4
+  99 004e 07       		.byte	0x7
+ 100 004f 00000000 		.4byte	.LASF5
+ 101 0053 02       		.uleb128 0x2
+ 102 0054 08       		.byte	0x8
+ 103 0055 05       		.byte	0x5
+ 104 0056 00000000 		.4byte	.LASF6
+ 105 005a 02       		.uleb128 0x2
+ 106 005b 08       		.byte	0x8
+ 107 005c 07       		.byte	0x7
+ 108 005d 00000000 		.4byte	.LASF7
+ 109 0061 03       		.uleb128 0x3
+ 110 0062 04       		.byte	0x4
+ 111 0063 05       		.byte	0x5
+ 112 0064 696E7400 		.string	"int"
+ 113 0068 02       		.uleb128 0x2
+ 114 0069 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 3
+
+
+ 115 006a 07       		.byte	0x7
+ 116 006b 00000000 		.4byte	.LASF8
+ 117 006f 02       		.uleb128 0x2
+ 118 0070 04       		.byte	0x4
+ 119 0071 07       		.byte	0x7
+ 120 0072 00000000 		.4byte	.LASF9
+ 121 0076 04       		.uleb128 0x4
+ 122 0077 01       		.byte	0x1
+ 123 0078 00000000 		.4byte	.LASF20
+ 124 007c 01       		.byte	0x1
+ 125 007d 24       		.byte	0x24
+ 126 007e 01       		.byte	0x1
+ 127 007f 00000000 		.4byte	.LFB4
+ 128 0083 00000000 		.4byte	.LFE4
+ 129 0087 00000000 		.4byte	.LLST0
+ 130 008b 01       		.byte	0x1
+ 131 008c 000000D0 		.4byte	0xd0
+ 132 0090 05       		.uleb128 0x5
+ 133 0091 00000000 		.4byte	.LVL0
+ 134 0095 000000D0 		.4byte	0xd0
+ 135 0099 05       		.uleb128 0x5
+ 136 009a 00000000 		.4byte	.LVL1
+ 137 009e 000000DA 		.4byte	0xda
+ 138 00a2 05       		.uleb128 0x5
+ 139 00a3 00000000 		.4byte	.LVL2
+ 140 00a7 000000E4 		.4byte	0xe4
+ 141 00ab 05       		.uleb128 0x5
+ 142 00ac 00000000 		.4byte	.LVL3
+ 143 00b0 000000EE 		.4byte	0xee
+ 144 00b4 05       		.uleb128 0x5
+ 145 00b5 00000000 		.4byte	.LVL4
+ 146 00b9 000000F9 		.4byte	0xf9
+ 147 00bd 05       		.uleb128 0x5
+ 148 00be 00000000 		.4byte	.LVL5
+ 149 00c2 00000103 		.4byte	0x103
+ 150 00c6 05       		.uleb128 0x5
+ 151 00c7 00000000 		.4byte	.LVL6
+ 152 00cb 0000010D 		.4byte	0x10d
+ 153 00cf 00       		.byte	0
+ 154 00d0 06       		.uleb128 0x6
+ 155 00d1 01       		.byte	0x1
+ 156 00d2 00000000 		.4byte	.LASF10
+ 157 00d6 02       		.byte	0x2
+ 158 00d7 42       		.byte	0x42
+ 159 00d8 01       		.byte	0x1
+ 160 00d9 01       		.byte	0x1
+ 161 00da 06       		.uleb128 0x6
+ 162 00db 01       		.byte	0x1
+ 163 00dc 00000000 		.4byte	.LASF11
+ 164 00e0 03       		.byte	0x3
+ 165 00e1 75       		.byte	0x75
+ 166 00e2 01       		.byte	0x1
+ 167 00e3 01       		.byte	0x1
+ 168 00e4 06       		.uleb128 0x6
+ 169 00e5 01       		.byte	0x1
+ 170 00e6 00000000 		.4byte	.LASF12
+ 171 00ea 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 4
+
+
+ 172 00eb 85       		.byte	0x85
+ 173 00ec 01       		.byte	0x1
+ 174 00ed 01       		.byte	0x1
+ 175 00ee 07       		.uleb128 0x7
+ 176 00ef 01       		.byte	0x1
+ 177 00f0 00000000 		.4byte	.LASF13
+ 178 00f4 05       		.byte	0x5
+ 179 00f5 04C7     		.2byte	0x4c7
+ 180 00f7 01       		.byte	0x1
+ 181 00f8 01       		.byte	0x1
+ 182 00f9 06       		.uleb128 0x6
+ 183 00fa 01       		.byte	0x1
+ 184 00fb 00000000 		.4byte	.LASF14
+ 185 00ff 06       		.byte	0x6
+ 186 0100 87       		.byte	0x87
+ 187 0101 01       		.byte	0x1
+ 188 0102 01       		.byte	0x1
+ 189 0103 06       		.uleb128 0x6
+ 190 0104 01       		.byte	0x1
+ 191 0105 00000000 		.4byte	.LASF15
+ 192 0109 07       		.byte	0x7
+ 193 010a 93       		.byte	0x93
+ 194 010b 01       		.byte	0x1
+ 195 010c 01       		.byte	0x1
+ 196 010d 06       		.uleb128 0x6
+ 197 010e 01       		.byte	0x1
+ 198 010f 00000000 		.4byte	.LASF16
+ 199 0113 08       		.byte	0x8
+ 200 0114 E4       		.byte	0xe4
+ 201 0115 01       		.byte	0x1
+ 202 0116 01       		.byte	0x1
+ 203 0117 00       		.byte	0
+ 204              		.section	.debug_abbrev,"",@progbits
+ 205              	.Ldebug_abbrev0:
+ 206 0000 01       		.uleb128 0x1
+ 207 0001 11       		.uleb128 0x11
+ 208 0002 01       		.byte	0x1
+ 209 0003 25       		.uleb128 0x25
+ 210 0004 0E       		.uleb128 0xe
+ 211 0005 13       		.uleb128 0x13
+ 212 0006 0B       		.uleb128 0xb
+ 213 0007 03       		.uleb128 0x3
+ 214 0008 0E       		.uleb128 0xe
+ 215 0009 1B       		.uleb128 0x1b
+ 216 000a 0E       		.uleb128 0xe
+ 217 000b 55       		.uleb128 0x55
+ 218 000c 06       		.uleb128 0x6
+ 219 000d 11       		.uleb128 0x11
+ 220 000e 01       		.uleb128 0x1
+ 221 000f 52       		.uleb128 0x52
+ 222 0010 01       		.uleb128 0x1
+ 223 0011 10       		.uleb128 0x10
+ 224 0012 06       		.uleb128 0x6
+ 225 0013 00       		.byte	0
+ 226 0014 00       		.byte	0
+ 227 0015 02       		.uleb128 0x2
+ 228 0016 24       		.uleb128 0x24
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 5
+
+
+ 229 0017 00       		.byte	0
+ 230 0018 0B       		.uleb128 0xb
+ 231 0019 0B       		.uleb128 0xb
+ 232 001a 3E       		.uleb128 0x3e
+ 233 001b 0B       		.uleb128 0xb
+ 234 001c 03       		.uleb128 0x3
+ 235 001d 0E       		.uleb128 0xe
+ 236 001e 00       		.byte	0
+ 237 001f 00       		.byte	0
+ 238 0020 03       		.uleb128 0x3
+ 239 0021 24       		.uleb128 0x24
+ 240 0022 00       		.byte	0
+ 241 0023 0B       		.uleb128 0xb
+ 242 0024 0B       		.uleb128 0xb
+ 243 0025 3E       		.uleb128 0x3e
+ 244 0026 0B       		.uleb128 0xb
+ 245 0027 03       		.uleb128 0x3
+ 246 0028 08       		.uleb128 0x8
+ 247 0029 00       		.byte	0
+ 248 002a 00       		.byte	0
+ 249 002b 04       		.uleb128 0x4
+ 250 002c 2E       		.uleb128 0x2e
+ 251 002d 01       		.byte	0x1
+ 252 002e 3F       		.uleb128 0x3f
+ 253 002f 0C       		.uleb128 0xc
+ 254 0030 03       		.uleb128 0x3
+ 255 0031 0E       		.uleb128 0xe
+ 256 0032 3A       		.uleb128 0x3a
+ 257 0033 0B       		.uleb128 0xb
+ 258 0034 3B       		.uleb128 0x3b
+ 259 0035 0B       		.uleb128 0xb
+ 260 0036 27       		.uleb128 0x27
+ 261 0037 0C       		.uleb128 0xc
+ 262 0038 11       		.uleb128 0x11
+ 263 0039 01       		.uleb128 0x1
+ 264 003a 12       		.uleb128 0x12
+ 265 003b 01       		.uleb128 0x1
+ 266 003c 40       		.uleb128 0x40
+ 267 003d 06       		.uleb128 0x6
+ 268 003e 9742     		.uleb128 0x2117
+ 269 0040 0C       		.uleb128 0xc
+ 270 0041 01       		.uleb128 0x1
+ 271 0042 13       		.uleb128 0x13
+ 272 0043 00       		.byte	0
+ 273 0044 00       		.byte	0
+ 274 0045 05       		.uleb128 0x5
+ 275 0046 898201   		.uleb128 0x4109
+ 276 0049 00       		.byte	0
+ 277 004a 11       		.uleb128 0x11
+ 278 004b 01       		.uleb128 0x1
+ 279 004c 31       		.uleb128 0x31
+ 280 004d 13       		.uleb128 0x13
+ 281 004e 00       		.byte	0
+ 282 004f 00       		.byte	0
+ 283 0050 06       		.uleb128 0x6
+ 284 0051 2E       		.uleb128 0x2e
+ 285 0052 00       		.byte	0
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 6
+
+
+ 286 0053 3F       		.uleb128 0x3f
+ 287 0054 0C       		.uleb128 0xc
+ 288 0055 03       		.uleb128 0x3
+ 289 0056 0E       		.uleb128 0xe
+ 290 0057 3A       		.uleb128 0x3a
+ 291 0058 0B       		.uleb128 0xb
+ 292 0059 3B       		.uleb128 0x3b
+ 293 005a 0B       		.uleb128 0xb
+ 294 005b 27       		.uleb128 0x27
+ 295 005c 0C       		.uleb128 0xc
+ 296 005d 3C       		.uleb128 0x3c
+ 297 005e 0C       		.uleb128 0xc
+ 298 005f 00       		.byte	0
+ 299 0060 00       		.byte	0
+ 300 0061 07       		.uleb128 0x7
+ 301 0062 2E       		.uleb128 0x2e
+ 302 0063 00       		.byte	0
+ 303 0064 3F       		.uleb128 0x3f
+ 304 0065 0C       		.uleb128 0xc
+ 305 0066 03       		.uleb128 0x3
+ 306 0067 0E       		.uleb128 0xe
+ 307 0068 3A       		.uleb128 0x3a
+ 308 0069 0B       		.uleb128 0xb
+ 309 006a 3B       		.uleb128 0x3b
+ 310 006b 05       		.uleb128 0x5
+ 311 006c 27       		.uleb128 0x27
+ 312 006d 0C       		.uleb128 0xc
+ 313 006e 3C       		.uleb128 0x3c
+ 314 006f 0C       		.uleb128 0xc
+ 315 0070 00       		.byte	0
+ 316 0071 00       		.byte	0
+ 317 0072 00       		.byte	0
+ 318              		.section	.debug_loc,"",@progbits
+ 319              	.Ldebug_loc0:
+ 320              	.LLST0:
+ 321 0000 00000000 		.4byte	.LFB4
+ 322 0004 00000000 		.4byte	.LCFI0
+ 323 0008 0002     		.2byte	0x2
+ 324 000a 71       		.byte	0x71
+ 325 000b 00       		.sleb128 0
+ 326 000c 00000000 		.4byte	.LCFI0
+ 327 0010 00000000 		.4byte	.LCFI1
+ 328 0014 0002     		.2byte	0x2
+ 329 0016 71       		.byte	0x71
+ 330 0017 08       		.sleb128 8
+ 331 0018 00000000 		.4byte	.LCFI1
+ 332 001c 00000000 		.4byte	.LFE4
+ 333 0020 0002     		.2byte	0x2
+ 334 0022 71       		.byte	0x71
+ 335 0023 00       		.sleb128 0
+ 336 0024 00000000 		.4byte	0
+ 337 0028 00000000 		.4byte	0
+ 338              		.section	.debug_aranges,"",@progbits
+ 339 0000 0000001C 		.4byte	0x1c
+ 340 0004 0002     		.2byte	0x2
+ 341 0006 00000000 		.4byte	.Ldebug_info0
+ 342 000a 04       		.byte	0x4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 7
+
+
+ 343 000b 00       		.byte	0
+ 344 000c 0000     		.2byte	0
+ 345 000e 0000     		.2byte	0
+ 346 0010 00000000 		.4byte	.LFB4
+ 347 0014 0000002C 		.4byte	.LFE4-.LFB4
+ 348 0018 00000000 		.4byte	0
+ 349 001c 00000000 		.4byte	0
+ 350              		.section	.debug_ranges,"",@progbits
+ 351              	.Ldebug_ranges0:
+ 352 0000 00000000 		.4byte	.LFB4
+ 353 0004 00000000 		.4byte	.LFE4
+ 354 0008 00000000 		.4byte	0
+ 355 000c 00000000 		.4byte	0
+ 356              		.section	.debug_line,"",@progbits
+ 357              	.Ldebug_line0:
+ 358 0000 000001EE 		.section	.debug_str,"MS",@progbits,1
+ 358      00020000 
+ 358      01D10201 
+ 358      FB0E0D00 
+ 358      01010101 
+ 359              	.LASF6:
+ 360 0000 6C6F6E67 		.string	"long long int"
+ 360      206C6F6E 
+ 360      6720696E 
+ 360      7400
+ 361              	.LASF8:
+ 362 000e 756E7369 		.string	"unsigned int"
+ 362      676E6564 
+ 362      20696E74 
+ 362      00
+ 363              	.LASF20:
+ 364 001b 636F6D70 		.string	"componentsInit"
+ 364      6F6E656E 
+ 364      7473496E 
+ 364      697400
+ 365              	.LASF10:
+ 366 002a 626F6172 		.string	"boardInit"
+ 366      64496E69 
+ 366      7400
+ 367              	.LASF5:
+ 368 0034 6C6F6E67 		.string	"long unsigned int"
+ 368      20756E73 
+ 368      69676E65 
+ 368      6420696E 
+ 368      7400
+ 369              	.LASF15:
+ 370 0046 65657072 		.string	"eeprom_init"
+ 370      6F6D5F69 
+ 370      6E697400 
+ 371              	.LASF7:
+ 372 0052 6C6F6E67 		.string	"long long unsigned int"
+ 372      206C6F6E 
+ 372      6720756E 
+ 372      7369676E 
+ 372      65642069 
+ 373              	.LASF17:
+ 374 0069 474E5520 		.ascii	"GNU C 4.9.4 20160726 (Sat May 27 11:09:55 CDT 2017      "
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 8
+
+
+ 374      4320342E 
+ 374      392E3420 
+ 374      32303136 
+ 374      30373236 
+ 375 00a1 20202062 		.string	"   build.sh rev=gd8b6c20 s=F494 ELe200 -V release_gd8b6c20_build_Fed_ELe200_ML0) -mcall-s
+ 375      75696C64 
+ 375      2E736820 
+ 375      7265763D 
+ 375      67643862 
+ 376              	.LASF11:
+ 377 01a2 69727149 		.string	"irqInit"
+ 377      6E697400 
+ 378              	.LASF1:
+ 379 01aa 756E7369 		.string	"unsigned char"
+ 379      676E6564 
+ 379      20636861 
+ 379      7200
+ 380              	.LASF4:
+ 381 01b8 6C6F6E67 		.string	"long int"
+ 381      20696E74 
+ 381      00
+ 382              	.LASF13:
+ 383 01c1 636C6F63 		.string	"clockInit"
+ 383      6B496E69 
+ 383      7400
+ 384              	.LASF18:
+ 385 01cb 2E2F636F 		.string	"./components/components.c"
+ 385      6D706F6E 
+ 385      656E7473 
+ 385      2F636F6D 
+ 385      706F6E65 
+ 386              	.LASF12:
+ 387 01e5 65697271 		.string	"eirqInit"
+ 387      496E6974 
+ 387      00
+ 388              	.LASF3:
+ 389 01ee 73686F72 		.string	"short unsigned int"
+ 389      7420756E 
+ 389      7369676E 
+ 389      65642069 
+ 389      6E7400
+ 390              	.LASF0:
+ 391 0201 7369676E 		.string	"signed char"
+ 391      65642063 
+ 391      68617200 
+ 392              	.LASF14:
+ 393 020d 6F73616C 		.string	"osalInit"
+ 393      496E6974 
+ 393      00
+ 394              	.LASF2:
+ 395 0216 73686F72 		.string	"short int"
+ 395      7420696E 
+ 395      7400
+ 396              	.LASF19:
+ 397 0220 443A5C57 		.string	"D:\\Workplace\\KSC_LDC"
+ 397      6F726B70 
+ 397      6C616365 
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 9
+
+
+ 397      5C4B5343 
+ 397      5F4C4443 
+ 398              	.LASF16:
+ 399 0235 73706335 		.string	"spc5LLDInit"
+ 399      4C4C4449 
+ 399      6E697400 
+ 400              	.LASF9:
+ 401 0241 73697A65 		.string	"sizetype"
+ 401      74797065 
+ 401      00
+ 402              		.ident	"GCC: (GNU) 4.9.4 20160726 (Sat May 27 11:09:55 CDT 2017         build.sh rev=gd8b6c20 s=F4
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 components.c
+C:\Users\duchu\AppData\Local\Temp\ccvtjgP5.s:10     .text.componentsInit:00000000 componentsInit
+
+UNDEFINED SYMBOLS
+boardInit
+irqInit
+eirqInit
+clockInit
+osalInit
+eeprom_init
+spc5LLDInit

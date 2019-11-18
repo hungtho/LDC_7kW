@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fileTypes>
+<fileType name=".c" projectCategory="100" sourceFileType="10" status="0"/>
+<fileType name=".cpp" projectCategory="100" sourceFileType="20" status="0"/>
+<fileType name=".cxx" projectCategory="100" sourceFileType="20" status="0"/>
+<fileType name=".cc" projectCategory="100" sourceFileType="20" status="0"/>
+</fileTypes>

@@ -1,0 +1,12 @@
+eclipse.preferences.version=1
+environment/project/com.st.tools.spc5.configuration.default/GHS_PATH/delimiter=;
+environment/project/com.st.tools.spc5.configuration.default/GHS_PATH/operation=append
+environment/project/com.st.tools.spc5.configuration.default/GHS_PATH/value=C\:\\ghs\\comp_201754\\
+environment/project/com.st.tools.spc5.configuration.default/PATH/delimiter=;
+environment/project/com.st.tools.spc5.configuration.default/PATH/operation=prepend
+environment/project/com.st.tools.spc5.configuration.default/PATH/value=C\:\\SPC5Studio\\eclipse\\configuration\\org.eclipse.osgi\\2266\\0\\.cp\\gnutools;
+environment/project/com.st.tools.spc5.configuration.default/RLM_LICENSE/delimiter=;
+environment/project/com.st.tools.spc5.configuration.default/RLM_LICENSE/operation=replace
+environment/project/com.st.tools.spc5.configuration.default/RLM_LICENSE/value=c\:\\SPC5Studio\\licenses;C\:\\HighTec\\licenses;C\:\\SPC5Studio\\licenses\\
+environment/project/com.st.tools.spc5.configuration.default/append=true
+environment/project/com.st.tools.spc5.configuration.default/appendContributed=true

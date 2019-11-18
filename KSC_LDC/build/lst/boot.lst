@@ -1,0 +1,309 @@
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 1
+
+
+   1              	# 1 "./components/spc570sxx_platform_component_rla/lib/src/boot.s"
+   1              	/****************************************************************************
+   0              	
+   0              	
+   2              	*
+   3              	* Copyright © 2015-2019 STMicroelectronics - All Rights Reserved
+   4              	*
+   5              	* License terms: STMicroelectronics Proprietary in accordance with licensing
+   6              	* terms SLA0089 at www.st.com.
+   7              	* 
+   8              	* THIS SOFTWARE IS DISTRIBUTED "AS IS," AND ALL WARRANTIES ARE DISCLAIMED, 
+   9              	* INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  10              	*
+  11              	* EVALUATION ONLY – NOT FOR USE IN PRODUCTION
+  12              	*****************************************************************************/
+  13              	
+  14              	/**
+  15              	 * @file    boot.s
+  16              	 * @brief   SPC570Sxx boot-related code.
+  17              	 *
+  18              	 * @addtogroup PPC_BOOT
+  19              	 * @{
+  20              	 */
+  21              	
+  22              	#include "boot.h"
+   1              	/****************************************************************************
+  23              	#include "toolchain.h"
+   1              	/****************************************************************************
+  24              	
+  25              	#if !defined(__DOXYGEN__)
+  26              	        /* BAM record.*/
+  27              	        .section    .boot, "axv"
+  28              	
+  29 0000 005A0000 	        .long       0x005A0000
+  30 0004 00000000 	        .long       _reset_address
+  31              	
+  32              	        .align      2
+  33              	        .globl      _reset_address
+  34              	        .type       _reset_address, @function
+  35              	_VLE
+  36              	_reset_address:
+  37              	#if BOOT_PERFORM_CORE_INIT
+  38 0008 7800000D 	        e_bl       _coreinit
+  39              	#endif
+  40 000c 780000B5 	        e_bl       _ivinit
+  41              	
+  42              	#if BOOT_RELOCATE_IN_RAM
+  43              	        /*
+  44              	         * Image relocation in RAM.
+  45              	         */
+  46              	        e_lis       %r4, HI(__ram_reloc_start__)
+  47              	        e_or2i      %r4, LO(__ram_reloc_start__)
+  48              	        e_lis       %r5, HI(__ram_reloc_dest__)
+  49              	        e_or2i      %r5, LO(__ram_reloc_dest__)
+  50              	        e_lis       %r6, HI(__ram_reloc_end__)
+  51              	        e_or2i      %r6, LO(__ram_reloc_end__)
+  52              	.relloop:
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 2
+
+
+  53              	        cmpl        cr0, %r4, %r6
+  54              	        se_bge      .relend
+  55              	        se_lwz      %r7, 0(%r4)
+  56              	        se_addi     %r4, 4
+  57              	        se_stw      %r7, 0(%r5)
+  58              	        se_addi     %r5, 4
+  59              	        se_b        .relloop
+  60              	.relend:
+  61              	        e_lis       %r3, HI(_boot_address)
+  62              	        e_or2i      %r3, LO(_boot_address)
+  63              	        mtctr       %r3
+  64              	        se_bctrl
+  65              	#else
+  66 0010 78000000 	        e_b         _boot_address
+  67              	#endif
+  68              	
+  69              	#if BOOT_PERFORM_CORE_INIT
+  70              	        .align      2
+  71              	_coreinit:
+  72              	        /*
+  73              	         * RAM clearing, this device requires a write to all RAM location in
+  74              	         * order to initialize the ECC detection hardware, this is going to
+  75              	         * slow down the startup but there is no way around.
+  76              	         */
+  77 0014 7C000278 	        xor         %r0, %r0, %r0
+  78 0018 7C210A78 	        xor         %r1, %r1, %r1
+  79 001c 7C421278 	        xor         %r2, %r2, %r2
+  80 0020 7C631A78 	        xor         %r3, %r3, %r3
+  81 0024 7C842278 	        xor         %r4, %r4, %r4
+  82 0028 7CA52A78 	        xor         %r5, %r5, %r5
+  83 002c 7CC63278 	        xor         %r6, %r6, %r6
+  84 0030 7CE73A78 	        xor         %r7, %r7, %r7
+  85 0034 7D084278 	        xor         %r8, %r8, %r8
+  86 0038 7D294A78 	        xor         %r9, %r9, %r9
+  87 003c 7D4A5278 	        xor         %r10, %r10, %r10
+  88 0040 7D6B5A78 	        xor         %r11, %r11, %r11
+  89 0044 7D8C6278 	        xor         %r12, %r12, %r12
+  90 0048 7DAD6A78 	        xor         %r13, %r13, %r13
+  91 004c 7DCE7278 	        xor         %r14, %r14, %r14
+  92 0050 7DEF7A78 	        xor         %r15, %r15, %r15
+  93 0054 7E108278 	        xor         %r16, %r16, %r16
+  94 0058 7E318A78 	        xor         %r17, %r17, %r17
+  95 005c 7E529278 	        xor         %r18, %r18, %r18
+  96 0060 7E739A78 	        xor         %r19, %r19, %r19
+  97 0064 7E94A278 	        xor         %r20, %r20, %r20
+  98 0068 7EB5AA78 	        xor         %r21, %r21, %r21
+  99 006c 7ED6B278 	        xor         %r22, %r22, %r22
+ 100 0070 7EF7BA78 	        xor         %r23, %r23, %r23
+ 101 0074 7F18C278 	        xor         %r24, %r24, %r24
+ 102 0078 7F39CA78 	        xor         %r25, %r25, %r25
+ 103 007c 7F5AD278 	        xor         %r26, %r26, %r26
+ 104 0080 7F7BDA78 	        xor         %r27, %r27, %r27
+ 105 0084 7F9CE278 	        xor         %r28, %r28, %r28
+ 106 0088 7FBDEA78 	        xor         %r29, %r29, %r29
+ 107 008c 7FDEF278 	        xor         %r30, %r30, %r30
+ 108 0090 7FFFFA78 	        xor         %r31, %r31, %r31
+ 109 0094 7080E000 	        e_lis       %r4, HI(__ram_start__)
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 3
+
+
+ 110 0098 7080C000 	        e_or2i      %r4, LO(__ram_start__)
+ 111 009c 70A0E000 	        e_lis       %r5, HI(__ram_end__)
+ 112 00a0 70A0C000 	        e_or2i      %r5, LO(__ram_end__)
+ 113              	.cleareccloop:
+ 114 00a4 7C042840 	        cmpl        cr0, %r4, %r5
+ 115 00a8 E006     	        se_bge      .cleareccend
+ 116 00aa 1A040900 	        e_stmw      %r16, 0(%r4)
+ 117 00ae 18848040 	        e_addi      %r4, %r4, 64
+ 118 00b2 E8F9     	        se_b        .cleareccloop
+ 119              	.cleareccend:
+ 120              	
+ 121              	        /*
+ 122              	         * Branch prediction enabled.
+ 123              	         */
+ 124 00b4 70600201 	        e_li        %r3, BUCSR_DEFAULT
+ 125 00b8 7C75FBA6 	        mtspr       1013, %r3       /* BUCSR */
+ 126              	
+ 127 00bc 0004     	        se_blr
+ 128              	#endif /* BOOT_PERFORM_CORE_INIT */
+ 129              	
+ 130              	        /*
+ 131              	         * Exception vectors initialization.
+ 132              	         */
+ 133 00be 4400     	        .align      2
+ 134              	_ivinit:
+ 135              	        /* MSR initialization.*/
+ 136 00c0 7060E006 	        e_lis       %r3, HI(MSR_DEFAULT)
+ 137 00c4 7062C000 	        e_or2i      %r3, LO(MSR_DEFAULT)
+ 138 00c8 7C600124 	        mtMSR       %r3
+ 139              	
+ 140              	        /* IVPR initialization.*/
+ 141 00cc 7060E000 	        e_lis       %r3, HI(__ivpr_base__)
+ 142 00d0 7060C000 	        e_or2i      %r3, LO(__ivpr_base__)
+ 143 00d4 7C7F0BA6 	        mtIVPR      %r3
+ 144              	
+ 145 00d8 0004     	        se_blr
+ 146              	
+ 147              	        .section    .ivors, "axv"
+ 148              	
+ 149              	        .globl      IVORS
+ 150              	IVORS:
+ 151 0000 78000000 	IVOR0:  e_b           _IVOR0
+ 152 0004 44004400 	        .align      4
+ 152      44004400 
+ 152      44004400 
+ 153 0010 78000000 	IVOR1:  e_b           _IVOR1
+ 154 0014 44004400 	        .align      4
+ 154      44004400 
+ 154      44004400 
+ 155 0020 78000000 	IVOR2:  e_b           _IVOR2
+ 156 0024 44004400 	        .align      4
+ 156      44004400 
+ 156      44004400 
+ 157 0030 78000000 	IVOR3:  e_b           _IVOR3
+ 158 0034 44004400 	        .align      4
+ 158      44004400 
+ 158      44004400 
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 4
+
+
+ 159 0040 78000000 	IVOR4:  e_b           _IVOR4
+ 160 0044 44004400 	        .align      4
+ 160      44004400 
+ 160      44004400 
+ 161 0050 78000000 	IVOR5:  e_b           _IVOR5
+ 162 0054 44004400 	        .align      4
+ 162      44004400 
+ 162      44004400 
+ 163 0060 78000000 	IVOR6:  e_b           _IVOR6
+ 164 0064 44004400 	        .align      4
+ 164      44004400 
+ 164      44004400 
+ 165 0070 78000000 	IVOR7:  e_b           _IVOR7
+ 166 0074 44004400 	        .align      4
+ 166      44004400 
+ 166      44004400 
+ 167 0080 78000000 	IVOR8:  e_b           _IVOR8
+ 168 0084 44004400 	        .align      4
+ 168      44004400 
+ 168      44004400 
+ 169 0090 78000000 	IVOR9:  e_b           _IVOR9
+ 170 0094 44004400 	        .align      4
+ 170      44004400 
+ 170      44004400 
+ 171 00a0 78000000 	IVOR10: e_b           _IVOR10
+ 172 00a4 44004400 	        .align      4
+ 172      44004400 
+ 172      44004400 
+ 173 00b0 78000000 	IVOR11: e_b           _IVOR11
+ 174 00b4 44004400 	        .align      4
+ 174      44004400 
+ 174      44004400 
+ 175 00c0 78000000 	IVOR12: e_b           _IVOR12
+ 176 00c4 44004400 	        .align      4
+ 176      44004400 
+ 176      44004400 
+ 177 00d0 78000000 	IVOR13: e_b           _IVOR13
+ 178 00d4 44004400 	        .align      4
+ 178      44004400 
+ 178      44004400 
+ 179 00e0 78000000 	IVOR14: e_b           _IVOR14
+ 180 00e4 44004400 	        .align      4
+ 180      44004400 
+ 180      44004400 
+ 181 00f0 78000000 	IVOR15: e_b           _IVOR15
+ 182              	
+ 183              	        .section    .handlers, "axv"
+ 184              	
+ 185              	        /*
+ 186              	         * Default IVOR handlers.
+ 187              	         */
+ 188              	        .align      2
+ 189              	        .weak       _IVOR0,  _IVOR1,  _IVOR2,  _IVOR3,  _IVOR4,  _IVOR5
+ 190              	        .weak       _IVOR6,  _IVOR7,  _IVOR8,  _IVOR9,  _IVOR10, _IVOR11
+ 191              	        .weak       _IVOR12, _IVOR13, _IVOR14, _IVOR15
+ 192              	        .weak       _unhandled_exception
+ 193              	_IVOR0:
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 5
+
+
+ 194              	_IVOR1:
+ 195              	_IVOR2:
+ 196              	_IVOR3:
+ 197              	_IVOR4:
+ 198              	_IVOR5:
+ 199              	_IVOR6:
+ 200              	_IVOR7:
+ 201              	_IVOR8:
+ 202              	_IVOR9:
+ 203              	_IVOR10:
+ 204              	_IVOR11:
+ 205              	_IVOR12:
+ 206              	_IVOR13:
+ 207              	_IVOR14:
+ 208              	_IVOR15:
+ 209              	_unhandled_exception:
+ 210 0000 78000000 	        e_b         _unhandled_exception
+GAS LISTING C:\Users\duchu\AppData\Local\Temp\ccAmnxZY.s 			page 6
+
+
+DEFINED SYMBOLS
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:36     .boot:00000008 _reset_address
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:71     .boot:00000014 _coreinit
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:134    .boot:000000c0 _ivinit
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:113    .boot:000000a4 .cleareccloop
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:119    .boot:000000b4 .cleareccend
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:150    .ivors:00000000 IVORS
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:151    .ivors:00000000 IVOR0
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:193    .handlers:00000000 _IVOR0
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:153    .ivors:00000010 IVOR1
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:194    .handlers:00000000 _IVOR1
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:155    .ivors:00000020 IVOR2
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:195    .handlers:00000000 _IVOR2
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:157    .ivors:00000030 IVOR3
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:196    .handlers:00000000 _IVOR3
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:159    .ivors:00000040 IVOR4
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:197    .handlers:00000000 _IVOR4
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:161    .ivors:00000050 IVOR5
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:198    .handlers:00000000 _IVOR5
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:163    .ivors:00000060 IVOR6
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:199    .handlers:00000000 _IVOR6
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:165    .ivors:00000070 IVOR7
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:200    .handlers:00000000 _IVOR7
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:167    .ivors:00000080 IVOR8
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:201    .handlers:00000000 _IVOR8
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:169    .ivors:00000090 IVOR9
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:202    .handlers:00000000 _IVOR9
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:171    .ivors:000000a0 IVOR10
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:203    .handlers:00000000 _IVOR10
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:173    .ivors:000000b0 IVOR11
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:204    .handlers:00000000 _IVOR11
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:175    .ivors:000000c0 IVOR12
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:205    .handlers:00000000 _IVOR12
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:177    .ivors:000000d0 IVOR13
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:206    .handlers:00000000 _IVOR13
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:179    .ivors:000000e0 IVOR14
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:207    .handlers:00000000 _IVOR14
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:181    .ivors:000000f0 IVOR15
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:208    .handlers:00000000 _IVOR15
+./components/spc570sxx_platform_component_rla/lib/src/boot.s:209    .handlers:00000000 _unhandled_exception
+
+UNDEFINED SYMBOLS
+_boot_address
+__ram_start__
+__ram_end__
+__ivpr_base__
