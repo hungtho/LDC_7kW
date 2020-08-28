@@ -1,0 +1,45 @@
+// T32 Tue Aug 25 11:02:58 2020
+
+B::
+
+TOOLBAR   ON
+STATUSBAR ON
+FramePOS 28.75,3.1429,,,Maximized
+WinPAGE.RESet
+
+WinPAGE.Create P000
+WinCLEAR
+
+WinPOS 9.375 5.3571 123. 6. 23. 1. W005 ICONIC
+WinTABS 13. 0. 0. 0. 0. 0. 0.
+Break.List
+
+WinPOS 1.875 0.071429 72. 25. 13. 1. W003
+Data.dump (0xAF000000) /DIALOG
+
+WinPOS 99.375 31.429 122. 25. 0. 0. W004
+PER
+
+WinPOS 1.625 31.357 93. 24. 23. 1. W002
+WinTABS 40.
+COVerage.ListFunc
+
+WinPOS 3.75 2.1429 64. 26. 24. 1. W000
+WinTABS 10. 10. 25.
+List EP:0x80101F04 /COV
+
+WinPOS 78.875 0.0 154. 25. 0. 0. W001
+Var.Watch
+
+VAR.ADDWATCH st_rteLdcIn
+VAR.ADDWATCH st_rteLdcOut
+VAR.ADDWATCH u16g_hisLdcVout
+VAR.ADDWATCH u16g_hisLdcIout
+VAR.ADDWATCH u16g_hisLdcVin
+VAR.ADDWATCH u16g_hisLdcIin
+VAR.ADDWATCH u16g_hisLdcTemp
+VAR.ADDWATCH f32g_VcuCmdLdcPhaseshift
+
+WinPAGE.select P000
+
+ENDDO
